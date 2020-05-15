@@ -100,7 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HotelManagerLibrary\HotelManagerLibrary.csproj">
-      <Project>{ed48904f-a6b8-459c-a053-bc7a2227c9b4}</Project>
+      <Project>{f56104ac-3e9f-48e4-b671-61a37176d6e7}</Project>
       <Name>HotelManagerLibrary</Name>
     </ProjectReference>
   </ItemGroup>

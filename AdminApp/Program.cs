@@ -16,7 +16,8 @@ namespace AdminApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AdminPanel());
+            Application.Run(new AdminLogin());
+            //Application.Run(new AdminPanel());
         }
     }
 }

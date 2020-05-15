@@ -66,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdminLogin.resx">
+      <DependentUpon>AdminLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminPanel.resx">
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -77,9 +80,14 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RoomForm.resx">
+      <DependentUpon>RoomForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\HotelManager.Models.Review.datasource" />
     <None Include="Properties\DataSources\HotelManager.Models.Room.datasource" />
+    <None Include="Properties\DataSources\HotelManagerLibrary.Models.Room.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -95,9 +103,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HotelManagerLibrary\HotelManagerLibrary.csproj">
-      <Project>{ed48904f-a6b8-459c-a053-bc7a2227c9b4}</Project>
+      <Project>{f56104ac-3e9f-48e4-b671-61a37176d6e7}</Project>
       <Name>HotelManagerLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hotelname.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

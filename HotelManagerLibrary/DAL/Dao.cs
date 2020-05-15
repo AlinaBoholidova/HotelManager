@@ -27,6 +27,7 @@ namespace HotelManagerLibrary.DAL
             {
                 var serializer = new BinaryFormatter();
                 serializer.Serialize(stream, hotel);
+                //stream.Position = 0;
             }
             //SaveGuests();
             SaveReviews();
@@ -84,8 +85,11 @@ namespace HotelManagerLibrary.DAL
             using (Stream stream = File.OpenRead(path + "hotel.bin"))
             {
                 var serializer = new BinaryFormatter();
+                //stream.Seek(0, SeekOrigin.Begin);
+                //stream.Position = 0;
                 Hotel ht = (Hotel)serializer.Deserialize(stream);
 
+                Copy(ht.Admins, hotel.Admins);
                 Copy(ht.Rooms, hotel.Rooms);
                 Copy(ht.Residents, hotel.Residents);
                 Copy(ht.RegRecords, hotel.RegRecords);
