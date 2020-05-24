@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace HotelManagerLibrary.DAL
 {
@@ -64,6 +65,7 @@ namespace HotelManagerLibrary.DAL
             }
         }
 
+        
         //public void SaveRooms()
         //{
         //    using (var wr = new StreamWriter(path + "rooms.txt"))
@@ -89,7 +91,6 @@ namespace HotelManagerLibrary.DAL
                 //stream.Position = 0;
                 Hotel ht = (Hotel)serializer.Deserialize(stream);
 
-                Copy(ht.Admins, hotel.Admins);
                 Copy(ht.Rooms, hotel.Rooms);
                 Copy(ht.Residents, hotel.Residents);
                 Copy(ht.RegRecords, hotel.RegRecords);
@@ -122,6 +123,7 @@ namespace HotelManagerLibrary.DAL
         //        }
         //    }
         //}
+
 
         public void LoadReviews()
         {

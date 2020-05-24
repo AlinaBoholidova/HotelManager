@@ -58,6 +58,24 @@
     <Compile Include="AdminPanel.Designer.cs">
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="MoveOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MoveOutForm.Designer.cs">
+      <DependentUpon>MoveOutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReceiptForm.Designer.cs">
+      <DependentUpon>ReceiptForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegRecForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegRecForm.Designer.cs">
+      <DependentUpon>RegRecForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RoomForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +90,9 @@
     <EmbeddedResource Include="AdminPanel.resx">
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MoveOutForm.resx">
+      <DependentUpon>MoveOutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -82,11 +103,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReceiptForm.resx">
+      <DependentUpon>ReceiptForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegRecForm.resx">
+      <DependentUpon>RegRecForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RoomForm.resx">
       <DependentUpon>RoomForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\HotelManager.Models.Review.datasource" />
     <None Include="Properties\DataSources\HotelManager.Models.Room.datasource" />
+    <None Include="Properties\DataSources\HotelManagerLibrary.Models.RegRecord.datasource" />
+    <None Include="Properties\DataSources\HotelManagerLibrary.Models.Resident.datasource" />
     <None Include="Properties\DataSources\HotelManagerLibrary.Models.Room.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -102,13 +131,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\hotelname.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\HotelManagerLibrary\HotelManagerLibrary.csproj">
       <Project>{f56104ac-3e9f-48e4-b671-61a37176d6e7}</Project>
       <Name>HotelManagerLibrary</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\hotelname.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

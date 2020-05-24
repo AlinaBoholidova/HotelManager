@@ -17,13 +17,13 @@ namespace HotelManagerLibrary.Models
             Resident = resident;
             ArrivalDate = adate;
             DepartureDate = ddate;
-            Total = (ddate - adate).Days * Room.Price;
+            Total = (ddate.Date - adate.Date).Days * Room.Price;
         }
 
-        public Room Room { private set; get; }
+        public DateTime ArrivalDate { set; get; }
+        public DateTime DepartureDate { set; get; }
         public Resident Resident { private set; get; }
-        public DateTime ArrivalDate { private set; get; }
-        public DateTime DepartureDate { private set; get; }
-        public int Total { set; get; }
+        public Room Room { private set; get; }
+        public int Total { set { } get { return (DepartureDate.Date - ArrivalDate.Date).Days * Room.Price; } }
     }
 }

@@ -10,8 +10,8 @@ namespace HotelManagerLibrary.Models
     //Гость - имя + дата приезда + дата отъезда
     public class Guest
     {
-        public string Name { set; get; }
         public DateTime ArrivalDate { set; get; }
         public DateTime DepartureDate { set; get; }
+        public string Name { set; get; }
     }
 }

@@ -13,12 +13,27 @@ namespace HotelManagerLibrary.Models
     [Serializable]
     public class Room
     {
-        Bitmap DBL = new Bitmap(Path.GetFullPath("DBL.jpg"));
-        Bitmap DBLTWN = new Bitmap(Path.GetFullPath("DBLTWN.jpg"));
-        Bitmap DBLEXB = new Bitmap(Path.GetFullPath("DBLEXB.jpg"));
-        Bitmap empty = new Bitmap(Path.GetFullPath("empty.png"));
+        Bitmap CityAbstraction = new Bitmap(Path.GetFullPath("CityAbstraction.jpg"));
+        Bitmap FootballFan = new Bitmap(Path.GetFullPath("FootballFan.jpg"));
+        Bitmap MorningFreshness = new Bitmap(Path.GetFullPath("MorningFreshness.jpg"));
+        Bitmap RelaxingPurple = new Bitmap(Path.GetFullPath("RelaxingPurple.jpg"));
         public int Id { set; get; }
-        public string Type { set; get; }
+        public Image Image { set; get; }
+        public string Type
+        {
+            set
+            {
+
+            }
+            get
+            {
+                if (Image.Size == CityAbstraction.Size) return "Городская абстракция";
+                else if (Image.Size == FootballFan.Size) return "Фанат футбола";
+                else if (Image.Size == MorningFreshness.Size) return "Свежесть утра";
+                else if (Image.Size == RelaxingPurple.Size) return "Расслабляющий фиолетовый";
+                else return "Тип номера";
+            }
+        }
         public int Floor { set; get; }
         public int Number { set; get; }
         public int ResidentsNumber
@@ -29,27 +44,14 @@ namespace HotelManagerLibrary.Models
             }
             get
             {
-                if (Type == "DBL") return 2;
-                else if (Type == "DBL TWN") return 2;
-                else return 3;
+                if (Image.Size == CityAbstraction.Size) return 2;
+                else if (Image.Size == FootballFan.Size) return 2;
+                else if (Image.Size == MorningFreshness.Size) return 3;
+                else if (Image.Size == RelaxingPurple.Size) return 2;
+                else return 2;
             }
         }
         public int Price { set; get; }
-        public Image Image
-        {
-            set
-            {
-                
-                
-            }
-            get
-            {
-                if (Type == "DBL") return DBL;
-                else if (Type == "DBL TWN") return DBLTWN;
-                else if (Type == "DBL+EXB") return DBLEXB;
-                else return empty;
-            }
-        }
         public bool Occupied { set; get; } = false;
 
         //public Room(string type, int floor, int number, int residents, int price)

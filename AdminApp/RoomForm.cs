@@ -22,7 +22,6 @@ namespace AdminApp
         public RoomForm(Room room) : this()
         {
             Room = room;
-            typeComboBox.Text = room.Type;
             floorNumericUpDown.Value = room.Floor;
             numberNumericUpDown.Value = room.Number;
             priceNumericUpDown.Value = room.Price;
@@ -43,24 +42,11 @@ namespace AdminApp
             {
                 Room = new Room();
             }
-            Room.Type = typeComboBox.Text;
             Room.Floor = Convert.ToInt32(floorNumericUpDown.Value);
             Room.Number = Convert.ToInt32(numberNumericUpDown.Value);
             Room.Price = Convert.ToInt32(priceNumericUpDown.Value);
             Room.Image = imagePictureBox.Image;
         }
 
-        //private void NewRoom_FormClosing(object sender, FormClosingEventArgs e)
-        //{
-        //    var r = new Room
-        //    {
-        //        Floor = (int)floorNumericUpDown.Value,
-        //        Number = (int)numberNumericUpDown.Value,
-        //        Price = (int)priceNumericUpDown.Value,
-        //        ResidentsNumber = (int)residentsNumberNumericUpDown.Value,
-        //        Type = typeComboBox.Text
-        //    };
-        //    Room = r;
-        //}
     }
 }

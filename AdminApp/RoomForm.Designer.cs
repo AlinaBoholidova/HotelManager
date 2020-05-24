@@ -32,26 +32,54 @@
             System.Windows.Forms.Label floorLabel;
             System.Windows.Forms.Label numberLabel;
             System.Windows.Forms.Label priceLabel;
-            System.Windows.Forms.Label typeLabel;
             this.confirmButton = new System.Windows.Forms.Button();
             this.roomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.floorNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.imagePictureBox = new System.Windows.Forms.PictureBox();
             this.numberNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.priceNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label1 = new System.Windows.Forms.Label();
             floorLabel = new System.Windows.Forms.Label();
             numberLabel = new System.Windows.Forms.Label();
             priceLabel = new System.Windows.Forms.Label();
-            typeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.floorNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceNumericUpDown)).BeginInit();
             this.SuspendLayout();
+            // 
+            // floorLabel
+            // 
+            floorLabel.AutoSize = true;
+            floorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            floorLabel.Location = new System.Drawing.Point(12, 79);
+            floorLabel.Name = "floorLabel";
+            floorLabel.Size = new System.Drawing.Size(45, 17);
+            floorLabel.TabIndex = 11;
+            floorLabel.Text = "Этаж:";
+            // 
+            // numberLabel
+            // 
+            numberLabel.AutoSize = true;
+            numberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            numberLabel.Location = new System.Drawing.Point(12, 116);
+            numberLabel.Name = "numberLabel";
+            numberLabel.Size = new System.Drawing.Size(55, 17);
+            numberLabel.TabIndex = 15;
+            numberLabel.Text = "Номер:";
+            // 
+            // priceLabel
+            // 
+            priceLabel.AutoSize = true;
+            priceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            priceLabel.Location = new System.Drawing.Point(12, 154);
+            priceLabel.Name = "priceLabel";
+            priceLabel.Size = new System.Drawing.Size(47, 17);
+            priceLabel.TabIndex = 17;
+            priceLabel.Text = "Цена:";
             // 
             // confirmButton
             // 
@@ -68,21 +96,11 @@
             // 
             this.roomBindingSource.DataSource = typeof(HotelManagerLibrary.Models.Room);
             // 
-            // floorLabel
-            // 
-            floorLabel.AutoSize = true;
-            floorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            floorLabel.Location = new System.Drawing.Point(12, 88);
-            floorLabel.Name = "floorLabel";
-            floorLabel.Size = new System.Drawing.Size(45, 17);
-            floorLabel.TabIndex = 11;
-            floorLabel.Text = "Этаж:";
-            // 
             // floorNumericUpDown
             // 
             this.floorNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.roomBindingSource, "Floor", true));
             this.floorNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.floorNumericUpDown.Location = new System.Drawing.Point(80, 88);
+            this.floorNumericUpDown.Location = new System.Drawing.Point(80, 79);
             this.floorNumericUpDown.Maximum = new decimal(new int[] {
             6,
             0,
@@ -116,21 +134,11 @@
             this.imagePictureBox.TabStop = false;
             this.imagePictureBox.Click += new System.EventHandler(this.imagePictureBox_Click);
             // 
-            // numberLabel
-            // 
-            numberLabel.AutoSize = true;
-            numberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            numberLabel.Location = new System.Drawing.Point(12, 125);
-            numberLabel.Name = "numberLabel";
-            numberLabel.Size = new System.Drawing.Size(55, 17);
-            numberLabel.TabIndex = 15;
-            numberLabel.Text = "Номер:";
-            // 
             // numberNumericUpDown
             // 
             this.numberNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.roomBindingSource, "Number", true));
             this.numberNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numberNumericUpDown.Location = new System.Drawing.Point(80, 125);
+            this.numberNumericUpDown.Location = new System.Drawing.Point(80, 116);
             this.numberNumericUpDown.Maximum = new decimal(new int[] {
             22,
             0,
@@ -150,21 +158,11 @@
             0,
             0});
             // 
-            // priceLabel
-            // 
-            priceLabel.AutoSize = true;
-            priceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            priceLabel.Location = new System.Drawing.Point(12, 163);
-            priceLabel.Name = "priceLabel";
-            priceLabel.Size = new System.Drawing.Size(47, 17);
-            priceLabel.TabIndex = 17;
-            priceLabel.Text = "Цена:";
-            // 
             // priceNumericUpDown
             // 
             this.priceNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.roomBindingSource, "Price", true));
             this.priceNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.priceNumericUpDown.Location = new System.Drawing.Point(80, 163);
+            this.priceNumericUpDown.Location = new System.Drawing.Point(80, 154);
             this.priceNumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -184,29 +182,6 @@
             0,
             0});
             // 
-            // typeLabel
-            // 
-            typeLabel.AutoSize = true;
-            typeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            typeLabel.Location = new System.Drawing.Point(12, 52);
-            typeLabel.Name = "typeLabel";
-            typeLabel.Size = new System.Drawing.Size(37, 17);
-            typeLabel.TabIndex = 19;
-            typeLabel.Text = "Тип:";
-            // 
-            // typeComboBox
-            // 
-            this.typeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.roomBindingSource, "Type", true));
-            this.typeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.typeComboBox.FormattingEnabled = true;
-            this.typeComboBox.Items.AddRange(new object[] {
-            "DBL+EXB",
-            "DBL"});
-            this.typeComboBox.Location = new System.Drawing.Point(80, 49);
-            this.typeComboBox.Name = "typeComboBox";
-            this.typeComboBox.Size = new System.Drawing.Size(121, 24);
-            this.typeComboBox.TabIndex = 20;
-            // 
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -221,11 +196,22 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(170, 17);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Выберите изображение:";
+            // 
             // RoomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(511, 265);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(floorLabel);
             this.Controls.Add(this.floorNumericUpDown);
@@ -234,8 +220,6 @@
             this.Controls.Add(this.numberNumericUpDown);
             this.Controls.Add(priceLabel);
             this.Controls.Add(this.priceNumericUpDown);
-            this.Controls.Add(typeLabel);
-            this.Controls.Add(this.typeComboBox);
             this.Controls.Add(this.confirmButton);
             this.Name = "RoomForm";
             this.Text = "Данные номера";
@@ -257,8 +241,8 @@
         private System.Windows.Forms.PictureBox imagePictureBox;
         private System.Windows.Forms.NumericUpDown numberNumericUpDown;
         private System.Windows.Forms.NumericUpDown priceNumericUpDown;
-        private System.Windows.Forms.ComboBox typeComboBox;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label1;
     }
 }
