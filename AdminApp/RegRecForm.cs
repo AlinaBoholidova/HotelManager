@@ -77,6 +77,7 @@ namespace AdminApp
 
         private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            floorComboBox.Items.Clear();
             List<int> floor = new List<int>();
             for (int i = 0; i < hotel.Rooms.Count; i++)
             {
@@ -94,10 +95,12 @@ namespace AdminApp
 
         private void floorComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            numberComboBox.Items.Clear();
             for (int i = 0; i < hotel.Rooms.Count; i++)
             {
                 if (hotel.Rooms[i].Floor == Convert.ToInt32(floorComboBox.Text) &&
-                    hotel.Rooms[i].Occupied == false && hotel.Rooms[i].ActualResidents != hotel.Rooms[i].InitialResidents)
+                    hotel.Rooms[i].Occupied == false &&
+                    hotel.Rooms[i].ActualResidents != hotel.Rooms[i].InitialResidents)
                 {
                     numberComboBox.Items.Add(hotel.Rooms[i].Number.ToString());
                 }

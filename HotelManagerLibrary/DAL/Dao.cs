@@ -29,24 +29,8 @@ namespace HotelManagerLibrary.DAL
                 serializer.Serialize(stream, hotel);
                 //stream.Position = 0;
             }
-            //SaveGuests();
             SaveReviews();
-            //SaveRooms();
         }
-
-        //public void SaveGuests()
-        //{
-        //    using (var wr = new StreamWriter("guests.txt"))
-        //    {
-        //        wr.WriteLine(hotel.Guests.Count);
-        //        foreach (var g in hotel.Guests)
-        //        {
-        //            wr.WriteLine(g.Name);
-        //            wr.WriteLine(g.ArrivalDate);
-        //            wr.WriteLine(g.DepartureDate);
-        //        }
-        //    }
-        //}
 
         public void SaveReviews()
         {
@@ -63,23 +47,6 @@ namespace HotelManagerLibrary.DAL
                 }
             }
         }
-
-        
-        //public void SaveRooms()
-        //{
-        //    using (var wr = new StreamWriter(path + "rooms.txt"))
-        //    {
-        //        wr.WriteLine(hotel.Rooms.Count);
-        //        foreach (var r in hotel.Rooms)
-        //        {
-        //            wr.WriteLine(r.Type);
-        //            wr.WriteLine(r.Floor);
-        //            wr.WriteLine(r.Number);
-        //            wr.WriteLine(r.ResidentsNumber);
-        //            wr.WriteLine(r.Price);
-        //        }
-        //    }
-        //}
 
         public void Load()
         {
@@ -102,27 +69,8 @@ namespace HotelManagerLibrary.DAL
                 to.Clear();
                 to.AddRange(from);
             }
-            //LoadGuests();
             LoadReviews();
-            //LoadRooms();
         }
-
-        //public void LoadGuests()
-        //{
-        //    using (var rd = new StreamReader("guests.txt"))
-        //    {
-        //        int n = Convert.ToInt32(rd.ReadLine());
-        //        hotel.Guests.Clear();
-        //        for (int i = 0; i < n; i++)
-        //        {
-        //            var name = rd.ReadLine();
-        //            var arrdate = Convert.ToDateTime(rd.ReadLine());
-        //            var ddate = Convert.ToDateTime(rd.ReadLine());
-        //            hotel.Guests.Add(new Guest { Name = name, ArrivalDate = arrdate, DepartureDate = ddate });
-        //        }
-        //    }
-        //}
-
 
         public void LoadReviews()
         {
@@ -144,29 +92,5 @@ namespace HotelManagerLibrary.DAL
 
         public Guest GetGuestByName(string name) => hotel.Guests.Single(g => g.Name == name);
 
-        //public void LoadRooms()
-        //{
-        //    using (var rd = new StreamReader(path + "rooms.txt"))
-        //    {
-        //        int n = Convert.ToInt32(rd.ReadLine());
-        //        hotel.Rooms.Clear();
-        //        for (int i = 0; i < n; i++)
-        //        {
-        //            var type = rd.ReadLine();
-        //            var floor = Convert.ToInt32(rd.ReadLine());
-        //            var number = Convert.ToInt32(rd.ReadLine());
-        //            var resnumb = Convert.ToInt32(rd.ReadLine());
-        //            var price = Convert.ToInt32(rd.ReadLine());
-        //            hotel.Rooms.Add(new Room
-        //            {
-        //                Type = type,
-        //                Floor = floor,
-        //                Number = number,
-        //                ResidentsNumber = resnumb,
-        //                Price = price
-        //            });
-        //        }
-        //    }
-        //}
     }
 }

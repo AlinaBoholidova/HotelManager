@@ -33,7 +33,7 @@ namespace HotelManagerLibrary.Models
                 else if (Image.Size == FootballFan.Size) return 2;
                 else if (Image.Size == MorningFreshness.Size) return 3;
                 else if (Image.Size == RelaxingPurple.Size) return 2;
-                else return 1;
+                else return 0;
             }
         }
         public string Type

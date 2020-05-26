@@ -26,16 +26,16 @@ namespace AdminApp
         {
             
             RegRecord = regRecord;
-            surnameTextBox.Text = regRecord.Resident.Surname;
-            nameTextBox.Text = regRecord.Resident.Name;
-            genderTextBox.Text = regRecord.Resident.Gender;
-            birthDateTextBox.Text = regRecord.Resident.BirthDate.ToShortDateString();
-            phoneTextBox.Text = regRecord.Resident.Phone;
-            emailTextBox.Text = regRecord.Resident.Email;
-            floorTextBox.Text = Convert.ToString(regRecord.Room.Floor);
-            numberTextBox.Text = Convert.ToString(regRecord.Room.Number);
-            typeTextBox.Text = regRecord.Room.Type;
-            arrivalDateTextBox.Text = regRecord.ArrivalDate.ToShortDateString();
+            surnameLabel.Text = regRecord.Resident.Surname;
+            nameLabel.Text = regRecord.Resident.Name;
+            genderLabel.Text = regRecord.Resident.Gender;
+            birthDateLabel.Text = regRecord.Resident.BirthDate.ToShortDateString();
+            phoneLabel.Text = regRecord.Resident.Phone;
+            emailLabel.Text = regRecord.Resident.Email;
+            floorLabel.Text = Convert.ToString(regRecord.Room.Floor);
+            numberLabel.Text = Convert.ToString(regRecord.Room.Number);
+            typeLabel.Text = regRecord.Room.Type;
+            arrivalDateLabel.Text = regRecord.ArrivalDate.ToShortDateString();
             departureDateTimePicker.Value = regRecord.DepartureDate;
             originalDD = regRecord.DepartureDate;
         }

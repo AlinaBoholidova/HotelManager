@@ -42,8 +42,8 @@
             System.Windows.Forms.Label typeLabel;
             System.Windows.Forms.Label actualResidentsLabel;
             System.Windows.Forms.Label totalLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegRecForm));
             this.arrivalDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.regRecordBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departureDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.birthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.emailTextBox = new System.Windows.Forms.TextBox();
@@ -58,6 +58,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.actualResidentsNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.totalLabel1 = new System.Windows.Forms.Label();
+            this.regRecordBindingSource = new System.Windows.Forms.BindingSource(this.components);
             arrivalDateLabel = new System.Windows.Forms.Label();
             departureDateLabel = new System.Windows.Forms.Label();
             birthDateLabel = new System.Windows.Forms.Label();
@@ -71,14 +72,15 @@
             typeLabel = new System.Windows.Forms.Label();
             actualResidentsLabel = new System.Windows.Forms.Label();
             totalLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.regRecordBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.actualResidentsNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.regRecordBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // arrivalDateLabel
             // 
             arrivalDateLabel.AutoSize = true;
-            arrivalDateLabel.Location = new System.Drawing.Point(461, 181);
+            arrivalDateLabel.ForeColor = System.Drawing.Color.White;
+            arrivalDateLabel.Location = new System.Drawing.Point(468, 192);
             arrivalDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             arrivalDateLabel.Name = "arrivalDateLabel";
             arrivalDateLabel.Size = new System.Drawing.Size(105, 17);
@@ -88,7 +90,8 @@
             // departureDateLabel
             // 
             departureDateLabel.AutoSize = true;
-            departureDateLabel.Location = new System.Drawing.Point(461, 213);
+            departureDateLabel.ForeColor = System.Drawing.Color.White;
+            departureDateLabel.Location = new System.Drawing.Point(468, 230);
             departureDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             departureDateLabel.Name = "departureDateLabel";
             departureDateLabel.Size = new System.Drawing.Size(105, 17);
@@ -98,7 +101,8 @@
             // birthDateLabel
             // 
             birthDateLabel.AutoSize = true;
-            birthDateLabel.Location = new System.Drawing.Point(4, 138);
+            birthDateLabel.ForeColor = System.Drawing.Color.White;
+            birthDateLabel.Location = new System.Drawing.Point(22, 149);
             birthDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             birthDateLabel.Name = "birthDateLabel";
             birthDateLabel.Size = new System.Drawing.Size(115, 17);
@@ -108,7 +112,8 @@
             // emailLabel
             // 
             emailLabel.AutoSize = true;
-            emailLabel.Location = new System.Drawing.Point(68, 225);
+            emailLabel.ForeColor = System.Drawing.Color.White;
+            emailLabel.Location = new System.Drawing.Point(22, 230);
             emailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             emailLabel.Name = "emailLabel";
             emailLabel.Size = new System.Drawing.Size(46, 17);
@@ -118,7 +123,8 @@
             // genderLabel
             // 
             genderLabel.AutoSize = true;
-            genderLabel.Location = new System.Drawing.Point(76, 108);
+            genderLabel.ForeColor = System.Drawing.Color.White;
+            genderLabel.Location = new System.Drawing.Point(22, 112);
             genderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             genderLabel.Name = "genderLabel";
             genderLabel.Size = new System.Drawing.Size(38, 17);
@@ -128,7 +134,8 @@
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(76, 71);
+            nameLabel.ForeColor = System.Drawing.Color.White;
+            nameLabel.Location = new System.Drawing.Point(22, 73);
             nameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new System.Drawing.Size(39, 17);
@@ -138,7 +145,8 @@
             // phoneLabel
             // 
             phoneLabel.AutoSize = true;
-            phoneLabel.Location = new System.Drawing.Point(47, 180);
+            phoneLabel.ForeColor = System.Drawing.Color.White;
+            phoneLabel.Location = new System.Drawing.Point(22, 192);
             phoneLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             phoneLabel.Name = "phoneLabel";
             phoneLabel.Size = new System.Drawing.Size(72, 17);
@@ -148,7 +156,8 @@
             // surnameLabel
             // 
             surnameLabel.AutoSize = true;
-            surnameLabel.Location = new System.Drawing.Point(41, 34);
+            surnameLabel.ForeColor = System.Drawing.Color.White;
+            surnameLabel.Location = new System.Drawing.Point(22, 32);
             surnameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             surnameLabel.Name = "surnameLabel";
             surnameLabel.Size = new System.Drawing.Size(74, 17);
@@ -158,7 +167,8 @@
             // floorLabel
             // 
             floorLabel.AutoSize = true;
-            floorLabel.Location = new System.Drawing.Point(471, 77);
+            floorLabel.ForeColor = System.Drawing.Color.White;
+            floorLabel.Location = new System.Drawing.Point(468, 73);
             floorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             floorLabel.Name = "floorLabel";
             floorLabel.Size = new System.Drawing.Size(45, 17);
@@ -168,7 +178,8 @@
             // numberLabel
             // 
             numberLabel.AutoSize = true;
-            numberLabel.Location = new System.Drawing.Point(461, 111);
+            numberLabel.ForeColor = System.Drawing.Color.White;
+            numberLabel.Location = new System.Drawing.Point(468, 112);
             numberLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             numberLabel.Name = "numberLabel";
             numberLabel.Size = new System.Drawing.Size(55, 17);
@@ -178,52 +189,69 @@
             // typeLabel
             // 
             typeLabel.AutoSize = true;
-            typeLabel.Location = new System.Drawing.Point(479, 37);
+            typeLabel.ForeColor = System.Drawing.Color.White;
+            typeLabel.Location = new System.Drawing.Point(468, 32);
             typeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             typeLabel.Name = "typeLabel";
             typeLabel.Size = new System.Drawing.Size(37, 17);
             typeLabel.TabIndex = 22;
             typeLabel.Text = "Тип:";
             // 
+            // actualResidentsLabel
+            // 
+            actualResidentsLabel.AutoSize = true;
+            actualResidentsLabel.ForeColor = System.Drawing.Color.White;
+            actualResidentsLabel.Location = new System.Drawing.Point(467, 149);
+            actualResidentsLabel.Name = "actualResidentsLabel";
+            actualResidentsLabel.Size = new System.Drawing.Size(111, 17);
+            actualResidentsLabel.TabIndex = 26;
+            actualResidentsLabel.Text = "Коль-во гостей:";
+            // 
+            // totalLabel
+            // 
+            totalLabel.AutoSize = true;
+            totalLabel.ForeColor = System.Drawing.Color.White;
+            totalLabel.Location = new System.Drawing.Point(467, 268);
+            totalLabel.Name = "totalLabel";
+            totalLabel.Size = new System.Drawing.Size(116, 17);
+            totalLabel.TabIndex = 27;
+            totalLabel.Text = "Сумма к оплате:";
+            // 
             // arrivalDateTimePicker
             // 
             this.arrivalDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.regRecordBindingSource, "ArrivalDate", true));
-            this.arrivalDateTimePicker.Location = new System.Drawing.Point(579, 176);
+            this.arrivalDateTimePicker.Location = new System.Drawing.Point(587, 187);
             this.arrivalDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.arrivalDateTimePicker.Name = "arrivalDateTimePicker";
             this.arrivalDateTimePicker.Size = new System.Drawing.Size(265, 23);
-            this.arrivalDateTimePicker.TabIndex = 1;
-            // 
-            // regRecordBindingSource
-            // 
-            this.regRecordBindingSource.DataSource = typeof(HotelManagerLibrary.Models.RegRecord);
+            this.arrivalDateTimePicker.TabIndex = 11;
             // 
             // departureDateTimePicker
             // 
             this.departureDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.regRecordBindingSource, "DepartureDate", true));
-            this.departureDateTimePicker.Location = new System.Drawing.Point(579, 208);
+            this.departureDateTimePicker.Location = new System.Drawing.Point(587, 225);
             this.departureDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.departureDateTimePicker.Name = "departureDateTimePicker";
             this.departureDateTimePicker.Size = new System.Drawing.Size(265, 23);
-            this.departureDateTimePicker.TabIndex = 3;
+            this.departureDateTimePicker.TabIndex = 12;
             // 
             // birthDateTimePicker
             // 
             this.birthDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.regRecordBindingSource, "Resident.BirthDate", true));
-            this.birthDateTimePicker.Location = new System.Drawing.Point(127, 138);
+            this.birthDateTimePicker.Location = new System.Drawing.Point(145, 149);
             this.birthDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.birthDateTimePicker.Name = "birthDateTimePicker";
             this.birthDateTimePicker.Size = new System.Drawing.Size(265, 23);
-            this.birthDateTimePicker.TabIndex = 7;
+            this.birthDateTimePicker.TabIndex = 4;
             // 
             // emailTextBox
             // 
             this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Email", true));
-            this.emailTextBox.Location = new System.Drawing.Point(127, 222);
+            this.emailTextBox.Location = new System.Drawing.Point(145, 227);
             this.emailTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(265, 23);
-            this.emailTextBox.TabIndex = 9;
+            this.emailTextBox.Size = new System.Drawing.Size(230, 23);
+            this.emailTextBox.TabIndex = 6;
             // 
             // genderComboBox
             // 
@@ -233,57 +261,57 @@
             "М",
             "Ж",
             "-"});
-            this.genderComboBox.Location = new System.Drawing.Point(127, 103);
+            this.genderComboBox.Location = new System.Drawing.Point(145, 109);
             this.genderComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.genderComboBox.Name = "genderComboBox";
-            this.genderComboBox.Size = new System.Drawing.Size(265, 24);
-            this.genderComboBox.TabIndex = 11;
+            this.genderComboBox.Size = new System.Drawing.Size(50, 24);
+            this.genderComboBox.TabIndex = 3;
             // 
             // nameTextBox
             // 
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Name", true));
-            this.nameTextBox.Location = new System.Drawing.Point(127, 71);
+            this.nameTextBox.Location = new System.Drawing.Point(145, 70);
             this.nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(265, 23);
-            this.nameTextBox.TabIndex = 13;
+            this.nameTextBox.Size = new System.Drawing.Size(230, 23);
+            this.nameTextBox.TabIndex = 2;
             // 
             // phoneTextBox
             // 
             this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Phone", true));
-            this.phoneTextBox.Location = new System.Drawing.Point(127, 180);
+            this.phoneTextBox.Location = new System.Drawing.Point(145, 189);
             this.phoneTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(265, 23);
-            this.phoneTextBox.TabIndex = 15;
+            this.phoneTextBox.Size = new System.Drawing.Size(230, 23);
+            this.phoneTextBox.TabIndex = 5;
             // 
             // surnameTextBox
             // 
             this.surnameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Surname", true));
-            this.surnameTextBox.Location = new System.Drawing.Point(127, 34);
+            this.surnameTextBox.Location = new System.Drawing.Point(145, 29);
             this.surnameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.surnameTextBox.Name = "surnameTextBox";
-            this.surnameTextBox.Size = new System.Drawing.Size(265, 23);
-            this.surnameTextBox.TabIndex = 17;
+            this.surnameTextBox.Size = new System.Drawing.Size(230, 23);
+            this.surnameTextBox.TabIndex = 1;
             // 
             // floorComboBox
             // 
             this.floorComboBox.FormattingEnabled = true;
-            this.floorComboBox.Location = new System.Drawing.Point(579, 74);
+            this.floorComboBox.Location = new System.Drawing.Point(587, 70);
             this.floorComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.floorComboBox.Name = "floorComboBox";
-            this.floorComboBox.Size = new System.Drawing.Size(160, 24);
-            this.floorComboBox.TabIndex = 19;
+            this.floorComboBox.Size = new System.Drawing.Size(50, 24);
+            this.floorComboBox.TabIndex = 8;
             this.floorComboBox.SelectedIndexChanged += new System.EventHandler(this.floorComboBox_SelectedIndexChanged);
             // 
             // numberComboBox
             // 
             this.numberComboBox.FormattingEnabled = true;
-            this.numberComboBox.Location = new System.Drawing.Point(579, 108);
+            this.numberComboBox.Location = new System.Drawing.Point(587, 109);
             this.numberComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.numberComboBox.Name = "numberComboBox";
-            this.numberComboBox.Size = new System.Drawing.Size(160, 24);
-            this.numberComboBox.TabIndex = 21;
+            this.numberComboBox.Size = new System.Drawing.Size(50, 24);
+            this.numberComboBox.TabIndex = 9;
             // 
             // typeComboBox
             // 
@@ -294,20 +322,20 @@
             "Свежесть утра",
             "Фанат футбола",
             "Тип номера"});
-            this.typeComboBox.Location = new System.Drawing.Point(579, 34);
+            this.typeComboBox.Location = new System.Drawing.Point(587, 29);
             this.typeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.typeComboBox.Name = "typeComboBox";
             this.typeComboBox.Size = new System.Drawing.Size(160, 24);
-            this.typeComboBox.TabIndex = 23;
+            this.typeComboBox.TabIndex = 7;
             this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.typeComboBox_SelectedIndexChanged);
             // 
             // receiptButton
             // 
             this.receiptButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.receiptButton.Location = new System.Drawing.Point(586, 288);
+            this.receiptButton.Location = new System.Drawing.Point(624, 337);
             this.receiptButton.Name = "receiptButton";
             this.receiptButton.Size = new System.Drawing.Size(99, 36);
-            this.receiptButton.TabIndex = 24;
+            this.receiptButton.TabIndex = 14;
             this.receiptButton.Text = "Квитанция";
             this.receiptButton.UseVisualStyleBackColor = true;
             this.receiptButton.Click += new System.EventHandler(this.receiptButton_Click);
@@ -315,26 +343,17 @@
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(715, 288);
+            this.button2.Location = new System.Drawing.Point(753, 337);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(99, 36);
-            this.button2.TabIndex = 25;
+            this.button2.TabIndex = 0;
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // actualResidentsLabel
-            // 
-            actualResidentsLabel.AutoSize = true;
-            actualResidentsLabel.Location = new System.Drawing.Point(461, 144);
-            actualResidentsLabel.Name = "actualResidentsLabel";
-            actualResidentsLabel.Size = new System.Drawing.Size(111, 17);
-            actualResidentsLabel.TabIndex = 26;
-            actualResidentsLabel.Text = "Коль-во гостей:";
             // 
             // actualResidentsNumericUpDown
             // 
             this.actualResidentsNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.regRecordBindingSource, "Room.ActualResidents", true));
-            this.actualResidentsNumericUpDown.Location = new System.Drawing.Point(579, 141);
+            this.actualResidentsNumericUpDown.Location = new System.Drawing.Point(587, 147);
             this.actualResidentsNumericUpDown.Maximum = new decimal(new int[] {
             3,
             0,
@@ -346,36 +365,35 @@
             0,
             0});
             this.actualResidentsNumericUpDown.Name = "actualResidentsNumericUpDown";
-            this.actualResidentsNumericUpDown.Size = new System.Drawing.Size(160, 23);
-            this.actualResidentsNumericUpDown.TabIndex = 27;
+            this.actualResidentsNumericUpDown.Size = new System.Drawing.Size(50, 23);
+            this.actualResidentsNumericUpDown.TabIndex = 10;
             this.actualResidentsNumericUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // totalLabel
-            // 
-            totalLabel.AutoSize = true;
-            totalLabel.Location = new System.Drawing.Point(456, 245);
-            totalLabel.Name = "totalLabel";
-            totalLabel.Size = new System.Drawing.Size(116, 17);
-            totalLabel.TabIndex = 27;
-            totalLabel.Text = "Сумма к оплате:";
-            // 
             // totalLabel1
             // 
+            this.totalLabel1.BackColor = System.Drawing.Color.White;
             this.totalLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Total", true));
-            this.totalLabel1.Location = new System.Drawing.Point(578, 245);
+            this.totalLabel1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.totalLabel1.Location = new System.Drawing.Point(586, 265);
             this.totalLabel1.Name = "totalLabel1";
             this.totalLabel1.Size = new System.Drawing.Size(100, 23);
-            this.totalLabel1.TabIndex = 28;
+            this.totalLabel1.TabIndex = 13;
+            this.totalLabel1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // regRecordBindingSource
+            // 
+            this.regRecordBindingSource.DataSource = typeof(HotelManagerLibrary.Models.RegRecord);
             // 
             // RegRecForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(864, 351);
+            this.BackColor = System.Drawing.Color.IndianRed;
+            this.ClientSize = new System.Drawing.Size(865, 385);
             this.Controls.Add(totalLabel);
             this.Controls.Add(this.totalLabel1);
             this.Controls.Add(actualResidentsLabel);
@@ -405,12 +423,13 @@
             this.Controls.Add(departureDateLabel);
             this.Controls.Add(this.departureDateTimePicker);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RegRecForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Запись регистрации";
-            ((System.ComponentModel.ISupportInitialize)(this.regRecordBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.actualResidentsNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.regRecordBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

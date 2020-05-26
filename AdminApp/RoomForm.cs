@@ -13,6 +13,7 @@ namespace AdminApp
 {
     public partial class RoomForm : Form
     {
+        Hotel hotel = AdminPanel.hotel;
         public Room Room { set; get; }
         public RoomForm()
         {
@@ -52,16 +53,30 @@ namespace AdminApp
         {
             if (DialogResult != DialogResult.OK)
                 return;
-            RequiredValidate(imagePictureBox, e);
+            ValidateImage(imagePictureBox, e);
+            ValidateRoom(floorNumericUpDown, numberNumericUpDown, e);
         }
 
-        private void RequiredValidate(PictureBox pb, FormClosingEventArgs e)
+        private void ValidateImage(PictureBox pb, FormClosingEventArgs e)
         {
             if (pb.Image == null)
             {
                 MessageBox.Show("Вы не выбрали изображение!");
                 e.Cancel = true;
             }
+        }
+
+        private void ValidateRoom(NumericUpDown n1, NumericUpDown n2, FormClosingEventArgs e)
+        {
+            for (int i = 0; i < hotel.Rooms.Count; i++)
+            {
+                if (hotel.Rooms[i].Floor == n1.Value && hotel.Rooms[i].Number == n2.Value)
+                {
+                    MessageBox.Show("Такой номер уже существует.");
+                    e.Cancel = true;
+                }
+            }
+
         }
     }
 }

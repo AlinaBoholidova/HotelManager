@@ -29,174 +29,64 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label emailLabel;
-            System.Windows.Forms.Label nameLabel;
-            System.Windows.Forms.Label phoneLabel;
-            System.Windows.Forms.Label surnameLabel;
-            System.Windows.Forms.Label genderLabel;
-            System.Windows.Forms.Label birthDateLabel;
-            System.Windows.Forms.Label floorLabel;
-            System.Windows.Forms.Label numberLabel;
-            System.Windows.Forms.Label typeLabel;
             System.Windows.Forms.Label departureDateLabel;
-            this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.phoneTextBox = new System.Windows.Forms.TextBox();
-            this.surnameTextBox = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.genderTextBox = new System.Windows.Forms.TextBox();
-            this.birthDateTextBox = new System.Windows.Forms.TextBox();
-            this.floorTextBox = new System.Windows.Forms.TextBox();
-            this.numberTextBox = new System.Windows.Forms.TextBox();
-            this.typeTextBox = new System.Windows.Forms.TextBox();
-            this.arrivalDateTextBox = new System.Windows.Forms.TextBox();
-            this.arrivalDateLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            System.Windows.Forms.Label birthDateLabel1;
+            System.Windows.Forms.Label emailLabel1;
+            System.Windows.Forms.Label genderLabel1;
+            System.Windows.Forms.Label nameLabel1;
+            System.Windows.Forms.Label phoneLabel1;
+            System.Windows.Forms.Label surnameLabel1;
+            System.Windows.Forms.Label floorLabel1;
+            System.Windows.Forms.Label numberLabel1;
+            System.Windows.Forms.Label typeLabel1;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MoveOutForm));
             this.regRecordBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button3 = new System.Windows.Forms.Button();
+            this.arrivalDateLabel1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.departureDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.recalculationButton = new System.Windows.Forms.Button();
-            emailLabel = new System.Windows.Forms.Label();
-            nameLabel = new System.Windows.Forms.Label();
-            phoneLabel = new System.Windows.Forms.Label();
-            surnameLabel = new System.Windows.Forms.Label();
-            genderLabel = new System.Windows.Forms.Label();
-            birthDateLabel = new System.Windows.Forms.Label();
-            floorLabel = new System.Windows.Forms.Label();
-            numberLabel = new System.Windows.Forms.Label();
-            typeLabel = new System.Windows.Forms.Label();
+            this.birthDateLabel = new System.Windows.Forms.Label();
+            this.emailLabel = new System.Windows.Forms.Label();
+            this.genderLabel = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.phoneLabel = new System.Windows.Forms.Label();
+            this.surnameLabel = new System.Windows.Forms.Label();
+            this.floorLabel = new System.Windows.Forms.Label();
+            this.numberLabel = new System.Windows.Forms.Label();
+            this.typeLabel = new System.Windows.Forms.Label();
+            this.arrivalDateLabel = new System.Windows.Forms.Label();
             departureDateLabel = new System.Windows.Forms.Label();
+            birthDateLabel1 = new System.Windows.Forms.Label();
+            emailLabel1 = new System.Windows.Forms.Label();
+            genderLabel1 = new System.Windows.Forms.Label();
+            nameLabel1 = new System.Windows.Forms.Label();
+            phoneLabel1 = new System.Windows.Forms.Label();
+            surnameLabel1 = new System.Windows.Forms.Label();
+            floorLabel1 = new System.Windows.Forms.Label();
+            numberLabel1 = new System.Windows.Forms.Label();
+            typeLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.regRecordBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // emailLabel
+            // departureDateLabel
             // 
-            emailLabel.AutoSize = true;
-            emailLabel.Location = new System.Drawing.Point(42, 196);
-            emailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(46, 17);
-            emailLabel.TabIndex = 3;
-            emailLabel.Text = "Email:";
+            departureDateLabel.AutoSize = true;
+            departureDateLabel.ForeColor = System.Drawing.Color.White;
+            departureDateLabel.Location = new System.Drawing.Point(399, 173);
+            departureDateLabel.Name = "departureDateLabel";
+            departureDateLabel.Size = new System.Drawing.Size(105, 17);
+            departureDateLabel.TabIndex = 36;
+            departureDateLabel.Text = "Дата отъезда:";
             // 
-            // nameLabel
+            // regRecordBindingSource
             // 
-            nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(41, 55);
-            nameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            nameLabel.Name = "nameLabel";
-            nameLabel.Size = new System.Drawing.Size(39, 17);
-            nameLabel.TabIndex = 7;
-            nameLabel.Text = "Имя:";
-            // 
-            // phoneLabel
-            // 
-            phoneLabel.AutoSize = true;
-            phoneLabel.Location = new System.Drawing.Point(42, 164);
-            phoneLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new System.Drawing.Size(72, 17);
-            phoneLabel.TabIndex = 9;
-            phoneLabel.Text = "Телефон:";
-            // 
-            // surnameLabel
-            // 
-            surnameLabel.AutoSize = true;
-            surnameLabel.Location = new System.Drawing.Point(41, 21);
-            surnameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            surnameLabel.Name = "surnameLabel";
-            surnameLabel.Size = new System.Drawing.Size(74, 17);
-            surnameLabel.TabIndex = 11;
-            surnameLabel.Text = "Фамилия:";
-            // 
-            // genderLabel
-            // 
-            genderLabel.AutoSize = true;
-            genderLabel.Location = new System.Drawing.Point(41, 92);
-            genderLabel.Name = "genderLabel";
-            genderLabel.Size = new System.Drawing.Size(38, 17);
-            genderLabel.TabIndex = 25;
-            genderLabel.Text = "Пол:";
-            // 
-            // birthDateLabel
-            // 
-            birthDateLabel.AutoSize = true;
-            birthDateLabel.Location = new System.Drawing.Point(5, 128);
-            birthDateLabel.Name = "birthDateLabel";
-            birthDateLabel.Size = new System.Drawing.Size(115, 17);
-            birthDateLabel.TabIndex = 26;
-            birthDateLabel.Text = "Дата рождения:";
-            // 
-            // floorLabel
-            // 
-            floorLabel.AutoSize = true;
-            floorLabel.Location = new System.Drawing.Point(462, 74);
-            floorLabel.Name = "floorLabel";
-            floorLabel.Size = new System.Drawing.Size(45, 17);
-            floorLabel.TabIndex = 27;
-            floorLabel.Text = "Этаж:";
-            // 
-            // numberLabel
-            // 
-            numberLabel.AutoSize = true;
-            numberLabel.Location = new System.Drawing.Point(462, 103);
-            numberLabel.Name = "numberLabel";
-            numberLabel.Size = new System.Drawing.Size(55, 17);
-            numberLabel.TabIndex = 29;
-            numberLabel.Text = "Номер:";
-            // 
-            // typeLabel
-            // 
-            typeLabel.AutoSize = true;
-            typeLabel.Location = new System.Drawing.Point(462, 132);
-            typeLabel.Name = "typeLabel";
-            typeLabel.Size = new System.Drawing.Size(37, 17);
-            typeLabel.TabIndex = 31;
-            typeLabel.Text = "Тип:";
-            // 
-            // emailTextBox
-            // 
-            this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Email", true));
-            this.emailTextBox.Location = new System.Drawing.Point(126, 193);
-            this.emailTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.ReadOnly = true;
-            this.emailTextBox.Size = new System.Drawing.Size(265, 23);
-            this.emailTextBox.TabIndex = 4;
-            // 
-            // nameTextBox
-            // 
-            this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Name", true));
-            this.nameTextBox.Location = new System.Drawing.Point(125, 52);
-            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.ReadOnly = true;
-            this.nameTextBox.Size = new System.Drawing.Size(265, 23);
-            this.nameTextBox.TabIndex = 8;
-            // 
-            // phoneTextBox
-            // 
-            this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Phone", true));
-            this.phoneTextBox.Location = new System.Drawing.Point(126, 161);
-            this.phoneTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.ReadOnly = true;
-            this.phoneTextBox.Size = new System.Drawing.Size(265, 23);
-            this.phoneTextBox.TabIndex = 10;
-            // 
-            // surnameTextBox
-            // 
-            this.surnameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Surname", true));
-            this.surnameTextBox.Location = new System.Drawing.Point(125, 18);
-            this.surnameTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.surnameTextBox.Name = "surnameTextBox";
-            this.surnameTextBox.ReadOnly = true;
-            this.surnameTextBox.Size = new System.Drawing.Size(265, 23);
-            this.surnameTextBox.TabIndex = 12;
+            this.regRecordBindingSource.DataSource = typeof(HotelManagerLibrary.Models.RegRecord);
             // 
             // button3
             // 
             this.button3.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button3.Location = new System.Drawing.Point(657, 385);
+            this.button3.Location = new System.Drawing.Point(675, 297);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(89, 31);
             this.button3.TabIndex = 20;
@@ -204,67 +94,20 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // genderTextBox
+            // arrivalDateLabel1
             // 
-            this.genderTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Gender", true));
-            this.genderTextBox.Location = new System.Drawing.Point(125, 89);
-            this.genderTextBox.Name = "genderTextBox";
-            this.genderTextBox.Size = new System.Drawing.Size(264, 23);
-            this.genderTextBox.TabIndex = 26;
-            // 
-            // birthDateTextBox
-            // 
-            this.birthDateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.BirthDate", true));
-            this.birthDateTextBox.Location = new System.Drawing.Point(126, 125);
-            this.birthDateTextBox.Name = "birthDateTextBox";
-            this.birthDateTextBox.Size = new System.Drawing.Size(264, 23);
-            this.birthDateTextBox.TabIndex = 27;
-            // 
-            // floorTextBox
-            // 
-            this.floorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Room.Floor", true));
-            this.floorTextBox.Location = new System.Drawing.Point(530, 71);
-            this.floorTextBox.Name = "floorTextBox";
-            this.floorTextBox.Size = new System.Drawing.Size(182, 23);
-            this.floorTextBox.TabIndex = 28;
-            // 
-            // numberTextBox
-            // 
-            this.numberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Room.Number", true));
-            this.numberTextBox.Location = new System.Drawing.Point(530, 100);
-            this.numberTextBox.Name = "numberTextBox";
-            this.numberTextBox.Size = new System.Drawing.Size(182, 23);
-            this.numberTextBox.TabIndex = 30;
-            // 
-            // typeTextBox
-            // 
-            this.typeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Room.Type", true));
-            this.typeTextBox.Location = new System.Drawing.Point(530, 129);
-            this.typeTextBox.Name = "typeTextBox";
-            this.typeTextBox.Size = new System.Drawing.Size(182, 23);
-            this.typeTextBox.TabIndex = 32;
-            // 
-            // arrivalDateTextBox
-            // 
-            this.arrivalDateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "ArrivalDate", true));
-            this.arrivalDateTextBox.Location = new System.Drawing.Point(134, 283);
-            this.arrivalDateTextBox.Name = "arrivalDateTextBox";
-            this.arrivalDateTextBox.Size = new System.Drawing.Size(236, 23);
-            this.arrivalDateTextBox.TabIndex = 33;
-            // 
-            // arrivalDateLabel
-            // 
-            this.arrivalDateLabel.AutoSize = true;
-            this.arrivalDateLabel.Location = new System.Drawing.Point(23, 285);
-            this.arrivalDateLabel.Name = "arrivalDateLabel";
-            this.arrivalDateLabel.Size = new System.Drawing.Size(105, 17);
-            this.arrivalDateLabel.TabIndex = 34;
-            this.arrivalDateLabel.Text = "Дата приезда:";
+            this.arrivalDateLabel1.AutoSize = true;
+            this.arrivalDateLabel1.ForeColor = System.Drawing.Color.White;
+            this.arrivalDateLabel1.Location = new System.Drawing.Point(401, 136);
+            this.arrivalDateLabel1.Name = "arrivalDateLabel1";
+            this.arrivalDateLabel1.Size = new System.Drawing.Size(105, 17);
+            this.arrivalDateLabel1.TabIndex = 34;
+            this.arrivalDateLabel1.Text = "Дата приезда:";
             // 
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(548, 385);
+            this.button1.Location = new System.Drawing.Point(566, 297);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(91, 31);
             this.button1.TabIndex = 36;
@@ -272,31 +115,20 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Visible = false;
             // 
-            // regRecordBindingSource
-            // 
-            this.regRecordBindingSource.DataSource = typeof(HotelManagerLibrary.Models.RegRecord);
-            // 
-            // departureDateLabel
-            // 
-            departureDateLabel.AutoSize = true;
-            departureDateLabel.Location = new System.Drawing.Point(419, 286);
-            departureDateLabel.Name = "departureDateLabel";
-            departureDateLabel.Size = new System.Drawing.Size(105, 17);
-            departureDateLabel.TabIndex = 36;
-            departureDateLabel.Text = "Дата отъезда:";
-            // 
             // departureDateTimePicker
             // 
             this.departureDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.regRecordBindingSource, "DepartureDate", true));
-            this.departureDateTimePicker.Location = new System.Drawing.Point(535, 282);
+            this.departureDateTimePicker.Location = new System.Drawing.Point(510, 171);
+            this.departureDateTimePicker.MinDate = new System.DateTime(2020, 5, 27, 0, 0, 0, 0);
             this.departureDateTimePicker.Name = "departureDateTimePicker";
-            this.departureDateTimePicker.Size = new System.Drawing.Size(200, 23);
+            this.departureDateTimePicker.Size = new System.Drawing.Size(234, 23);
             this.departureDateTimePicker.TabIndex = 37;
+            this.departureDateTimePicker.Value = new System.DateTime(2020, 5, 27, 0, 0, 0, 0);
             this.departureDateTimePicker.ValueChanged += new System.EventHandler(this.departureDateTimePicker_ValueChanged);
             // 
             // recalculationButton
             // 
-            this.recalculationButton.Location = new System.Drawing.Point(26, 385);
+            this.recalculationButton.Location = new System.Drawing.Point(12, 297);
             this.recalculationButton.Name = "recalculationButton";
             this.recalculationButton.Size = new System.Drawing.Size(88, 31);
             this.recalculationButton.TabIndex = 38;
@@ -305,40 +137,241 @@
             this.recalculationButton.Visible = false;
             this.recalculationButton.Click += new System.EventHandler(this.recalculationButton_Click);
             // 
+            // birthDateLabel1
+            // 
+            birthDateLabel1.AutoSize = true;
+            birthDateLabel1.ForeColor = System.Drawing.Color.White;
+            birthDateLabel1.Location = new System.Drawing.Point(54, 135);
+            birthDateLabel1.Name = "birthDateLabel1";
+            birthDateLabel1.Size = new System.Drawing.Size(115, 17);
+            birthDateLabel1.TabIndex = 38;
+            birthDateLabel1.Text = "Дата рождения:";
+            // 
+            // birthDateLabel
+            // 
+            this.birthDateLabel.BackColor = System.Drawing.Color.White;
+            this.birthDateLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.BirthDate", true));
+            this.birthDateLabel.Location = new System.Drawing.Point(175, 135);
+            this.birthDateLabel.Name = "birthDateLabel";
+            this.birthDateLabel.Size = new System.Drawing.Size(191, 23);
+            this.birthDateLabel.TabIndex = 39;
+            this.birthDateLabel.Text = "label1";
+            this.birthDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // emailLabel1
+            // 
+            emailLabel1.AutoSize = true;
+            emailLabel1.ForeColor = System.Drawing.Color.White;
+            emailLabel1.Location = new System.Drawing.Point(54, 208);
+            emailLabel1.Name = "emailLabel1";
+            emailLabel1.Size = new System.Drawing.Size(46, 17);
+            emailLabel1.TabIndex = 40;
+            emailLabel1.Text = "Email:";
+            // 
+            // emailLabel
+            // 
+            this.emailLabel.BackColor = System.Drawing.Color.White;
+            this.emailLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Email", true));
+            this.emailLabel.Location = new System.Drawing.Point(175, 208);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(191, 23);
+            this.emailLabel.TabIndex = 41;
+            this.emailLabel.Text = "label1";
+            this.emailLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // genderLabel1
+            // 
+            genderLabel1.AutoSize = true;
+            genderLabel1.ForeColor = System.Drawing.Color.White;
+            genderLabel1.Location = new System.Drawing.Point(54, 97);
+            genderLabel1.Name = "genderLabel1";
+            genderLabel1.Size = new System.Drawing.Size(38, 17);
+            genderLabel1.TabIndex = 42;
+            genderLabel1.Text = "Пол:";
+            // 
+            // genderLabel
+            // 
+            this.genderLabel.BackColor = System.Drawing.Color.White;
+            this.genderLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Gender", true));
+            this.genderLabel.Location = new System.Drawing.Point(175, 97);
+            this.genderLabel.Name = "genderLabel";
+            this.genderLabel.Size = new System.Drawing.Size(30, 23);
+            this.genderLabel.TabIndex = 43;
+            this.genderLabel.Text = "label1";
+            // 
+            // nameLabel1
+            // 
+            nameLabel1.AutoSize = true;
+            nameLabel1.ForeColor = System.Drawing.Color.White;
+            nameLabel1.Location = new System.Drawing.Point(54, 61);
+            nameLabel1.Name = "nameLabel1";
+            nameLabel1.Size = new System.Drawing.Size(39, 17);
+            nameLabel1.TabIndex = 44;
+            nameLabel1.Text = "Имя:";
+            // 
+            // nameLabel
+            // 
+            this.nameLabel.BackColor = System.Drawing.Color.White;
+            this.nameLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Name", true));
+            this.nameLabel.Location = new System.Drawing.Point(175, 61);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(191, 23);
+            this.nameLabel.TabIndex = 45;
+            this.nameLabel.Text = "label1";
+            this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // phoneLabel1
+            // 
+            phoneLabel1.AutoSize = true;
+            phoneLabel1.ForeColor = System.Drawing.Color.White;
+            phoneLabel1.Location = new System.Drawing.Point(54, 173);
+            phoneLabel1.Name = "phoneLabel1";
+            phoneLabel1.Size = new System.Drawing.Size(72, 17);
+            phoneLabel1.TabIndex = 46;
+            phoneLabel1.Text = "Телефон:";
+            // 
+            // phoneLabel
+            // 
+            this.phoneLabel.BackColor = System.Drawing.Color.White;
+            this.phoneLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Phone", true));
+            this.phoneLabel.Location = new System.Drawing.Point(175, 173);
+            this.phoneLabel.Name = "phoneLabel";
+            this.phoneLabel.Size = new System.Drawing.Size(191, 23);
+            this.phoneLabel.TabIndex = 47;
+            this.phoneLabel.Text = "label1";
+            this.phoneLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // surnameLabel1
+            // 
+            surnameLabel1.AutoSize = true;
+            surnameLabel1.ForeColor = System.Drawing.Color.White;
+            surnameLabel1.Location = new System.Drawing.Point(54, 25);
+            surnameLabel1.Name = "surnameLabel1";
+            surnameLabel1.Size = new System.Drawing.Size(74, 17);
+            surnameLabel1.TabIndex = 48;
+            surnameLabel1.Text = "Фамилия:";
+            // 
+            // surnameLabel
+            // 
+            this.surnameLabel.BackColor = System.Drawing.Color.White;
+            this.surnameLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Surname", true));
+            this.surnameLabel.Location = new System.Drawing.Point(175, 25);
+            this.surnameLabel.Name = "surnameLabel";
+            this.surnameLabel.Size = new System.Drawing.Size(191, 23);
+            this.surnameLabel.TabIndex = 49;
+            this.surnameLabel.Text = "label1";
+            this.surnameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // floorLabel1
+            // 
+            floorLabel1.AutoSize = true;
+            floorLabel1.ForeColor = System.Drawing.Color.White;
+            floorLabel1.Location = new System.Drawing.Point(423, 64);
+            floorLabel1.Name = "floorLabel1";
+            floorLabel1.Size = new System.Drawing.Size(45, 17);
+            floorLabel1.TabIndex = 49;
+            floorLabel1.Text = "Этаж:";
+            // 
+            // floorLabel
+            // 
+            this.floorLabel.BackColor = System.Drawing.Color.White;
+            this.floorLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Room.Floor", true));
+            this.floorLabel.Location = new System.Drawing.Point(514, 58);
+            this.floorLabel.Name = "floorLabel";
+            this.floorLabel.Size = new System.Drawing.Size(30, 23);
+            this.floorLabel.TabIndex = 50;
+            this.floorLabel.Text = "label1";
+            this.floorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // numberLabel1
+            // 
+            numberLabel1.AutoSize = true;
+            numberLabel1.ForeColor = System.Drawing.Color.White;
+            numberLabel1.Location = new System.Drawing.Point(423, 102);
+            numberLabel1.Name = "numberLabel1";
+            numberLabel1.Size = new System.Drawing.Size(55, 17);
+            numberLabel1.TabIndex = 50;
+            numberLabel1.Text = "Номер:";
+            // 
+            // numberLabel
+            // 
+            this.numberLabel.BackColor = System.Drawing.Color.White;
+            this.numberLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Room.Number", true));
+            this.numberLabel.Location = new System.Drawing.Point(514, 96);
+            this.numberLabel.Name = "numberLabel";
+            this.numberLabel.Size = new System.Drawing.Size(30, 23);
+            this.numberLabel.TabIndex = 51;
+            this.numberLabel.Text = "label1";
+            this.numberLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // typeLabel1
+            // 
+            typeLabel1.AutoSize = true;
+            typeLabel1.ForeColor = System.Drawing.Color.White;
+            typeLabel1.Location = new System.Drawing.Point(423, 28);
+            typeLabel1.Name = "typeLabel1";
+            typeLabel1.Size = new System.Drawing.Size(37, 17);
+            typeLabel1.TabIndex = 51;
+            typeLabel1.Text = "Тип:";
+            // 
+            // typeLabel
+            // 
+            this.typeLabel.BackColor = System.Drawing.Color.White;
+            this.typeLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Room.Type", true));
+            this.typeLabel.Location = new System.Drawing.Point(514, 22);
+            this.typeLabel.Name = "typeLabel";
+            this.typeLabel.Size = new System.Drawing.Size(191, 23);
+            this.typeLabel.TabIndex = 52;
+            this.typeLabel.Text = "label1";
+            this.typeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // arrivalDateLabel
+            // 
+            this.arrivalDateLabel.BackColor = System.Drawing.Color.White;
+            this.arrivalDateLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "ArrivalDate", true));
+            this.arrivalDateLabel.Location = new System.Drawing.Point(512, 135);
+            this.arrivalDateLabel.Name = "arrivalDateLabel";
+            this.arrivalDateLabel.Size = new System.Drawing.Size(191, 23);
+            this.arrivalDateLabel.TabIndex = 53;
+            this.arrivalDateLabel.Text = "label1";
+            this.arrivalDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // MoveOutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 436);
+            this.BackColor = System.Drawing.Color.IndianRed;
+            this.ClientSize = new System.Drawing.Size(776, 340);
+            this.Controls.Add(this.arrivalDateLabel);
+            this.Controls.Add(typeLabel1);
+            this.Controls.Add(this.typeLabel);
+            this.Controls.Add(numberLabel1);
+            this.Controls.Add(this.numberLabel);
+            this.Controls.Add(floorLabel1);
+            this.Controls.Add(this.floorLabel);
+            this.Controls.Add(birthDateLabel1);
+            this.Controls.Add(this.birthDateLabel);
+            this.Controls.Add(emailLabel1);
+            this.Controls.Add(this.emailLabel);
+            this.Controls.Add(genderLabel1);
+            this.Controls.Add(this.genderLabel);
+            this.Controls.Add(nameLabel1);
+            this.Controls.Add(this.nameLabel);
+            this.Controls.Add(phoneLabel1);
+            this.Controls.Add(this.phoneLabel);
+            this.Controls.Add(surnameLabel1);
+            this.Controls.Add(this.surnameLabel);
             this.Controls.Add(this.recalculationButton);
             this.Controls.Add(departureDateLabel);
             this.Controls.Add(this.departureDateTimePicker);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.arrivalDateLabel);
-            this.Controls.Add(this.arrivalDateTextBox);
-            this.Controls.Add(floorLabel);
-            this.Controls.Add(this.floorTextBox);
-            this.Controls.Add(numberLabel);
-            this.Controls.Add(this.numberTextBox);
-            this.Controls.Add(typeLabel);
-            this.Controls.Add(this.typeTextBox);
-            this.Controls.Add(birthDateLabel);
-            this.Controls.Add(this.birthDateTextBox);
-            this.Controls.Add(genderLabel);
-            this.Controls.Add(this.genderTextBox);
+            this.Controls.Add(this.arrivalDateLabel1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(emailLabel);
-            this.Controls.Add(this.emailTextBox);
-            this.Controls.Add(nameLabel);
-            this.Controls.Add(this.nameTextBox);
-            this.Controls.Add(phoneLabel);
-            this.Controls.Add(this.phoneTextBox);
-            this.Controls.Add(surnameLabel);
-            this.Controls.Add(this.surnameTextBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MoveOutForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Выселение";
             ((System.ComponentModel.ISupportInitialize)(this.regRecordBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -349,20 +382,20 @@
         #endregion
 
         private System.Windows.Forms.BindingSource regRecordBindingSource;
-        private System.Windows.Forms.TextBox emailTextBox;
-        private System.Windows.Forms.TextBox nameTextBox;
-        private System.Windows.Forms.TextBox phoneTextBox;
-        private System.Windows.Forms.TextBox surnameTextBox;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox genderTextBox;
-        private System.Windows.Forms.TextBox birthDateTextBox;
-        private System.Windows.Forms.TextBox floorTextBox;
-        private System.Windows.Forms.TextBox numberTextBox;
-        private System.Windows.Forms.TextBox typeTextBox;
-        private System.Windows.Forms.TextBox arrivalDateTextBox;
-        private System.Windows.Forms.Label arrivalDateLabel;
+        private System.Windows.Forms.Label arrivalDateLabel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker departureDateTimePicker;
         private System.Windows.Forms.Button recalculationButton;
+        private System.Windows.Forms.Label birthDateLabel;
+        private System.Windows.Forms.Label emailLabel;
+        private System.Windows.Forms.Label genderLabel;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label phoneLabel;
+        private System.Windows.Forms.Label surnameLabel;
+        private System.Windows.Forms.Label floorLabel;
+        private System.Windows.Forms.Label numberLabel;
+        private System.Windows.Forms.Label typeLabel;
+        private System.Windows.Forms.Label arrivalDateLabel;
     }
 }

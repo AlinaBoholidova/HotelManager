@@ -85,13 +85,13 @@ namespace HotelManagerLibrary.Models
             // RegRecords
             RegRecords.Clear();
             const int m = 5;
-            for (int i = 0; i < n - m; i++)
+            for (int i = 1; i <= n - m; i++)
             {
                 RegRecords.Add(new RegRecord(new Room()
                 {
                     Id = i,
                     Floor = 3,
-                    Number = i % 22,
+                    Number = (i % 22) + 1,
                     Price = i + 600,
                     Image = noImage,
                     Occupied = true
@@ -101,35 +101,35 @@ namespace HotelManagerLibrary.Models
                     Surname = $"ResidentSurname{i}",
                     Name = $"ResidentName{i}",
                     BirthDate = DateTime.Today - TimeSpan.FromDays(i + 1),
-                    Gender = "M",
-                    Phone = "+1234567",
+                    Gender = "-",
+                    Phone = "+123456789",
                     Email = "example@gmail.com"
                 }, DateTime.Today, DateTime.Today + TimeSpan.FromDays(i + 1)));
             }
             // Guests
             Guests.Clear();
-            for (int i = 0; i <= n; i++)
+            for (int i = 1; i <= n; i++)
             {
                 Guests.Add(new Guest()
                 {
-                    Name = $"Name {i}",
+                    Name = $"Name{i}",
                     ArrivalDate = DateTime.Today - TimeSpan.FromDays(i + 1),
                     DepartureDate = DateTime.Today
                 });
             }
             // Reviews
             Reviews.Clear();
-            for (int i = 0; i <= n; i++)
+            for (int i = 1; i <= n; i++)
             {
                 Reviews.Add(new Review
                 {
                     Guest = new Guest()
                     {
-                        Name = $"Name {i}",
+                        Name = $"Name{i}",
                         ArrivalDate = DateTime.Today - TimeSpan.FromDays(i + 1),
                         DepartureDate = DateTime.Today
                     },
-                    Text = $"Text {i}"
+                    Text = $"Text{i}"
                 });
             }
 

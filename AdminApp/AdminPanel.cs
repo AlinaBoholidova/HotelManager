@@ -38,7 +38,6 @@ namespace AdminApp
                 case DialogResult.No:
                     break;
             }
-            
         }
 
         private void AdminPanel_Load(object sender, EventArgs e)
@@ -75,66 +74,10 @@ namespace AdminApp
             MessageBox.Show("Данные успешно загружены!");
         }
 
-        private void addRoomButton_Click(object sender, EventArgs e)
+        private void saveButton_Click(object sender, EventArgs e)
         {
-            var rf = new RoomForm();
-            if (rf.ShowDialog() == DialogResult.OK)
-            {
-                hotel.AddRoom(rf.Room);
-                roomBindingSource.ResetBindings(false);
-
-                //Выбрать и перейти к последней строке
-                var lastIdx = roomGridView.Rows.Count - 1;
-                roomGridView.Rows[lastIdx].Selected = true;
-                roomGridView.FirstDisplayedScrollingRowIndex = lastIdx;
-            }
-        }
-
-        private void editRoomButton_Click(object sender, EventArgs e)
-        {
-            var toEdit = roomGridView.SelectedRows[0].DataBoundItem as Room;
-            var pf = new RoomForm(toEdit);
-            if (pf.ShowDialog() == DialogResult.OK)
-            {
-                roomBindingSource.ResetBindings(false);
-            }
-        }
-
-        private void deleteRoomButton_Click(object sender, EventArgs e)
-        {
-            var toDel = roomGridView.SelectedRows[0].DataBoundItem as Room;
-            var res = MessageBox.Show($"Удалить номер {toDel.Number} этаж {toDel.Floor}?", "", MessageBoxButtons.YesNo);
-            if (res == DialogResult.Yes)
-            {
-                hotel.Rooms.Remove(toDel);
-                roomBindingSource.ResetBindings(false);
-            }
-        }
-        private void showAllButton_Click(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow dr in regRecsGridView.Rows)
-            {
-                regRecsGridView.Rows[dr.Index].Visible = true;
-            }
-        }
-
-        
-
-        private void searchButton_Click(object sender, EventArgs e)
-        {
-            if (paramComboBox.Text == "Имя")
-                residentsDataGridView.DataSource = hotel.Residents.Where(x => x.Name == searchTextBox.Text).ToList();
-            if (paramComboBox.Text == "Фамилия")
-                residentsDataGridView.DataSource = hotel.Residents.Where(x => x.Surname == searchTextBox.Text).ToList();
-            if (paramComboBox.Text == "Дата рождения")
-                residentsDataGridView.DataSource = hotel.Residents.Where(x => x.BirthDate.Date == Convert.ToDateTime(searchTextBox.Text)).ToList();
-        }
-
-        private void renewButton_Click(object sender, EventArgs e)
-        {
-            paramComboBox.Text = "";
-            searchTextBox.Clear();
-            residentsDataGridView.DataSource = hotel.Residents;
+            hotel.Save();
+            MessageBox.Show("Данные успешно сохранены!");
         }
 
         private void addResidentButton_Click(object sender, EventArgs e)
@@ -150,20 +93,24 @@ namespace AdminApp
                 {
                     hotel.AddRegRec(rf.RegRecord);
                     roomBindingSource.ResetBindings(false);
-                    regRecsGridView.Rows.Add($"{rf.RegRecord.Resident.Surname}", $"{rf.RegRecord.Resident.Name}",
-                            $"{rf.RegRecord.Resident.Gender}", $"{rf.RegRecord.Resident.BirthDate.ToShortDateString()}",
-                            $"{rf.RegRecord.Resident.Phone}", $"{rf.RegRecord.Resident.Email}",
-                            $"{rf.RegRecord.Room.Floor}", $"{rf.RegRecord.Room.Number}",
-                            $"{rf.RegRecord.ArrivalDate.ToShortDateString()}", $"{rf.RegRecord.DepartureDate.ToShortDateString()}",
-                            $"{rf.RegRecord.Total}");
+                    regRecsGridView.Rows.Add($"{rf.RegRecord.Resident.Surname}",
+                                             $"{rf.RegRecord.Resident.Name}",
+                                             $"{rf.RegRecord.Resident.Gender}",
+                                             $"{rf.RegRecord.Resident.BirthDate.ToShortDateString()}",
+                                             $"{rf.RegRecord.Resident.Phone}",
+                                             $"{rf.RegRecord.Resident.Email}",
+                                             $"{rf.RegRecord.Room.Floor}",
+                                             $"{rf.RegRecord.Room.Number}",
+                                             $"{rf.RegRecord.ArrivalDate.ToShortDateString()}",
+                                             $"{rf.RegRecord.DepartureDate.ToShortDateString()}",
+                                             $"{rf.RegRecord.Total}");
                     //Выбрать и перейти к последней строке
                     var lastIdx = regRecsGridView.Rows.Count - 1;
                     regRecsGridView.Rows[lastIdx].Selected = true;
                     regRecsGridView.FirstDisplayedScrollingRowIndex = lastIdx;
                 }
             }
-
-            }
+        }
 
         private void editResidentButton_Click(object sender, EventArgs e)
         {
@@ -195,20 +142,6 @@ namespace AdminApp
                 regRecsGridView.Rows[ind].Selected = true;
                 regRecsGridView.FirstDisplayedScrollingRowIndex = ind;
             }
-            
-        }
-
-        public void FillRegRecs()
-        {
-            for (int i = 0; i < hotel.RegRecords.Count; i++)
-            {
-                regRecsGridView.Rows.Add($"{hotel.RegRecords[i].Resident.Surname}", $"{hotel.RegRecords[i].Resident.Name}",
-                    $"{hotel.RegRecords[i].Resident.Gender}", $"{hotel.RegRecords[i].Resident.BirthDate.ToShortDateString()}",
-                    $"{hotel.RegRecords[i].Resident.Phone}", $"{hotel.RegRecords[i].Resident.Email}",
-                    $"{hotel.RegRecords[i].Room.Floor}", $"{hotel.RegRecords[i].Room.Number}",
-                    $"{hotel.RegRecords[i].ArrivalDate.ToShortDateString()}", $"{hotel.RegRecords[i].DepartureDate.ToShortDateString()}",
-                    $"{hotel.RegRecords[i].Total}");
-            }
         }
 
         private void moveOutTodayButton_Click(object sender, EventArgs e)
@@ -217,7 +150,7 @@ namespace AdminApp
             string surname = regRecsGridView.Rows[ind].Cells[0].Value.ToString();
             string phone = regRecsGridView.Rows[ind].Cells[4].Value.ToString();
             var toDel = hotel.FindRegRec(surname, phone);
-            var res = MessageBox.Show($"Выселить постояльца {toDel.Resident.Surname} {toDel.Resident.Name}?", "", 
+            var res = MessageBox.Show($"Выселить постояльца {toDel.Resident.Surname} {toDel.Resident.Name}?", "",
                 MessageBoxButtons.YesNo);
             if (res == DialogResult.Yes)
             {
@@ -226,6 +159,16 @@ namespace AdminApp
                 regRecsGridView.Rows.Clear();
                 FillRegRecs();
             }
+        }
+
+        private void showAllButton_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow dr in regRecsGridView.Rows)
+            {
+                regRecsGridView.Rows[dr.Index].Visible = true;
+            }
+            regRecsGridView.Rows[0].Selected = true;
+            regRecsGridView.FirstDisplayedScrollingRowIndex = 0;
         }
 
         private void checkOutTodayButton_Click(object sender, EventArgs e)
@@ -242,6 +185,93 @@ namespace AdminApp
                     regRecsGridView.Rows[dr.Index].Visible = false;
                 }
             }
+            regRecsGridView.Rows[0].Selected = true;
         }
+
+        public void FillRegRecs()
+        {
+            for (int i = 0; i < hotel.RegRecords.Count; i++)
+            {
+                regRecsGridView.Rows.Add($"{hotel.RegRecords[i].Resident.Surname}",
+                                         $"{hotel.RegRecords[i].Resident.Name}",
+                                         $"{hotel.RegRecords[i].Resident.Gender}",
+                                         $"{hotel.RegRecords[i].Resident.BirthDate.ToShortDateString()}",
+                                         $"{hotel.RegRecords[i].Resident.Phone}",
+                                         $"{hotel.RegRecords[i].Resident.Email}",
+                                         $"{hotel.RegRecords[i].Room.Floor}",
+                                         $"{hotel.RegRecords[i].Room.Number}",
+                                         $"{hotel.RegRecords[i].ArrivalDate.ToShortDateString()}",
+                                         $"{hotel.RegRecords[i].DepartureDate.ToShortDateString()}",
+                                         $"{hotel.RegRecords[i].Total}");
+            }
+        }
+
+        private void addRoomButton_Click(object sender, EventArgs e)
+        {
+            var rf = new RoomForm();
+            if (rf.ShowDialog() == DialogResult.OK)
+            {
+                hotel.AddRoom(rf.Room);
+                roomBindingSource.ResetBindings(false);
+
+                //Выбрать и перейти к последней строке
+                var lastIdx = roomGridView.Rows.Count - 1;
+                roomGridView.Rows[lastIdx].Selected = true;
+                roomGridView.FirstDisplayedScrollingRowIndex = lastIdx;
+            }
+        }
+
+        private void editRoomButton_Click(object sender, EventArgs e)
+        {
+            var toEdit = roomGridView.SelectedRows[0].DataBoundItem as Room;
+            if (toEdit.Occupied == false)
+            {
+                var pf = new RoomForm(toEdit);
+                if (pf.ShowDialog() == DialogResult.OK)
+                {
+                    roomBindingSource.ResetBindings(false);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Номер сейчас занят.");
+            }
+        }
+
+        private void deleteRoomButton_Click(object sender, EventArgs e)
+        {
+            var toDel = roomGridView.SelectedRows[0].DataBoundItem as Room;
+            if (toDel.Occupied == false)
+            {
+                var res = MessageBox.Show($"Удалить номер {toDel.Number} этаж {toDel.Floor}?", "", MessageBoxButtons.YesNo);
+                if (res == DialogResult.Yes)
+                {
+                    hotel.Rooms.Remove(toDel);
+                    roomBindingSource.ResetBindings(false);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Номер сейчас занят.");
+            }
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            if (paramComboBox.Text == "Имя")
+                residentsDataGridView.DataSource = hotel.Residents.Where(x => x.Name == searchTextBox.Text).ToList();
+            if (paramComboBox.Text == "Фамилия")
+                residentsDataGridView.DataSource = hotel.Residents.Where(x => x.Surname == searchTextBox.Text).ToList();
+            if (paramComboBox.Text == "Дата рождения")
+                residentsDataGridView.DataSource = hotel.Residents.Where(x => x.BirthDate.Date == Convert.ToDateTime(searchTextBox.Text)).ToList();
+        }
+
+        private void renewButton_Click(object sender, EventArgs e)
+        {
+            paramComboBox.Text = "";
+            searchTextBox.Clear();
+            residentsDataGridView.DataSource = hotel.Residents;
+        }
+
     }
 }
