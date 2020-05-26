@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label arrivalDateLabel;
             System.Windows.Forms.Label departureDateLabel;
-            System.Windows.Forms.Label totalLabel;
             System.Windows.Forms.Label birthDateLabel;
             System.Windows.Forms.Label emailLabel;
             System.Windows.Forms.Label genderLabel;
@@ -41,10 +40,11 @@
             System.Windows.Forms.Label floorLabel;
             System.Windows.Forms.Label numberLabel;
             System.Windows.Forms.Label typeLabel;
+            System.Windows.Forms.Label actualResidentsLabel;
+            System.Windows.Forms.Label totalLabel;
             this.arrivalDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.regRecordBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departureDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.totalTextBox = new System.Windows.Forms.TextBox();
             this.birthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.genderComboBox = new System.Windows.Forms.ComboBox();
@@ -56,9 +56,10 @@
             this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.receiptButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.actualResidentsNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.totalLabel1 = new System.Windows.Forms.Label();
             arrivalDateLabel = new System.Windows.Forms.Label();
             departureDateLabel = new System.Windows.Forms.Label();
-            totalLabel = new System.Windows.Forms.Label();
             birthDateLabel = new System.Windows.Forms.Label();
             emailLabel = new System.Windows.Forms.Label();
             genderLabel = new System.Windows.Forms.Label();
@@ -68,13 +69,16 @@
             floorLabel = new System.Windows.Forms.Label();
             numberLabel = new System.Windows.Forms.Label();
             typeLabel = new System.Windows.Forms.Label();
+            actualResidentsLabel = new System.Windows.Forms.Label();
+            totalLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.regRecordBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actualResidentsNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // arrivalDateLabel
             // 
             arrivalDateLabel.AutoSize = true;
-            arrivalDateLabel.Location = new System.Drawing.Point(461, 169);
+            arrivalDateLabel.Location = new System.Drawing.Point(461, 181);
             arrivalDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             arrivalDateLabel.Name = "arrivalDateLabel";
             arrivalDateLabel.Size = new System.Drawing.Size(105, 17);
@@ -84,22 +88,12 @@
             // departureDateLabel
             // 
             departureDateLabel.AutoSize = true;
-            departureDateLabel.Location = new System.Drawing.Point(461, 201);
+            departureDateLabel.Location = new System.Drawing.Point(461, 213);
             departureDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             departureDateLabel.Name = "departureDateLabel";
             departureDateLabel.Size = new System.Drawing.Size(105, 17);
             departureDateLabel.TabIndex = 2;
             departureDateLabel.Text = "Дата отъезда:";
-            // 
-            // totalLabel
-            // 
-            totalLabel.AutoSize = true;
-            totalLabel.Location = new System.Drawing.Point(450, 231);
-            totalLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            totalLabel.Name = "totalLabel";
-            totalLabel.Size = new System.Drawing.Size(116, 17);
-            totalLabel.TabIndex = 4;
-            totalLabel.Text = "Сумма к оплате:";
             // 
             // birthDateLabel
             // 
@@ -194,7 +188,7 @@
             // arrivalDateTimePicker
             // 
             this.arrivalDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.regRecordBindingSource, "ArrivalDate", true));
-            this.arrivalDateTimePicker.Location = new System.Drawing.Point(579, 164);
+            this.arrivalDateTimePicker.Location = new System.Drawing.Point(579, 176);
             this.arrivalDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.arrivalDateTimePicker.Name = "arrivalDateTimePicker";
             this.arrivalDateTimePicker.Size = new System.Drawing.Size(265, 23);
@@ -207,21 +201,11 @@
             // departureDateTimePicker
             // 
             this.departureDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.regRecordBindingSource, "DepartureDate", true));
-            this.departureDateTimePicker.Location = new System.Drawing.Point(579, 196);
+            this.departureDateTimePicker.Location = new System.Drawing.Point(579, 208);
             this.departureDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.departureDateTimePicker.Name = "departureDateTimePicker";
             this.departureDateTimePicker.Size = new System.Drawing.Size(265, 23);
             this.departureDateTimePicker.TabIndex = 3;
-            // 
-            // totalTextBox
-            // 
-            this.totalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Total", true));
-            this.totalTextBox.Location = new System.Drawing.Point(579, 228);
-            this.totalTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.totalTextBox.Name = "totalTextBox";
-            this.totalTextBox.ReadOnly = true;
-            this.totalTextBox.Size = new System.Drawing.Size(85, 23);
-            this.totalTextBox.TabIndex = 5;
             // 
             // birthDateTimePicker
             // 
@@ -285,7 +269,7 @@
             // floorComboBox
             // 
             this.floorComboBox.FormattingEnabled = true;
-            this.floorComboBox.Location = new System.Drawing.Point(532, 74);
+            this.floorComboBox.Location = new System.Drawing.Point(579, 74);
             this.floorComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.floorComboBox.Name = "floorComboBox";
             this.floorComboBox.Size = new System.Drawing.Size(160, 24);
@@ -295,7 +279,7 @@
             // numberComboBox
             // 
             this.numberComboBox.FormattingEnabled = true;
-            this.numberComboBox.Location = new System.Drawing.Point(532, 108);
+            this.numberComboBox.Location = new System.Drawing.Point(579, 108);
             this.numberComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.numberComboBox.Name = "numberComboBox";
             this.numberComboBox.Size = new System.Drawing.Size(160, 24);
@@ -310,7 +294,7 @@
             "Свежесть утра",
             "Фанат футбола",
             "Тип номера"});
-            this.typeComboBox.Location = new System.Drawing.Point(532, 34);
+            this.typeComboBox.Location = new System.Drawing.Point(579, 34);
             this.typeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.typeComboBox.Name = "typeComboBox";
             this.typeComboBox.Size = new System.Drawing.Size(160, 24);
@@ -338,11 +322,64 @@
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // actualResidentsLabel
+            // 
+            actualResidentsLabel.AutoSize = true;
+            actualResidentsLabel.Location = new System.Drawing.Point(461, 144);
+            actualResidentsLabel.Name = "actualResidentsLabel";
+            actualResidentsLabel.Size = new System.Drawing.Size(111, 17);
+            actualResidentsLabel.TabIndex = 26;
+            actualResidentsLabel.Text = "Коль-во гостей:";
+            // 
+            // actualResidentsNumericUpDown
+            // 
+            this.actualResidentsNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.regRecordBindingSource, "Room.ActualResidents", true));
+            this.actualResidentsNumericUpDown.Location = new System.Drawing.Point(579, 141);
+            this.actualResidentsNumericUpDown.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.actualResidentsNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.actualResidentsNumericUpDown.Name = "actualResidentsNumericUpDown";
+            this.actualResidentsNumericUpDown.Size = new System.Drawing.Size(160, 23);
+            this.actualResidentsNumericUpDown.TabIndex = 27;
+            this.actualResidentsNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // totalLabel
+            // 
+            totalLabel.AutoSize = true;
+            totalLabel.Location = new System.Drawing.Point(456, 245);
+            totalLabel.Name = "totalLabel";
+            totalLabel.Size = new System.Drawing.Size(116, 17);
+            totalLabel.TabIndex = 27;
+            totalLabel.Text = "Сумма к оплате:";
+            // 
+            // totalLabel1
+            // 
+            this.totalLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Total", true));
+            this.totalLabel1.Location = new System.Drawing.Point(578, 245);
+            this.totalLabel1.Name = "totalLabel1";
+            this.totalLabel1.Size = new System.Drawing.Size(100, 23);
+            this.totalLabel1.TabIndex = 28;
+            // 
             // RegRecForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 351);
+            this.ClientSize = new System.Drawing.Size(864, 351);
+            this.Controls.Add(totalLabel);
+            this.Controls.Add(this.totalLabel1);
+            this.Controls.Add(actualResidentsLabel);
+            this.Controls.Add(this.actualResidentsNumericUpDown);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.receiptButton);
             this.Controls.Add(floorLabel);
@@ -367,14 +404,13 @@
             this.Controls.Add(this.arrivalDateTimePicker);
             this.Controls.Add(departureDateLabel);
             this.Controls.Add(this.departureDateTimePicker);
-            this.Controls.Add(totalLabel);
-            this.Controls.Add(this.totalTextBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RegRecForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Запись регистрации";
             ((System.ComponentModel.ISupportInitialize)(this.regRecordBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actualResidentsNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,7 +420,6 @@
         private System.Windows.Forms.BindingSource regRecordBindingSource;
         private System.Windows.Forms.DateTimePicker arrivalDateTimePicker;
         private System.Windows.Forms.DateTimePicker departureDateTimePicker;
-        private System.Windows.Forms.TextBox totalTextBox;
         private System.Windows.Forms.DateTimePicker birthDateTimePicker;
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.ComboBox genderComboBox;
@@ -396,5 +431,7 @@
         private System.Windows.Forms.ComboBox typeComboBox;
         private System.Windows.Forms.Button receiptButton;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.NumericUpDown actualResidentsNumericUpDown;
+        private System.Windows.Forms.Label totalLabel1;
     }
 }

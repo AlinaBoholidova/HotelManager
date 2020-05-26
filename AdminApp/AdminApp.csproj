@@ -142,5 +142,20 @@
       <Name>HotelManagerLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\book.jpg" />
+    <None Include="Resources\checkout.png" />
+    <None Include="Resources\editresident.png" />
+    <None Include="Resources\addresident.png" />
+    <None Include="Resources\repaintroom.png" />
+    <None Include="Resources\editroom.png" />
+    <None Include="Resources\addroom.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

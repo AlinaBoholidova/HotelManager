@@ -14,12 +14,9 @@ namespace GuestApp
 {
     public partial class ReviewsPanel : Form
     {
-        Hotel hotel;
         public ReviewsPanel()
         {
             InitializeComponent();
-            hotel = new Hotel();
-            hotel.Load();
         }
 
         private void ReviewsPanel_FormClosing(object sender, FormClosingEventArgs e)
@@ -44,7 +41,6 @@ namespace GuestApp
             //    textBox1.Text += hotel.Reviews[i].Text + '\r' + '\n';
             //    textBox1.Text += Environment.NewLine;
             //}
-            //textBox1.Text = File.ReadAllText(path);
         }
 
         private void buttonReturn_Click(object sender, EventArgs e)

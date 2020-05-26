@@ -17,8 +17,25 @@ namespace HotelManagerLibrary.Models
         Bitmap FootballFan = new Bitmap(Path.GetFullPath("FootballFan.jpg"));
         Bitmap MorningFreshness = new Bitmap(Path.GetFullPath("MorningFreshness.jpg"));
         Bitmap RelaxingPurple = new Bitmap(Path.GetFullPath("RelaxingPurple.jpg"));
+
+        public int ActualResidents { set; get; } = 0;
         public int Id { set; get; }
         public Image Image { set; get; }
+        public int InitialResidents
+        {
+            set
+            {
+
+            }
+            get
+            {
+                if (Image.Size == CityAbstraction.Size) return 2;
+                else if (Image.Size == FootballFan.Size) return 2;
+                else if (Image.Size == MorningFreshness.Size) return 3;
+                else if (Image.Size == RelaxingPurple.Size) return 2;
+                else return 1;
+            }
+        }
         public string Type
         {
             set
@@ -36,23 +53,9 @@ namespace HotelManagerLibrary.Models
         }
         public int Floor { set; get; }
         public int Number { set; get; }
-        public int ResidentsNumber
-        {
-            set
-            {
-
-            }
-            get
-            {
-                if (Image.Size == CityAbstraction.Size) return 2;
-                else if (Image.Size == FootballFan.Size) return 2;
-                else if (Image.Size == MorningFreshness.Size) return 3;
-                else if (Image.Size == RelaxingPurple.Size) return 2;
-                else return 2;
-            }
-        }
         public int Price { set; get; }
         public bool Occupied { set; get; } = false;
+
 
         //public Room(string type, int floor, int number, int residents, int price)
         //{

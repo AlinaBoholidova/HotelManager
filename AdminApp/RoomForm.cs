@@ -28,7 +28,7 @@ namespace AdminApp
             imagePictureBox.Image = room.Image;
         }
 
-        private void imagePictureBox_Click(object sender, EventArgs e)
+        private void chooseImageButton_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -48,5 +48,20 @@ namespace AdminApp
             Room.Image = imagePictureBox.Image;
         }
 
+        private void RoomForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (DialogResult != DialogResult.OK)
+                return;
+            RequiredValidate(imagePictureBox, e);
+        }
+
+        private void RequiredValidate(PictureBox pb, FormClosingEventArgs e)
+        {
+            if (pb.Image == null)
+            {
+                MessageBox.Show("Вы не выбрали изображение!");
+                e.Cancel = true;
+            }
+        }
     }
 }

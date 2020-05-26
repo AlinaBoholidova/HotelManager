@@ -34,7 +34,7 @@ namespace AdminApp
             typeComboBox.Text = regRecord.Room.Type;
             arrivalDateTimePicker.Value = regRecord.ArrivalDate;
             departureDateTimePicker.Value = regRecord.DepartureDate;
-            totalTextBox.Text = Convert.ToString(regRecord.Total);
+            totalLabel1.Text = Convert.ToString(regRecord.Total);
         }
 
         private void receiptButton_Click(object sender, EventArgs e)
@@ -42,6 +42,7 @@ namespace AdminApp
             int floor = Convert.ToInt32(floorComboBox.Text);
             int number = Convert.ToInt32(numberComboBox.Text);
             Room room = hotel.FindRoom(floor, number);
+            room.ActualResidents = Convert.ToInt32(actualResidentsNumericUpDown.Value);
             Resident resident = new Resident()
             {
                 Surname = surnameTextBox.Text,
@@ -58,6 +59,7 @@ namespace AdminApp
                 RegRecord = new RegRecord(room, resident, adate, ddate);
             }
             Room temp = hotel.FindRoom(floor, number);
+            RegRecord.Room.ActualResidents = Convert.ToInt32(actualResidentsNumericUpDown.Value);
             RegRecord.Room.Floor = temp.Floor;
             RegRecord.Room.Number = temp.Number;
             RegRecord.Room.Image = temp.Image;
@@ -95,7 +97,7 @@ namespace AdminApp
             for (int i = 0; i < hotel.Rooms.Count; i++)
             {
                 if (hotel.Rooms[i].Floor == Convert.ToInt32(floorComboBox.Text) &&
-                    hotel.Rooms[i].Occupied == false)
+                    hotel.Rooms[i].Occupied == false && hotel.Rooms[i].ActualResidents != hotel.Rooms[i].InitialResidents)
                 {
                     numberComboBox.Items.Add(hotel.Rooms[i].Number.ToString());
                 }

@@ -21,6 +21,12 @@ namespace GuestApp
             hotel.Load();
         }
 
+        //public GuestPanel(Hotel hotel)
+        //{
+        //    this.hotel = hotel;
+        //    InitializeComponent();
+        //}
+
         private void GuestPanel_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();

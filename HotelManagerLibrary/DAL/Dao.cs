@@ -14,7 +14,6 @@ namespace HotelManagerLibrary.DAL
     public class Dao
     {
         Hotel hotel;
-        //const string filePath = "hotel.bin";
         string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, @"AdminApp\bin\Debug\");
 
         public Dao(Hotel hotel)

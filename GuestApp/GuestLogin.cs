@@ -19,6 +19,8 @@ namespace GuestApp
             InitializeComponent();
             hotel = new Hotel();
             hotel.Load();
+            arrivalDateTimePicker.MaxDate = DateTime.Today - TimeSpan.FromDays(1);
+            departureDateTimePicker.MaxDate = DateTime.Today;
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)

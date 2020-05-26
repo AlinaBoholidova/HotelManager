@@ -34,7 +34,7 @@ namespace HotelManagerLibrary.Models
             Reviews = new List<Review>();
             Rooms = new List<Room>();
 
-            LoadAdmins();
+            ConnectAdmins();
         }
         
         public bool IsFull()
@@ -42,7 +42,7 @@ namespace HotelManagerLibrary.Models
             return Rooms.All(x => x.Occupied == true);
         }
 
-        public void LoadAdmins()
+        public void ConnectAdmins()
         {
             Admins.Clear();
             Admins.Add(new Admin { Name = "Мария", Password = "197909" });
@@ -59,6 +59,7 @@ namespace HotelManagerLibrary.Models
             {
                 Rooms.Add(new Room()
                 {
+                    ActualResidents = 1,
                     Id = i + 1,
                     Floor = 3,
                     Number = (i % 22) + 1,
