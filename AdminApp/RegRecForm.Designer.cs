@@ -41,9 +41,10 @@
             System.Windows.Forms.Label numberLabel;
             System.Windows.Forms.Label typeLabel;
             System.Windows.Forms.Label actualResidentsLabel;
-            System.Windows.Forms.Label totalLabel;
+            System.Windows.Forms.Label totalLabel1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegRecForm));
             this.arrivalDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.regRecordBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.departureDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.birthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.emailTextBox = new System.Windows.Forms.TextBox();
@@ -55,10 +56,10 @@
             this.numberComboBox = new System.Windows.Forms.ComboBox();
             this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.receiptButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.actualResidentsNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.totalLabel1 = new System.Windows.Forms.Label();
-            this.regRecordBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.totalLabel = new System.Windows.Forms.Label();
+            this.saveButton = new System.Windows.Forms.Button();
             arrivalDateLabel = new System.Windows.Forms.Label();
             departureDateLabel = new System.Windows.Forms.Label();
             birthDateLabel = new System.Windows.Forms.Label();
@@ -71,9 +72,9 @@
             numberLabel = new System.Windows.Forms.Label();
             typeLabel = new System.Windows.Forms.Label();
             actualResidentsLabel = new System.Windows.Forms.Label();
-            totalLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.actualResidentsNumericUpDown)).BeginInit();
+            totalLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.regRecordBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actualResidentsNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // arrivalDateLabel
@@ -207,15 +208,15 @@
             actualResidentsLabel.TabIndex = 26;
             actualResidentsLabel.Text = "Коль-во гостей:";
             // 
-            // totalLabel
+            // totalLabel1
             // 
-            totalLabel.AutoSize = true;
-            totalLabel.ForeColor = System.Drawing.Color.White;
-            totalLabel.Location = new System.Drawing.Point(467, 268);
-            totalLabel.Name = "totalLabel";
-            totalLabel.Size = new System.Drawing.Size(116, 17);
-            totalLabel.TabIndex = 27;
-            totalLabel.Text = "Сумма к оплате:";
+            totalLabel1.AutoSize = true;
+            totalLabel1.ForeColor = System.Drawing.Color.White;
+            totalLabel1.Location = new System.Drawing.Point(467, 268);
+            totalLabel1.Name = "totalLabel1";
+            totalLabel1.Size = new System.Drawing.Size(116, 17);
+            totalLabel1.TabIndex = 27;
+            totalLabel1.Text = "Сумма к оплате:";
             // 
             // arrivalDateTimePicker
             // 
@@ -225,6 +226,10 @@
             this.arrivalDateTimePicker.Name = "arrivalDateTimePicker";
             this.arrivalDateTimePicker.Size = new System.Drawing.Size(265, 23);
             this.arrivalDateTimePicker.TabIndex = 11;
+            // 
+            // regRecordBindingSource
+            // 
+            this.regRecordBindingSource.DataSource = typeof(HotelManagerLibrary.Models.RegRecord);
             // 
             // departureDateTimePicker
             // 
@@ -312,6 +317,7 @@
             this.numberComboBox.Name = "numberComboBox";
             this.numberComboBox.Size = new System.Drawing.Size(50, 24);
             this.numberComboBox.TabIndex = 9;
+            this.numberComboBox.SelectedIndexChanged += new System.EventHandler(this.numberComboBox_SelectedIndexChanged);
             // 
             // typeComboBox
             // 
@@ -331,8 +337,7 @@
             // 
             // receiptButton
             // 
-            this.receiptButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.receiptButton.Location = new System.Drawing.Point(624, 337);
+            this.receiptButton.Location = new System.Drawing.Point(12, 337);
             this.receiptButton.Name = "receiptButton";
             this.receiptButton.Size = new System.Drawing.Size(99, 36);
             this.receiptButton.TabIndex = 14;
@@ -340,15 +345,16 @@
             this.receiptButton.UseVisualStyleBackColor = true;
             this.receiptButton.Click += new System.EventHandler(this.receiptButton_Click);
             // 
-            // button2
+            // backButton
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(753, 337);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(99, 36);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Отмена";
-            this.button2.UseVisualStyleBackColor = true;
+            this.backButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.backButton.Location = new System.Drawing.Point(753, 337);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(99, 36);
+            this.backButton.TabIndex = 0;
+            this.backButton.Text = "Вернуться";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // actualResidentsNumericUpDown
             // 
@@ -373,20 +379,27 @@
             0,
             0});
             // 
-            // totalLabel1
+            // totalLabel
             // 
-            this.totalLabel1.BackColor = System.Drawing.Color.White;
-            this.totalLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Total", true));
-            this.totalLabel1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.totalLabel1.Location = new System.Drawing.Point(586, 265);
-            this.totalLabel1.Name = "totalLabel1";
-            this.totalLabel1.Size = new System.Drawing.Size(100, 23);
-            this.totalLabel1.TabIndex = 13;
-            this.totalLabel1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.totalLabel.BackColor = System.Drawing.Color.White;
+            this.totalLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Total", true));
+            this.totalLabel.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.totalLabel.Location = new System.Drawing.Point(586, 265);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(100, 23);
+            this.totalLabel.TabIndex = 13;
+            this.totalLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // regRecordBindingSource
+            // saveButton
             // 
-            this.regRecordBindingSource.DataSource = typeof(HotelManagerLibrary.Models.RegRecord);
+            this.saveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.saveButton.Enabled = false;
+            this.saveButton.Location = new System.Drawing.Point(639, 337);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(99, 36);
+            this.saveButton.TabIndex = 15;
+            this.saveButton.Text = "Сохранить";
+            this.saveButton.UseVisualStyleBackColor = true;
             // 
             // RegRecForm
             // 
@@ -394,11 +407,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.IndianRed;
             this.ClientSize = new System.Drawing.Size(865, 385);
-            this.Controls.Add(totalLabel);
-            this.Controls.Add(this.totalLabel1);
+            this.Controls.Add(this.saveButton);
+            this.Controls.Add(totalLabel1);
+            this.Controls.Add(this.totalLabel);
             this.Controls.Add(actualResidentsLabel);
             this.Controls.Add(this.actualResidentsNumericUpDown);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.backButton);
             this.Controls.Add(this.receiptButton);
             this.Controls.Add(floorLabel);
             this.Controls.Add(this.floorComboBox);
@@ -428,8 +442,8 @@
             this.Name = "RegRecForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Запись регистрации";
-            ((System.ComponentModel.ISupportInitialize)(this.actualResidentsNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.regRecordBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.actualResidentsNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,8 +463,9 @@
         private System.Windows.Forms.ComboBox numberComboBox;
         private System.Windows.Forms.ComboBox typeComboBox;
         private System.Windows.Forms.Button receiptButton;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.NumericUpDown actualResidentsNumericUpDown;
-        private System.Windows.Forms.Label totalLabel1;
+        private System.Windows.Forms.Label totalLabel;
+        private System.Windows.Forms.Button saveButton;
     }
 }

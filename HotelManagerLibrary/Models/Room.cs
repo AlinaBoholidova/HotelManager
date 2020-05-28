@@ -8,40 +8,20 @@ using System.Threading.Tasks;
 
 namespace HotelManagerLibrary.Models
 {
-    //Номер – класс + этаж + собственный номер + количество мест + цена + изображение(временно отсутствует).
+    // Номер - тип + поверх + власний номер + кількість місць + ціна + зображення +
+    // + стан зайнятості + кількість постояльців, що проживають
     //
     [Serializable]
     public class Room
     {
+        // Зображення номерів
         Bitmap CityAbstraction = new Bitmap(Path.GetFullPath("CityAbstraction.jpg"));
         Bitmap FootballFan = new Bitmap(Path.GetFullPath("FootballFan.jpg"));
         Bitmap MorningFreshness = new Bitmap(Path.GetFullPath("MorningFreshness.jpg"));
         Bitmap RelaxingPurple = new Bitmap(Path.GetFullPath("RelaxingPurple.jpg"));
 
-        public int ActualResidents { set; get; } = 0;
-        public int Id { set; get; }
-        public Image Image { set; get; }
-        public int InitialResidents
-        {
-            set
-            {
-
-            }
-            get
-            {
-                if (Image.Size == CityAbstraction.Size) return 2;
-                else if (Image.Size == FootballFan.Size) return 2;
-                else if (Image.Size == MorningFreshness.Size) return 3;
-                else if (Image.Size == RelaxingPurple.Size) return 2;
-                else return 0;
-            }
-        }
         public string Type
         {
-            set
-            {
-
-            }
             get
             {
                 if (Image.Size == CityAbstraction.Size) return "Городская абстракция";
@@ -53,17 +33,20 @@ namespace HotelManagerLibrary.Models
         }
         public int Floor { set; get; }
         public int Number { set; get; }
+        public int InitialResidents
+        {
+            get
+            {
+                if (Image.Size == CityAbstraction.Size) return 2;
+                else if (Image.Size == FootballFan.Size) return 2;
+                else if (Image.Size == MorningFreshness.Size) return 3;
+                else if (Image.Size == RelaxingPurple.Size) return 2;
+                else return 2;
+            }
+        }
         public int Price { set; get; }
+        public Image Image { set; get; }
         public bool Occupied { set; get; } = false;
-
-
-        //public Room(string type, int floor, int number, int residents, int price)
-        //{
-        //    Type = type;
-        //    Floor = floor;
-        //    Number = number;
-        //    ResidentsNumber = residents;
-        //    Price = price;
-        //}
+        public int ActualResidents { set; get; } = 0;
     }
 }

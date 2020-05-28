@@ -38,8 +38,8 @@
             this.imagePictureBox = new System.Windows.Forms.PictureBox();
             this.numberNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.priceNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.button2 = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.imageFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.chooseImageButton = new System.Windows.Forms.Button();
             this.roomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             floorLabel = new System.Windows.Forms.Label();
@@ -88,7 +88,7 @@
             // confirmButton
             // 
             this.confirmButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.confirmButton.Location = new System.Drawing.Point(36, 249);
+            this.confirmButton.Location = new System.Drawing.Point(35, 235);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(75, 23);
             this.confirmButton.TabIndex = 11;
@@ -184,19 +184,21 @@
             0,
             0});
             // 
-            // button2
+            // cancelButton
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(117, 249);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Отмена";
-            this.button2.UseVisualStyleBackColor = true;
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.Location = new System.Drawing.Point(116, 235);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 21;
+            this.cancelButton.Text = "Отмена";
+            this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // openFileDialog1
+            // imageFileDialog
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.imageFileDialog.FileName = "Изображение";
+            this.imageFileDialog.Filter = "Файлы изображений|*.jpg";
+            this.imageFileDialog.RestoreDirectory = true;
             // 
             // chooseImageButton
             // 
@@ -220,7 +222,7 @@
             this.BackColor = System.Drawing.Color.IndianRed;
             this.ClientSize = new System.Drawing.Size(613, 307);
             this.Controls.Add(this.chooseImageButton);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.cancelButton);
             this.Controls.Add(floorLabel);
             this.Controls.Add(this.floorNumericUpDown);
             this.Controls.Add(this.imagePictureBox);
@@ -230,7 +232,7 @@
             this.Controls.Add(this.priceNumericUpDown);
             this.Controls.Add(this.confirmButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(629, 346);
+            this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "RoomForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Данные номера";
@@ -253,8 +255,8 @@
         private System.Windows.Forms.PictureBox imagePictureBox;
         private System.Windows.Forms.NumericUpDown numberNumericUpDown;
         private System.Windows.Forms.NumericUpDown priceNumericUpDown;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.OpenFileDialog imageFileDialog;
         private System.Windows.Forms.Button chooseImageButton;
     }
 }

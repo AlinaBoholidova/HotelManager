@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace HotelManagerLibrary.Models
 {
+    // Гість - звичайний користувач: дата приїзду + дата від'їзду + ім'я.
+    //
     [Serializable]
-    //Гость - имя + дата приезда + дата отъезда
     public class Guest
     {
         public DateTime ArrivalDate { set; get; }

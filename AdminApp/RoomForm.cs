@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,16 +12,22 @@ using System.Windows.Forms;
 
 namespace AdminApp
 {
+    // Форма для відображення основних даних про номер:
+    // поверх, номер, зображення, ціна.
+    //
     public partial class RoomForm : Form
     {
-        Hotel hotel = AdminPanel.hotel;
-        public Room Room { set; get; }
-        public RoomForm()
+        Hotel hotel;
+        string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName,
+            @"AdminApp\bin\Debug\");
+
+        public RoomForm(Hotel hotel)
         {
+            this.hotel = hotel;
             InitializeComponent();
         }
 
-        public RoomForm(Room room) : this()
+        public RoomForm(Hotel hotel, Room room) : this(hotel)
         {
             Room = room;
             floorNumericUpDown.Value = room.Floor;
@@ -29,11 +36,14 @@ namespace AdminApp
             imagePictureBox.Image = room.Image;
         }
 
+        public Room Room { set; get; }
+
         private void chooseImageButton_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            imageFileDialog.InitialDirectory = path;
+            if (imageFileDialog.ShowDialog() == DialogResult.OK)
             {
-                imagePictureBox.Image = new Bitmap(openFileDialog1.FileName);
+                imagePictureBox.Image = new Bitmap(imageFileDialog.FileName);
             }
         }
 
@@ -52,7 +62,9 @@ namespace AdminApp
         private void RoomForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (DialogResult != DialogResult.OK)
+            {
                 return;
+            }
             ValidateImage(imagePictureBox, e);
             ValidateRoom(floorNumericUpDown, numberNumericUpDown, e);
         }
@@ -66,17 +78,16 @@ namespace AdminApp
             }
         }
 
-        private void ValidateRoom(NumericUpDown n1, NumericUpDown n2, FormClosingEventArgs e)
+        private void ValidateRoom(NumericUpDown nud1, NumericUpDown nud2, FormClosingEventArgs e)
         {
             for (int i = 0; i < hotel.Rooms.Count; i++)
             {
-                if (hotel.Rooms[i].Floor == n1.Value && hotel.Rooms[i].Number == n2.Value)
+                if (hotel.Rooms[i].Floor == nud1.Value && hotel.Rooms[i].Number == nud2.Value)
                 {
                     MessageBox.Show("Такой номер уже существует.");
                     e.Cancel = true;
                 }
             }
-
         }
     }
 }

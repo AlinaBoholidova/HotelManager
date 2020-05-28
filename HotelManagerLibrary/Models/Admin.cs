@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace HotelManagerLibrary.Models
 {
+    // Адміністратор - авторизований користувач: ім'я + пароль.
+    //
     [Serializable]
-    //Администратор - имя(логин) + пароль
+    
     public class Admin
     {
         public string Name { set; get; }

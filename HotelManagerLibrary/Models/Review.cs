@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace HotelManagerLibrary.Models
 {
+    // Відгук - гість + текст відгука.
+    //
     [Serializable]
-    //Отзыв – гость + текст отзыва.
     public class Review
     {
         public Guest Guest { set; get; }

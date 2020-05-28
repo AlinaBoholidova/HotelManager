@@ -43,7 +43,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.label1.Location = new System.Drawing.Point(271, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 37);
@@ -70,6 +70,7 @@
             // returnButton
             // 
             this.returnButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.returnButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.returnButton.Location = new System.Drawing.Point(519, 453);
             this.returnButton.Name = "returnButton";
             this.returnButton.Size = new System.Drawing.Size(101, 34);
@@ -104,7 +105,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.BackColor = System.Drawing.Color.IndianRed;
             this.ClientSize = new System.Drawing.Size(669, 513);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);

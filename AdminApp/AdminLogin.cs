@@ -10,10 +10,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AdminApp
-{   
+{
+    // Форма для персоніфікації гостя при вході у програму, де вводяться ім'я,
+    // дати приїзду та від'їзду.
+    //
     public partial class AdminLogin : Form
     {
         Hotel hotel;
+
         public AdminLogin()
         {
             InitializeComponent();
@@ -37,6 +41,8 @@ namespace AdminApp
             }
         }
 
+        // Метод для перевірки полей: непорожні і
+        // у системі готелю є адміністратор з такими даними.
         private bool ValidateData(Control c1, Control c2)
         {
             if (string.IsNullOrWhiteSpace(c1.Text) || string.IsNullOrWhiteSpace(c2.Text))
@@ -44,22 +50,12 @@ namespace AdminApp
                 MessageBox.Show("Введите данные для входа.");
                 return false;
             }
-            else if (!FindAdmin(c1.Text, c2.Text))
+            else if (!hotel.FindAdmin(c1.Text, c2.Text))
             {
                 MessageBox.Show("Нет администратора с такими данными.");
                 return false;
             }
             else return true;
-        }
-
-        private bool FindAdmin(string name, string password)
-        {
-            foreach(var a in hotel.Admins)
-            {
-                if (a.Name == name && a.Password == password)
-                    return true;
-            }
-            return false;
         }
     }
 }

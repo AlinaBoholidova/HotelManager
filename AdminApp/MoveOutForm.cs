@@ -13,18 +13,17 @@ namespace AdminApp
 {
     public partial class MoveOutForm : Form
     {
-        Hotel hotel = AdminPanel.hotel;
-        public static RegRecord RegRecord { set; get; }
+        Hotel hotel;
+        RegRecord RegRecord { set; get; }
         DateTime originalDD;
-        //public bool notChanged;
-        public MoveOutForm()
+        public MoveOutForm(Hotel hotel)
         {
+            this.hotel = hotel;
             InitializeComponent();
         }
 
-        public MoveOutForm(RegRecord regRecord) : this()
+        public MoveOutForm(Hotel hotel, RegRecord regRecord) : this(hotel)
         {
-            
             RegRecord = regRecord;
             surnameLabel.Text = regRecord.Resident.Surname;
             nameLabel.Text = regRecord.Resident.Name;
@@ -40,55 +39,27 @@ namespace AdminApp
             originalDD = regRecord.DepartureDate;
         }
 
-        //public void moveNowButton_Click(object sender, EventArgs e)
-        //{
-        //    var res = MessageBox.Show("Выселить постояльца?", "", MessageBoxButtons.OKCancel);
-        //    if (res == DialogResult.OK)
-        //    {
-        //        button1.Visible = true;
-        //        //hotel.RegRecords.Remove(RegRecord);
-        //        //Room toFree = hotel.FindRoom(RegRecord.Room.Floor, RegRecord.Room.Number);
-        //        //toFree.Occupied = false;
-        //        //notChanged = false;
-        //        //this.Close();
-        //    }
-        //}
-
-        //private void moveEditButton_Click(object sender, EventArgs e)
-        //{
-        //    ChangeVisibility(moveNowButton);
-        //    ChangeVisibility(arrivalDateTextBox);
-        //    ChangeVisibility(arrivalDateLabel);
-        //    ChangeVisibility(departureDateTimePicker);
-        //    ChangeVisibility(departureDateLabel);
-        //    ChangeVisibility(receiptButton);
-        //    this.Update();
-        //}
-
-        //private void ChangeVisibility(Control toChange)
-        //{
-        //    toChange.Visible = !toChange.Visible;
-        //}
-
         private void recalculationButton_Click(object sender, EventArgs e)
         {
             var toReceipt = RegRecord;
             var rf = new ReceiptForm(toReceipt);
             if (rf.ShowDialog() == DialogResult.OK)
             {
-                button1.Visible = true;
-                button3.Visible = false;
+                saveButton.Enabled = true;
+                backButton.Enabled = false;
             }
         }
 
         private void departureDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             if (departureDateTimePicker.Value != RegRecord.DepartureDate)
-                recalculationButton.Visible = true;
+            {
+                recalculationButton.Enabled = true;
+            }
             RegRecord.DepartureDate = departureDateTimePicker.Value;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void backButton_Click(object sender, EventArgs e)
         {
             RegRecord.DepartureDate = originalDD;
         }

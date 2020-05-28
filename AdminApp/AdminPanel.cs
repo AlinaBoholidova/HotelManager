@@ -14,7 +14,7 @@ namespace AdminApp
 {
     public partial class AdminPanel : Form
     {
-        public static Hotel hotel;
+        Hotel hotel;
         public AdminPanel()
         {
             InitializeComponent();
@@ -54,7 +54,7 @@ namespace AdminApp
 
         private void newNumberButton_Click(object sender, EventArgs e)
         {
-            var nr = new RoomForm();
+            var nr = new RoomForm(hotel);
             if (nr.ShowDialog() == DialogResult.OK)
             {
                 hotel.Rooms.Add(nr.Room);
@@ -88,7 +88,7 @@ namespace AdminApp
             }
             else
             {
-                var rf = new RegRecForm();
+                var rf = new RegRecForm(hotel);
                 if (rf.ShowDialog() == DialogResult.OK)
                 {
                     hotel.AddRegRec(rf.RegRecord);
@@ -118,13 +118,19 @@ namespace AdminApp
             string surname = regRecsGridView.Rows[ind].Cells[0].Value.ToString();
             string phone = regRecsGridView.Rows[ind].Cells[4].Value.ToString();
             var toEdit = hotel.FindRegRec(surname, phone);
-            var pf = new RegRecForm(toEdit);
+            var pf = new RegRecForm(hotel, toEdit);
             if (pf.ShowDialog() == DialogResult.OK)
             {
+                roomBindingSource.ResetBindings(false);
                 regRecsGridView.Rows.Clear();
                 FillRegRecs();
                 regRecsGridView.Rows[ind].Selected = true;
                 regRecsGridView.FirstDisplayedScrollingRowIndex = ind;
+            }
+            else
+            {
+                regRecsGridView.Rows.Clear();
+                FillRegRecs();
             }
         }
 
@@ -134,13 +140,18 @@ namespace AdminApp
             string surname = regRecsGridView.Rows[ind].Cells[0].Value.ToString();
             string phone = regRecsGridView.Rows[ind].Cells[4].Value.ToString();
             var toDel = hotel.FindRegRec(surname, phone);
-            var mof = new MoveOutForm(toDel);
+            var mof = new MoveOutForm(hotel, toDel);
             if (mof.ShowDialog() == DialogResult.OK)
             {
                 regRecsGridView.Rows.Clear();
                 FillRegRecs();
                 regRecsGridView.Rows[ind].Selected = true;
                 regRecsGridView.FirstDisplayedScrollingRowIndex = ind;
+            }
+            else
+            {
+                regRecsGridView.Rows.Clear();
+                FillRegRecs();
             }
         }
 
@@ -154,7 +165,7 @@ namespace AdminApp
                 MessageBoxButtons.YesNo);
             if (res == DialogResult.Yes)
             {
-                hotel.RegRecords.Remove(toDel);
+                hotel.RemoveRegRec(toDel);
                 roomBindingSource.ResetBindings(false);
                 regRecsGridView.Rows.Clear();
                 FillRegRecs();
@@ -188,7 +199,7 @@ namespace AdminApp
             regRecsGridView.Rows[0].Selected = true;
         }
 
-        public void FillRegRecs()
+        private void FillRegRecs()
         {
             for (int i = 0; i < hotel.RegRecords.Count; i++)
             {
@@ -208,7 +219,7 @@ namespace AdminApp
 
         private void addRoomButton_Click(object sender, EventArgs e)
         {
-            var rf = new RoomForm();
+            var rf = new RoomForm(hotel);
             if (rf.ShowDialog() == DialogResult.OK)
             {
                 hotel.AddRoom(rf.Room);
@@ -226,7 +237,7 @@ namespace AdminApp
             var toEdit = roomGridView.SelectedRows[0].DataBoundItem as Room;
             if (toEdit.Occupied == false)
             {
-                var pf = new RoomForm(toEdit);
+                var pf = new RoomForm(hotel, toEdit);
                 if (pf.ShowDialog() == DialogResult.OK)
                 {
                     roomBindingSource.ResetBindings(false);

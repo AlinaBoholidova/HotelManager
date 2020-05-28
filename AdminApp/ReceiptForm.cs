@@ -12,10 +12,18 @@ using System.Windows.Forms;
 
 namespace AdminApp
 {
+    // Форма для відображення тексту квитанції та підтвердження її роздрукування (збереження).
+    //
     public partial class ReceiptForm : Form
     {
-        RegRecord regRecord = MoveOutForm.RegRecord;
-        string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, @"AdminApp\bin\Debug\");
+        string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName,
+            @"AdminApp\bin\Debug\");
+        RegRecord regRecord;
+
+        // Змінна для зберігання запису реєстрації, який передався формі, на випадок
+        // відміни користувачем роздрукування квитанції.
+        RegRecord originalRegRecord;
+
         public ReceiptForm()
         {
             InitializeComponent();
@@ -23,6 +31,8 @@ namespace AdminApp
 
         public ReceiptForm(RegRecord regRecord) : this()
         {
+            originalRegRecord = regRecord;
+            this.regRecord = regRecord;
             receiptTextBox.Text += "ОТЕЛЬ ATLAS HOTELS" + Environment.NewLine;
             receiptTextBox.Text += "Квитанция на оплату" + Environment.NewLine + Environment.NewLine;
             receiptTextBox.Text += $"Плательщик: {regRecord.Resident.Surname} {regRecord.Resident.Name}" + Environment.NewLine;
@@ -38,14 +48,14 @@ namespace AdminApp
             SaveReceipt(receiptTextBox);
         }
 
-        public void SaveReceipt(TextBox receipt)
+        private void SaveReceipt(TextBox receipt)
         {
-            File.WriteAllText(path + GetReceiptName(regRecord), receipt.Text);
+            File.WriteAllText(path + regRecord.GetReceiptName(regRecord), receipt.Text);
         }
 
-        public string GetReceiptName(RegRecord regRecord)
+        private void backButton_Click(object sender, EventArgs e)
         {
-            return $"receipt_{regRecord.Resident.Surname}.txt";
+            regRecord = originalRegRecord;
         }
     }
 }

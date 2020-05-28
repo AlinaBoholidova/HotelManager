@@ -11,27 +11,31 @@ using System.Windows.Forms;
 
 namespace HotelManagerLibrary.DAL
 {
+    // Dao - клас, який об'єднує методи завантаження та збереження даних.
+    //
     public class Dao
     {
         Hotel hotel;
-        string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, @"AdminApp\bin\Debug\");
+        string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName,
+            @"AdminApp\bin\Debug\");
 
         public Dao(Hotel hotel)
         {
             this.hotel = hotel;
         }
 
+        // Метод для збереження даних готелю.
         public void Save()
         {
             using (Stream stream = File.Create(path + "hotel.bin"))
             {
                 var serializer = new BinaryFormatter();
                 serializer.Serialize(stream, hotel);
-                //stream.Position = 0;
             }
             SaveReviews();
         }
 
+        // Метод для збереження відгуків у окремий файл reviews.txt.
         public void SaveReviews()
         {
             using (var wr = new StreamWriter(path + "reviews.txt"))
@@ -48,30 +52,30 @@ namespace HotelManagerLibrary.DAL
             }
         }
 
+        // Метод для завантаження даних готелю.
         public void Load()
         {
             using (Stream stream = File.OpenRead(path + "hotel.bin"))
             {
                 var serializer = new BinaryFormatter();
-                //stream.Seek(0, SeekOrigin.Begin);
-                //stream.Position = 0;
                 Hotel ht = (Hotel)serializer.Deserialize(stream);
 
                 Copy(ht.Rooms, hotel.Rooms);
                 Copy(ht.Residents, hotel.Residents);
                 Copy(ht.RegRecords, hotel.RegRecords);
                 Copy(ht.Guests, hotel.Guests);
-                //Copy(ht.Reviews, hotel.Reviews);
+                Copy(ht.Reviews, hotel.Reviews);
             }
+            LoadReviews();
 
             void Copy<T>(List<T> from, List<T> to)
             {
                 to.Clear();
                 to.AddRange(from);
             }
-            LoadReviews();
         }
 
+        // Метод для завантаження відгуків з окремого файлу reviews.txt.
         public void LoadReviews()
         {
             using (var rd = new StreamReader(path + "reviews.txt"))

@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace HotelManagerLibrary.Models
 {
+    // Постоялець - прізвище + ім'я + стать + дата народження + номер телефону + електронна пошта.
+    //
     [Serializable]
-    //Постоялец – фамилия + имя + дата рождения + пол + номер телефона + электронная почта
     public class Resident
     {
-        public DateTime BirthDate { set; get; }
-        public string Email { set; get; }
-        public string Gender { set; get; }
-        public string Name { set; get; }
-        public string Phone { set; get; }
         public string Surname { set; get; }
+        public string Name { set; get; }
+        public string Gender { set; get; }
+        public DateTime BirthDate { set; get; }
+        public string Phone { set; get; }
+        public string Email { set; get; }
     }
 }
