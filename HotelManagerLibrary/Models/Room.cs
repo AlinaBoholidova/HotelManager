@@ -20,33 +20,58 @@ namespace HotelManagerLibrary.Models
         Bitmap MorningFreshness = new Bitmap(Path.GetFullPath("MorningFreshness.jpg"));
         Bitmap RelaxingPurple = new Bitmap(Path.GetFullPath("RelaxingPurple.jpg"));
 
+        // Тип.
         public string Type
         {
             get
             {
-                if (Image.Size == CityAbstraction.Size) return "Городская абстракция";
-                else if (Image.Size == FootballFan.Size) return "Фанат футбола";
-                else if (Image.Size == MorningFreshness.Size) return "Свежесть утра";
-                else if (Image.Size == RelaxingPurple.Size) return "Расслабляющий фиолетовый";
-                else return "Тип номера";
+                if (Image.Size == CityAbstraction.Size)
+                    return "Городская абстракция";
+                else if (Image.Size == FootballFan.Size)
+                    return "Фанат футбола";
+                else if (Image.Size == MorningFreshness.Size)
+                    return "Свежесть утра";
+                else if (Image.Size == RelaxingPurple.Size)
+                    return "Расслабляющий фиолетовый";
+                else
+                    return "Тип номера";
             }
         }
-        public int Floor { set; get; }
-        public int Number { set; get; }
+
+        // Поверх.
+        public int Floor { get; set; }
+
+        // Номер.
+        public int Number { get; set; }
+
+        // Кількість місць.
         public int InitialResidents
         {
             get
             {
-                if (Image.Size == CityAbstraction.Size) return 2;
-                else if (Image.Size == FootballFan.Size) return 2;
-                else if (Image.Size == MorningFreshness.Size) return 3;
-                else if (Image.Size == RelaxingPurple.Size) return 2;
-                else return 2;
+                if (Image.Size == CityAbstraction.Size)
+                    return 2;
+                else if (Image.Size == FootballFan.Size)
+                    return 2;
+                else if (Image.Size == MorningFreshness.Size)
+                    return 3;
+                else if (Image.Size == RelaxingPurple.Size)
+                    return 2;
+                else 
+                    return 2;
             }
         }
-        public int Price { set; get; }
-        public Image Image { set; get; }
-        public bool Occupied { set; get; } = false;
-        public int ActualResidents { set; get; } = 0;
+
+        // Ціна.
+        public int Price { get; set; }
+
+        // Зображення.
+        public Image Image { get; set; }
+
+        // Стан зайнятості. Початково вільний.
+        public bool Occupied { get; set; } = false;
+
+        // Кількість постояльців, що проживають. Початково 0.
+        public int ActualResidents { get; set; } = 0;
     }
 }

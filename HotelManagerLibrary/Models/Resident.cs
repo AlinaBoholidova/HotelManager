@@ -11,11 +11,22 @@ namespace HotelManagerLibrary.Models
     [Serializable]
     public class Resident
     {
-        public string Surname { set; get; }
-        public string Name { set; get; }
-        public string Gender { set; get; }
-        public DateTime BirthDate { set; get; }
-        public string Phone { set; get; }
-        public string Email { set; get; }
+        // Прізвище.   
+        public string Surname { get; set; }
+
+        // Ім'я.
+        public string Name { get; set; }
+
+        // Стать.
+        public string Gender { get; set; }
+
+        // Дата народження.
+        public DateTime BirthDate { get; set; }
+
+        // Номер телефону.
+        public string Phone { get; set; }
+
+        // Електронна пошта.
+        public string Email { get; set; }
     }
 }

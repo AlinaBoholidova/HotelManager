@@ -142,7 +142,7 @@
             this.numberNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.numberNumericUpDown.Location = new System.Drawing.Point(84, 148);
             this.numberNumericUpDown.Maximum = new decimal(new int[] {
-            22,
+            20,
             0,
             0,
             0});
@@ -166,7 +166,7 @@
             this.priceNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.priceNumericUpDown.Location = new System.Drawing.Point(84, 186);
             this.priceNumericUpDown.Maximum = new decimal(new int[] {
-            1000,
+            1200,
             0,
             0,
             0});

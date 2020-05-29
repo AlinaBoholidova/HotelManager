@@ -81,7 +81,7 @@
             // 
             arrivalDateLabel.AutoSize = true;
             arrivalDateLabel.ForeColor = System.Drawing.Color.White;
-            arrivalDateLabel.Location = new System.Drawing.Point(468, 192);
+            arrivalDateLabel.Location = new System.Drawing.Point(426, 173);
             arrivalDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             arrivalDateLabel.Name = "arrivalDateLabel";
             arrivalDateLabel.Size = new System.Drawing.Size(105, 17);
@@ -92,7 +92,7 @@
             // 
             departureDateLabel.AutoSize = true;
             departureDateLabel.ForeColor = System.Drawing.Color.White;
-            departureDateLabel.Location = new System.Drawing.Point(468, 230);
+            departureDateLabel.Location = new System.Drawing.Point(426, 211);
             departureDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             departureDateLabel.Name = "departureDateLabel";
             departureDateLabel.Size = new System.Drawing.Size(105, 17);
@@ -103,7 +103,7 @@
             // 
             birthDateLabel.AutoSize = true;
             birthDateLabel.ForeColor = System.Drawing.Color.White;
-            birthDateLabel.Location = new System.Drawing.Point(22, 149);
+            birthDateLabel.Location = new System.Drawing.Point(8, 130);
             birthDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             birthDateLabel.Name = "birthDateLabel";
             birthDateLabel.Size = new System.Drawing.Size(115, 17);
@@ -114,7 +114,7 @@
             // 
             emailLabel.AutoSize = true;
             emailLabel.ForeColor = System.Drawing.Color.White;
-            emailLabel.Location = new System.Drawing.Point(22, 230);
+            emailLabel.Location = new System.Drawing.Point(8, 211);
             emailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             emailLabel.Name = "emailLabel";
             emailLabel.Size = new System.Drawing.Size(46, 17);
@@ -125,7 +125,7 @@
             // 
             genderLabel.AutoSize = true;
             genderLabel.ForeColor = System.Drawing.Color.White;
-            genderLabel.Location = new System.Drawing.Point(22, 112);
+            genderLabel.Location = new System.Drawing.Point(8, 93);
             genderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             genderLabel.Name = "genderLabel";
             genderLabel.Size = new System.Drawing.Size(38, 17);
@@ -136,7 +136,7 @@
             // 
             nameLabel.AutoSize = true;
             nameLabel.ForeColor = System.Drawing.Color.White;
-            nameLabel.Location = new System.Drawing.Point(22, 73);
+            nameLabel.Location = new System.Drawing.Point(8, 54);
             nameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new System.Drawing.Size(39, 17);
@@ -147,7 +147,7 @@
             // 
             phoneLabel.AutoSize = true;
             phoneLabel.ForeColor = System.Drawing.Color.White;
-            phoneLabel.Location = new System.Drawing.Point(22, 192);
+            phoneLabel.Location = new System.Drawing.Point(8, 173);
             phoneLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             phoneLabel.Name = "phoneLabel";
             phoneLabel.Size = new System.Drawing.Size(72, 17);
@@ -158,7 +158,7 @@
             // 
             surnameLabel.AutoSize = true;
             surnameLabel.ForeColor = System.Drawing.Color.White;
-            surnameLabel.Location = new System.Drawing.Point(22, 32);
+            surnameLabel.Location = new System.Drawing.Point(8, 13);
             surnameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             surnameLabel.Name = "surnameLabel";
             surnameLabel.Size = new System.Drawing.Size(74, 17);
@@ -169,7 +169,7 @@
             // 
             floorLabel.AutoSize = true;
             floorLabel.ForeColor = System.Drawing.Color.White;
-            floorLabel.Location = new System.Drawing.Point(468, 73);
+            floorLabel.Location = new System.Drawing.Point(426, 54);
             floorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             floorLabel.Name = "floorLabel";
             floorLabel.Size = new System.Drawing.Size(45, 17);
@@ -180,7 +180,7 @@
             // 
             numberLabel.AutoSize = true;
             numberLabel.ForeColor = System.Drawing.Color.White;
-            numberLabel.Location = new System.Drawing.Point(468, 112);
+            numberLabel.Location = new System.Drawing.Point(426, 93);
             numberLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             numberLabel.Name = "numberLabel";
             numberLabel.Size = new System.Drawing.Size(55, 17);
@@ -191,7 +191,7 @@
             // 
             typeLabel.AutoSize = true;
             typeLabel.ForeColor = System.Drawing.Color.White;
-            typeLabel.Location = new System.Drawing.Point(468, 32);
+            typeLabel.Location = new System.Drawing.Point(426, 13);
             typeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             typeLabel.Name = "typeLabel";
             typeLabel.Size = new System.Drawing.Size(37, 17);
@@ -202,7 +202,7 @@
             // 
             actualResidentsLabel.AutoSize = true;
             actualResidentsLabel.ForeColor = System.Drawing.Color.White;
-            actualResidentsLabel.Location = new System.Drawing.Point(467, 149);
+            actualResidentsLabel.Location = new System.Drawing.Point(425, 130);
             actualResidentsLabel.Name = "actualResidentsLabel";
             actualResidentsLabel.Size = new System.Drawing.Size(111, 17);
             actualResidentsLabel.TabIndex = 26;
@@ -212,7 +212,7 @@
             // 
             totalLabel1.AutoSize = true;
             totalLabel1.ForeColor = System.Drawing.Color.White;
-            totalLabel1.Location = new System.Drawing.Point(467, 268);
+            totalLabel1.Location = new System.Drawing.Point(425, 249);
             totalLabel1.Name = "totalLabel1";
             totalLabel1.Size = new System.Drawing.Size(116, 17);
             totalLabel1.TabIndex = 27;
@@ -221,7 +221,7 @@
             // arrivalDateTimePicker
             // 
             this.arrivalDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.regRecordBindingSource, "ArrivalDate", true));
-            this.arrivalDateTimePicker.Location = new System.Drawing.Point(587, 187);
+            this.arrivalDateTimePicker.Location = new System.Drawing.Point(545, 168);
             this.arrivalDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.arrivalDateTimePicker.Name = "arrivalDateTimePicker";
             this.arrivalDateTimePicker.Size = new System.Drawing.Size(265, 23);
@@ -234,7 +234,7 @@
             // departureDateTimePicker
             // 
             this.departureDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.regRecordBindingSource, "DepartureDate", true));
-            this.departureDateTimePicker.Location = new System.Drawing.Point(587, 225);
+            this.departureDateTimePicker.Location = new System.Drawing.Point(545, 206);
             this.departureDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.departureDateTimePicker.Name = "departureDateTimePicker";
             this.departureDateTimePicker.Size = new System.Drawing.Size(265, 23);
@@ -243,7 +243,7 @@
             // birthDateTimePicker
             // 
             this.birthDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.regRecordBindingSource, "Resident.BirthDate", true));
-            this.birthDateTimePicker.Location = new System.Drawing.Point(145, 149);
+            this.birthDateTimePicker.Location = new System.Drawing.Point(131, 130);
             this.birthDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.birthDateTimePicker.Name = "birthDateTimePicker";
             this.birthDateTimePicker.Size = new System.Drawing.Size(265, 23);
@@ -252,7 +252,7 @@
             // emailTextBox
             // 
             this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Email", true));
-            this.emailTextBox.Location = new System.Drawing.Point(145, 227);
+            this.emailTextBox.Location = new System.Drawing.Point(131, 208);
             this.emailTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(230, 23);
@@ -266,7 +266,7 @@
             "М",
             "Ж",
             "-"});
-            this.genderComboBox.Location = new System.Drawing.Point(145, 109);
+            this.genderComboBox.Location = new System.Drawing.Point(131, 90);
             this.genderComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(50, 24);
@@ -275,7 +275,7 @@
             // nameTextBox
             // 
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Name", true));
-            this.nameTextBox.Location = new System.Drawing.Point(145, 70);
+            this.nameTextBox.Location = new System.Drawing.Point(131, 51);
             this.nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(230, 23);
@@ -284,7 +284,7 @@
             // phoneTextBox
             // 
             this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Phone", true));
-            this.phoneTextBox.Location = new System.Drawing.Point(145, 189);
+            this.phoneTextBox.Location = new System.Drawing.Point(131, 170);
             this.phoneTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(230, 23);
@@ -293,7 +293,7 @@
             // surnameTextBox
             // 
             this.surnameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Resident.Surname", true));
-            this.surnameTextBox.Location = new System.Drawing.Point(145, 29);
+            this.surnameTextBox.Location = new System.Drawing.Point(131, 10);
             this.surnameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.surnameTextBox.Name = "surnameTextBox";
             this.surnameTextBox.Size = new System.Drawing.Size(230, 23);
@@ -302,7 +302,7 @@
             // floorComboBox
             // 
             this.floorComboBox.FormattingEnabled = true;
-            this.floorComboBox.Location = new System.Drawing.Point(587, 70);
+            this.floorComboBox.Location = new System.Drawing.Point(545, 51);
             this.floorComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.floorComboBox.Name = "floorComboBox";
             this.floorComboBox.Size = new System.Drawing.Size(50, 24);
@@ -312,7 +312,7 @@
             // numberComboBox
             // 
             this.numberComboBox.FormattingEnabled = true;
-            this.numberComboBox.Location = new System.Drawing.Point(587, 109);
+            this.numberComboBox.Location = new System.Drawing.Point(545, 90);
             this.numberComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.numberComboBox.Name = "numberComboBox";
             this.numberComboBox.Size = new System.Drawing.Size(50, 24);
@@ -328,7 +328,7 @@
             "Свежесть утра",
             "Фанат футбола",
             "Тип номера"});
-            this.typeComboBox.Location = new System.Drawing.Point(587, 29);
+            this.typeComboBox.Location = new System.Drawing.Point(545, 10);
             this.typeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.typeComboBox.Name = "typeComboBox";
             this.typeComboBox.Size = new System.Drawing.Size(160, 24);
@@ -337,7 +337,7 @@
             // 
             // receiptButton
             // 
-            this.receiptButton.Location = new System.Drawing.Point(12, 337);
+            this.receiptButton.Location = new System.Drawing.Point(11, 313);
             this.receiptButton.Name = "receiptButton";
             this.receiptButton.Size = new System.Drawing.Size(99, 36);
             this.receiptButton.TabIndex = 14;
@@ -348,7 +348,7 @@
             // backButton
             // 
             this.backButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.backButton.Location = new System.Drawing.Point(753, 337);
+            this.backButton.Location = new System.Drawing.Point(713, 313);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(99, 36);
             this.backButton.TabIndex = 0;
@@ -359,7 +359,7 @@
             // actualResidentsNumericUpDown
             // 
             this.actualResidentsNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.regRecordBindingSource, "Room.ActualResidents", true));
-            this.actualResidentsNumericUpDown.Location = new System.Drawing.Point(587, 147);
+            this.actualResidentsNumericUpDown.Location = new System.Drawing.Point(545, 128);
             this.actualResidentsNumericUpDown.Maximum = new decimal(new int[] {
             3,
             0,
@@ -384,7 +384,7 @@
             this.totalLabel.BackColor = System.Drawing.Color.White;
             this.totalLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Total", true));
             this.totalLabel.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.totalLabel.Location = new System.Drawing.Point(586, 265);
+            this.totalLabel.Location = new System.Drawing.Point(544, 246);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(100, 23);
             this.totalLabel.TabIndex = 13;
@@ -394,7 +394,7 @@
             // 
             this.saveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.saveButton.Enabled = false;
-            this.saveButton.Location = new System.Drawing.Point(639, 337);
+            this.saveButton.Location = new System.Drawing.Point(599, 313);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(99, 36);
             this.saveButton.TabIndex = 15;
@@ -406,7 +406,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.IndianRed;
-            this.ClientSize = new System.Drawing.Size(865, 385);
+            this.ClientSize = new System.Drawing.Size(824, 361);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(totalLabel1);
             this.Controls.Add(this.totalLabel);
@@ -439,6 +439,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(840, 400);
             this.Name = "RegRecForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Запись регистрации";

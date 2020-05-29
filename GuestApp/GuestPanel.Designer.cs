@@ -37,13 +37,10 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(103, 105);
+            this.label1.Location = new System.Drawing.Point(75, 104);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(137, 20);
             this.label1.TabIndex = 1;
@@ -51,11 +48,12 @@
             // 
             // viewReviewsButton
             // 
+            this.viewReviewsButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.viewReviewsButton.BackColor = System.Drawing.Color.White;
             this.viewReviewsButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.viewReviewsButton.Location = new System.Drawing.Point(235, 27);
+            this.viewReviewsButton.Location = new System.Drawing.Point(192, 27);
             this.viewReviewsButton.Name = "viewReviewsButton";
-            this.viewReviewsButton.Size = new System.Drawing.Size(191, 43);
+            this.viewReviewsButton.Size = new System.Drawing.Size(191, 36);
             this.viewReviewsButton.TabIndex = 0;
             this.viewReviewsButton.Text = "Посмотреть отзывы";
             this.viewReviewsButton.UseVisualStyleBackColor = false;
@@ -63,17 +61,23 @@
             // 
             // reviewTextBox
             // 
+            this.reviewTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.reviewTextBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.reviewTextBox.Location = new System.Drawing.Point(71, 146);
+            this.reviewTextBox.Location = new System.Drawing.Point(22, 139);
             this.reviewTextBox.Multiline = true;
             this.reviewTextBox.Name = "reviewTextBox";
-            this.reviewTextBox.Size = new System.Drawing.Size(500, 231);
+            this.reviewTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.reviewTextBox.Size = new System.Drawing.Size(516, 231);
             this.reviewTextBox.TabIndex = 2;
             // 
             // addReviewButton
             // 
+            this.addReviewButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addReviewButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.addReviewButton.BackColor = System.Drawing.Color.White;
-            this.addReviewButton.Location = new System.Drawing.Point(107, 404);
+            this.addReviewButton.Location = new System.Drawing.Point(79, 388);
             this.addReviewButton.Name = "addReviewButton";
             this.addReviewButton.Size = new System.Drawing.Size(95, 33);
             this.addReviewButton.TabIndex = 3;
@@ -86,7 +90,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.IndianRed;
-            this.ClientSize = new System.Drawing.Size(660, 482);
+            this.ClientSize = new System.Drawing.Size(562, 467);
             this.Controls.Add(this.reviewTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addReviewButton);
@@ -95,6 +99,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "GuestPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Гостевая панель";

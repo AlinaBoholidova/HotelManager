@@ -18,8 +18,6 @@ namespace AdminApp
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new AdminLogin());
             Application.Run(new AdminPanel());
-            //Application.Run(new RegRecForm());
-            //Application.Run(new MoveOutForm());
         }
     }
 }

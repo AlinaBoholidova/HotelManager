@@ -17,10 +17,13 @@ namespace AdminApp
     //
     public partial class RoomForm : Form
     {
-        Hotel hotel;
         string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName,
             @"AdminApp\bin\Debug\");
+        Hotel hotel;
 
+        // Змінна з метою зберігання створюваного/переданого номера для подальшої перевірки.
+        Room originalRoom;
+        
         public RoomForm(Hotel hotel)
         {
             this.hotel = hotel;
@@ -29,11 +32,15 @@ namespace AdminApp
 
         public RoomForm(Hotel hotel, Room room) : this(hotel)
         {
+            originalRoom = room;
+            floorNumericUpDown.Enabled = false;
+            numberNumericUpDown.Enabled = false;
+
             Room = room;
             floorNumericUpDown.Value = room.Floor;
             numberNumericUpDown.Value = room.Number;
             priceNumericUpDown.Value = room.Price;
-            imagePictureBox.Image = room.Image;
+            imagePictureBox.Image = room.Image;  
         }
 
         public Room Room { set; get; }
@@ -65,28 +72,34 @@ namespace AdminApp
             {
                 return;
             }
-            ValidateImage(imagePictureBox, e);
-            ValidateRoom(floorNumericUpDown, numberNumericUpDown, e);
+            // Якщо змінна не містить значення (відбувається додавання нового номера),
+            // то зробити перевірку на існування номера з заданами користувачем даними.
+            if (originalRoom == null)
+            {
+                ValidateRoom(e);
+            }
+            ValidateImage(e);
         }
 
-        private void ValidateImage(PictureBox pb, FormClosingEventArgs e)
+        private void ValidateImage(FormClosingEventArgs e)
         {
-            if (pb.Image == null)
+            if (imagePictureBox.Image == null)
             {
                 MessageBox.Show("Вы не выбрали изображение!");
                 e.Cancel = true;
             }
         }
 
-        private void ValidateRoom(NumericUpDown nud1, NumericUpDown nud2, FormClosingEventArgs e)
+        // Метод для перевірки, чи вже існує номер, який користувач бажає додати.
+        private void ValidateRoom(FormClosingEventArgs e)
         {
-            for (int i = 0; i < hotel.Rooms.Count; i++)
+            var room = hotel.FindRoom(
+                Convert.ToInt32(floorNumericUpDown.Value),
+                Convert.ToInt32(numberNumericUpDown.Value));
+            if (room != null)
             {
-                if (hotel.Rooms[i].Floor == nud1.Value && hotel.Rooms[i].Number == nud2.Value)
-                {
-                    MessageBox.Show("Такой номер уже существует.");
-                    e.Cancel = true;
-                }
+                MessageBox.Show("Такой номер уже существует.");
+                e.Cancel = true;
             }
         }
     }

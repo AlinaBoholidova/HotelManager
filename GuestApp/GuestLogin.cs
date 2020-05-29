@@ -6,19 +6,26 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GuestApp
 {
+    // Форма для персоніфікації звичайного користувача (гостя), де
+    // вводяться ім'я, дати приїзду та від'їзду, і за коректності вводу
+    // відбувається перехід на гостьову панель.
+    //
     public partial class GuestLogin : Form
     {
         Hotel hotel;
+
         public GuestLogin()
         {
             InitializeComponent();
             hotel = new Hotel();
             hotel.Load();
+
             arrivalDateTimePicker.MaxDate = DateTime.Today - TimeSpan.FromDays(1);
             departureDateTimePicker.MaxDate = DateTime.Today;
         }
@@ -29,14 +36,15 @@ namespace GuestApp
             {
                 Guest g = new Guest
                 {
-                    Name = nameTextBox.Text,
+                    Login = nameTextBox.Text,
                     ArrivalDate = arrivalDateTimePicker.Value,
                     DepartureDate = departureDateTimePicker.Value
                 };
                 hotel.AddGuest(g);
                 hotel.Save();
+
+                GuestPanel guestPanel = new GuestPanel(hotel);
                 this.Hide();
-                GuestPanel guestPanel = new GuestPanel();
                 guestPanel.Show();
             }
             else
@@ -47,16 +55,19 @@ namespace GuestApp
             }
         }
 
+        // Перевірка поля прізвища-імені на заповненість.
         private bool ValidateName(Control c)
         {
-            if (string.IsNullOrWhiteSpace(c.Text))
+            if (!Regex.IsMatch(c.Text, @"[а-яА-Яa-zA-Z]{5}"))
             {
-                MessageBox.Show("Неверно введённое имя.");
+                MessageBox.Show("Неверно введённые фамилия-имя или они были слишком короткими (<5 символов).");
                 return false;
             }
+
             return true;
         }
 
+        // Перевірка полей дат приїзду та від'їзду (різниця хоча б один день).
         private bool ValidateDate(Control c1, Control c2)
         {
             DateTimePicker dtp1 = c1 as DateTimePicker;
@@ -66,8 +77,8 @@ namespace GuestApp
                 MessageBox.Show("Неверно введённые даты.");
                 return false;
             }
+
             return true;
         }
-
     }
 }

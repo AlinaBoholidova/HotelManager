@@ -32,14 +32,19 @@ namespace AdminApp
         public ReceiptForm(RegRecord regRecord) : this()
         {
             originalRegRecord = regRecord;
+
             this.regRecord = regRecord;
             receiptTextBox.Text += "ОТЕЛЬ ATLAS HOTELS" + Environment.NewLine;
             receiptTextBox.Text += "Квитанция на оплату" + Environment.NewLine + Environment.NewLine;
-            receiptTextBox.Text += $"Плательщик: {regRecord.Resident.Surname} {regRecord.Resident.Name}" + Environment.NewLine;
-            receiptTextBox.Text += $"Заезд: {regRecord.ArrivalDate.ToShortDateString()}   Выезд: {regRecord.DepartureDate.ToShortDateString()}" + Environment.NewLine;
+            receiptTextBox.Text += $"Плательщик: {regRecord.Resident.Surname} {regRecord.Resident.Name}" + 
+                Environment.NewLine;
+            receiptTextBox.Text += $"Заезд: {regRecord.ArrivalDate.ToShortDateString()}   " +
+                $"Выезд: {regRecord.DepartureDate.ToShortDateString()}" + Environment.NewLine;
             receiptTextBox.Text += "Проживание" + Environment.NewLine + Environment.NewLine;
-            receiptTextBox.Text += $"Тип: {regRecord.Room.Type}   Этаж: {regRecord.Room.Floor}   Номер: {regRecord.Room.Number}" + Environment.NewLine;
-            receiptTextBox.Text += $"Цена номера: {regRecord.Room.Price} грн." + Environment.NewLine + Environment.NewLine;
+            receiptTextBox.Text += $"Тип: {regRecord.Room.Type}   Этаж: {regRecord.Room.Floor}   " +
+                $"Номер: {regRecord.Room.Number}" + Environment.NewLine;
+            receiptTextBox.Text += $"Цена номера: {regRecord.Room.Price} грн." + Environment.NewLine + 
+                Environment.NewLine;
             receiptTextBox.Text += $"Сумма к оплате: {regRecord.Total} грн.";
         }
 

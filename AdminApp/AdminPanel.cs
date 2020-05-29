@@ -12,20 +12,27 @@ using System.Windows.Forms;
 
 namespace AdminApp
 {
+    // Форма панелі адміністратора, весь функціонал якого розташований у вкладках:
+    // список постояльців, список номерів, пошук, відгуки. Головна вкладка дозволяє
+    // зберігати та завантажувати дані готелю; вкладка допомога - допомога користувачу.
+    //
     public partial class AdminPanel : Form
     {
         Hotel hotel;
+
         public AdminPanel()
         {
             InitializeComponent();
             hotel = new Hotel();
-            hotel.FillTestData(25);
+            hotel.FillTestData(100);
             roomBindingSource.DataSource = hotel.Rooms;
             residentBindingSource.DataSource = hotel.Residents;
         }
 
         private void AdminPanel_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (!hotel.IsDirty)
+                return;
             var res = MessageBox.Show("Сохранить данные перед выходом?", "", MessageBoxButtons.YesNoCancel);
             switch (res)
             {
@@ -36,6 +43,7 @@ namespace AdminApp
                     hotel.Save();
                     break;
                 case DialogResult.No:
+                    Application.ExitThread();
                     break;
             }
         }
@@ -45,20 +53,10 @@ namespace AdminApp
             FillRegRecs();
             foreach (var r in hotel.Reviews)
             {
-                reviewsTextBox.Text += r.Guest.Name + Environment.NewLine;
-                reviewsTextBox.Text += r.Guest.ArrivalDate + Environment.NewLine;
-                reviewsTextBox.Text += r.Guest.DepartureDate + Environment.NewLine;
+                reviewsTextBox.Text += r.Guest.Login + Environment.NewLine;
+                reviewsTextBox.Text += r.Guest.ArrivalDate.ToShortDateString() + Environment.NewLine;
+                reviewsTextBox.Text += r.Guest.DepartureDate.ToShortDateString() + Environment.NewLine;
                 reviewsTextBox.Text += r.Text + Environment.NewLine + Environment.NewLine;
-            }
-        }
-
-        private void newNumberButton_Click(object sender, EventArgs e)
-        {
-            var nr = new RoomForm(hotel);
-            if (nr.ShowDialog() == DialogResult.OK)
-            {
-                hotel.Rooms.Add(nr.Room);
-                roomBindingSource.ResetBindings(false);
             }
         }
 
@@ -84,7 +82,7 @@ namespace AdminApp
         {
             if (hotel.IsFull())
             {
-                MessageBox.Show("Hotel is full");
+                MessageBox.Show("В отеле нет свободных номеров.");
             }
             else
             {
@@ -104,10 +102,18 @@ namespace AdminApp
                                              $"{rf.RegRecord.ArrivalDate.ToShortDateString()}",
                                              $"{rf.RegRecord.DepartureDate.ToShortDateString()}",
                                              $"{rf.RegRecord.Total}");
-                    //Выбрать и перейти к последней строке
+                    hotel.IsDirty = true;
+
+                    // Обрати та перейти до останнього рядка.
                     var lastIdx = regRecsGridView.Rows.Count - 1;
                     regRecsGridView.Rows[lastIdx].Selected = true;
                     regRecsGridView.FirstDisplayedScrollingRowIndex = lastIdx;
+                }
+                else
+                {
+                    roomBindingSource.ResetBindings(false);
+                    regRecsGridView.Rows.Clear();
+                    FillRegRecs();
                 }
             }
         }
@@ -124,6 +130,8 @@ namespace AdminApp
                 roomBindingSource.ResetBindings(false);
                 regRecsGridView.Rows.Clear();
                 FillRegRecs();
+                hotel.IsDirty = true;
+
                 regRecsGridView.Rows[ind].Selected = true;
                 regRecsGridView.FirstDisplayedScrollingRowIndex = ind;
             }
@@ -145,6 +153,8 @@ namespace AdminApp
             {
                 regRecsGridView.Rows.Clear();
                 FillRegRecs();
+                hotel.IsDirty = true;
+
                 regRecsGridView.Rows[ind].Selected = true;
                 regRecsGridView.FirstDisplayedScrollingRowIndex = ind;
             }
@@ -169,6 +179,7 @@ namespace AdminApp
                 roomBindingSource.ResetBindings(false);
                 regRecsGridView.Rows.Clear();
                 FillRegRecs();
+                hotel.IsDirty = true;
             }
         }
 
@@ -199,6 +210,7 @@ namespace AdminApp
             regRecsGridView.Rows[0].Selected = true;
         }
 
+        // Метод для заповнення DataGridView записів реєстрації даними готелю.
         private void FillRegRecs()
         {
             for (int i = 0; i < hotel.RegRecords.Count; i++)
@@ -219,16 +231,24 @@ namespace AdminApp
 
         private void addRoomButton_Click(object sender, EventArgs e)
         {
-            var rf = new RoomForm(hotel);
-            if (rf.ShowDialog() == DialogResult.OK)
+            if (hotel.CheckFreeRooms())
             {
-                hotel.AddRoom(rf.Room);
-                roomBindingSource.ResetBindings(false);
+                var rf = new RoomForm(hotel);
+                if (rf.ShowDialog() == DialogResult.OK)
+                {
+                    hotel.AddRoom(rf.Room);
+                    roomBindingSource.ResetBindings(false);
+                    hotel.IsDirty = true;
 
-                //Выбрать и перейти к последней строке
-                var lastIdx = roomGridView.Rows.Count - 1;
-                roomGridView.Rows[lastIdx].Selected = true;
-                roomGridView.FirstDisplayedScrollingRowIndex = lastIdx;
+                    // Обрати та перейти до останнього рядка.
+                    var lastIdx = roomGridView.Rows.Count - 1;
+                    roomGridView.Rows[lastIdx].Selected = true;
+                    roomGridView.FirstDisplayedScrollingRowIndex = lastIdx;
+                }
+            }
+            else
+            {
+                MessageBox.Show("В отеле нет свободных для добавления номеров.");
             }
         }
 
@@ -241,6 +261,7 @@ namespace AdminApp
                 if (pf.ShowDialog() == DialogResult.OK)
                 {
                     roomBindingSource.ResetBindings(false);
+                    hotel.IsDirty = true;
                 }
             }
             else
@@ -254,11 +275,13 @@ namespace AdminApp
             var toDel = roomGridView.SelectedRows[0].DataBoundItem as Room;
             if (toDel.Occupied == false)
             {
-                var res = MessageBox.Show($"Удалить номер {toDel.Number} этаж {toDel.Floor}?", "", MessageBoxButtons.YesNo);
+                var res = MessageBox.Show($"Удалить номер {toDel.Number} этаж {toDel.Floor}?", "", 
+                    MessageBoxButtons.YesNo);
                 if (res == DialogResult.Yes)
                 {
                     hotel.Rooms.Remove(toDel);
                     roomBindingSource.ResetBindings(false);
+                    hotel.IsDirty = true;
                 }
             }
             else
@@ -270,19 +293,22 @@ namespace AdminApp
         private void searchButton_Click(object sender, EventArgs e)
         {
             if (paramComboBox.Text == "Имя")
-                residentsDataGridView.DataSource = hotel.Residents.Where(x => x.Name == searchTextBox.Text).ToList();
+                residentsDataGridView.DataSource = 
+                    hotel.Residents.Where(x => x.Name == searchTextBox.Text).ToList();
             if (paramComboBox.Text == "Фамилия")
-                residentsDataGridView.DataSource = hotel.Residents.Where(x => x.Surname == searchTextBox.Text).ToList();
+                residentsDataGridView.DataSource = 
+                    hotel.Residents.Where(x => x.Surname == searchTextBox.Text).ToList();
             if (paramComboBox.Text == "Дата рождения")
-                residentsDataGridView.DataSource = hotel.Residents.Where(x => x.BirthDate.Date == Convert.ToDateTime(searchTextBox.Text)).ToList();
+                residentsDataGridView.DataSource = 
+                    hotel.Residents.Where(x => x.BirthDate.Date == Convert.ToDateTime(searchTextBox.Text)).ToList();
         }
 
+        // Метод для відображення усіх постояльців на вкладці пошуку.
         private void renewButton_Click(object sender, EventArgs e)
         {
             paramComboBox.Text = "";
             searchTextBox.Clear();
             residentsDataGridView.DataSource = hotel.Residents;
         }
-
     }
 }

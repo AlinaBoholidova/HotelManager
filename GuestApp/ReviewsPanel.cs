@@ -12,43 +12,52 @@ using System.Windows.Forms;
 
 namespace GuestApp
 {
+    // Форма для перегляду відгуків готелю.
+    //
     public partial class ReviewsPanel : Form
     {
+        Hotel hotel;
+
         public ReviewsPanel()
         {
             InitializeComponent();
         }
 
+        public ReviewsPanel(Hotel hotel) : this()
+        {
+            this.hotel = hotel;
+        }
+
         private void ReviewsPanel_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            var res = MessageBox.Show("Вы уверены, что оставили все отзывы?", "", MessageBoxButtons.YesNo);
+            switch (res)
+            {
+                case DialogResult.Yes:
+                    Application.ExitThread();
+                    break;
+                case DialogResult.No:
+                    e.Cancel = true;
+                    break;
+            }
         }
 
         private void ReviewsPanel_Load(object sender, EventArgs e)
         {
-            string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, @"AdminApp\bin\Debug\reviews.txt");
+            string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, 
+                @"AdminApp\bin\Debug\reviews.txt");
             string[] lines = File.ReadAllLines(path).Skip(2).ToArray();
             foreach (var line in lines)
             {
-                textBox1.Text += line + Environment.NewLine;
+                reviewsTextBox.Text += line + Environment.NewLine;
             }
-
-            //for (int i = 0; i < hotel.Reviews.Count; i++)
-            //{
-            //    textBox1.Text += hotel.Reviews[i].Guest.Name + '\r' + '\n';
-            //    textBox1.Text += Convert.ToString(hotel.Reviews[i].Guest.ArrivalDate) + '\r' + '\n';
-            //    textBox1.Text += Convert.ToString(hotel.Reviews[i].Guest.DepartureDate) + '\r' + '\n';
-            //    textBox1.Text += hotel.Reviews[i].Text + '\r' + '\n';
-            //    textBox1.Text += Environment.NewLine;
-            //}
         }
 
         private void buttonReturn_Click(object sender, EventArgs e)
         {
-            GuestPanel guestPanel = new GuestPanel();
-            guestPanel.Show();
+            GuestPanel guestPanel = new GuestPanel(hotel);
             this.Hide();
+            guestPanel.Show();
         }
-
     }
 }

@@ -11,7 +11,10 @@ namespace HotelManagerLibrary.Models
     [Serializable]
     public class Review
     {
-        public Guest Guest { set; get; }
-        public string Text { set; get; }
+        // Гість.
+        public Guest Guest { get; set; }
+
+        // Текст відгуку.
+        public string Text { get; set; }
     }
 }

@@ -11,43 +11,48 @@ using System.Windows.Forms;
 
 namespace GuestApp
 {
+    // Форма гостьової панелі, де гість може додати свій відгук
+    // або перейти до перегляду інших відгуків.
+    //
     public partial class GuestPanel : Form
     {
         Hotel hotel;
+
         public GuestPanel()
         {
             InitializeComponent();
-            hotel = new Hotel();
-            hotel.Load();
         }
 
-        //public GuestPanel(Hotel hotel)
-        //{
-        //    this.hotel = hotel;
-        //    InitializeComponent();
-        //}
+        public GuestPanel(Hotel hotel) : this()
+        {
+            this.hotel = hotel;
+        }
 
         private void GuestPanel_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            var res = MessageBox.Show("Вы уверены, что оставили все отзывы?", "", MessageBoxButtons.YesNo);
+            switch (res)
+            {
+                case DialogResult.Yes:
+                    Application.ExitThread();
+                    break;
+                case DialogResult.No:
+                    e.Cancel = true;
+                    break;
+            }
         }
 
         private void buttonViewReviews_Click(object sender, EventArgs e)
         {
             ReviewsPanel reviewsPanel = new ReviewsPanel();
-            reviewsPanel.Show();
             this.Hide();
+            reviewsPanel.Show();
         }
 
         private void buttonAddReview_Click(object sender, EventArgs e)
         {
             if (ValidateText(reviewTextBox))
             {
-                //string text = "";
-                //for (int i = 0; i < textBoxReview.Lines.Length; i++)
-                //{
-                //    text += textBoxReview.Lines[i] + "\n";
-                //}
                 Review review = new Review
                 {
                     Guest = hotel.Guests.Last(),
@@ -55,9 +60,10 @@ namespace GuestApp
                 };
                 hotel.AddReview(review);
                 hotel.Save();
-                ReviewsPanel reviewsPanel = new ReviewsPanel();
-                reviewsPanel.Show();
+
+                ReviewsPanel reviewsPanel = new ReviewsPanel(hotel);
                 this.Hide();
+                reviewsPanel.Show();
             }
             else
             {
@@ -65,6 +71,7 @@ namespace GuestApp
             }
         }
 
+        // Метод для перевірки наявності тексту відгуку.
         private bool ValidateText(Control c)
         {
             if (string.IsNullOrWhiteSpace(c.Text))

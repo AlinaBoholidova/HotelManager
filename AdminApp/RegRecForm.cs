@@ -20,11 +20,11 @@ namespace AdminApp
 
         // Змінна, яка зберігає запис реєстрації, переданий на форму, у випадку
         // відміни його редагування.
-        RegRecord OriginalRegRecord;
+        RegRecord originalRegRecord;
 
         // Змінна, яка зберігає номер, переданий на форму, для перевірки переселення
         // постояльця до іншого номера.
-        Room OriginalRoom;
+        Room originalRoom;
 
         public RegRecForm(Hotel hotel)
         {
@@ -37,9 +37,9 @@ namespace AdminApp
         // Конструктор для передачі даних запису реєстрації для редагування.
         public RegRecForm(Hotel hotel, RegRecord regRecord) : this(hotel)
         {
-            OriginalRegRecord = new RegRecord() { Resident = new Resident(), Room = new Room() };
-            OriginalRegRecord.CopyData(OriginalRegRecord, regRecord);
-            OriginalRoom = regRecord.Room;
+            originalRegRecord = new RegRecord() { Resident = new Resident(), Room = new Room() };
+            originalRegRecord.CopyData(originalRegRecord, regRecord);
+            originalRoom = regRecord.Room;
 
             RegRecord = regRecord;
             arrivalDateTimePicker.Value = regRecord.ArrivalDate;
@@ -78,40 +78,25 @@ namespace AdminApp
                         Convert.ToInt32(floorComboBox.Text),
                         Convert.ToInt32(numberComboBox.Text));
 
-                    if (OriginalRoom != null && OriginalRoom != room)
+                    // Перевірка, чи був переселений постоялець до іншого номеру.
+                    if (originalRoom != null && originalRoom != room)
                     {
-                        OriginalRoom.Occupied = false;
-                        OriginalRoom.ActualResidents = 0;
+                        originalRoom.Occupied = false;
+                        originalRoom.ActualResidents = 0;
                     }
 
-                    //RegRecord = new RegRecord(
-                    //    room,
-                    //    new Resident
-                    //    {
-                    //        BirthDate = birthDateTimePicker.Value,
-                    //        Email = emailTextBox.Text,
-                    //        Gender = genderComboBox.Text,
-                    //        Name = nameTextBox.Text,
-                    //        Phone = phoneTextBox.Text,
-                    //        Surname = surnameTextBox.Text
-                    //    },
-                    //    arrivalDateTimePicker.Value,
-                    //    departureDateTimePicker.Value
-                    //    );
-
+                    RegRecord.ArrivalDate = arrivalDateTimePicker.Value;
+                    RegRecord.DepartureDate = departureDateTimePicker.Value;
                     RegRecord.Room = room;
+                    RegRecord.Room.Occupied = true;
+                    RegRecord.Room.ActualResidents = Convert.ToInt32(actualResidentsNumericUpDown.Value);
                     RegRecord.Resident.Surname = surnameTextBox.Text;
                     RegRecord.Resident.Name = nameTextBox.Text;
                     RegRecord.Resident.Gender = genderComboBox.Text;
                     RegRecord.Resident.BirthDate = birthDateTimePicker.Value;
                     RegRecord.Resident.Phone = phoneTextBox.Text;
                     RegRecord.Resident.Email = emailTextBox.Text;
-                    RegRecord.ArrivalDate = arrivalDateTimePicker.Value;
-                    RegRecord.DepartureDate = departureDateTimePicker.Value;
-
-                    RegRecord.Room.Occupied = true;
-                    RegRecord.Room.ActualResidents = Convert.ToInt32(actualResidentsNumericUpDown.Value);
-
+                    
                     var toReceipt = RegRecord;
                     var rf = new ReceiptForm(toReceipt);
                     if (rf.ShowDialog() == DialogResult.OK)
@@ -162,22 +147,28 @@ namespace AdminApp
 
         private void numberComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var room = hotel.FindRoom(Convert.ToInt32(floorComboBox.Text), Convert.ToInt32(numberComboBox.Text));
+            var room = hotel.FindRoom(
+                Convert.ToInt32(floorComboBox.Text), 
+                Convert.ToInt32(numberComboBox.Text));
             actualResidentsNumericUpDown.Maximum = room.InitialResidents;
         }
 
         // Метод для перевірки правильності вводу даних.
         private bool ValidateData()
         {
-            if (!Regex.IsMatch(nameTextBox.Text, @"[а-яА-Я]{2}"))
+            if (!Regex.IsMatch(nameTextBox.Text, @"[а-яА-Яa-zA-Z]{2}"))
             {
                 MessageBox.Show("Неправильно введённое имя.");
                 return false;
             }
-            if (!Regex.IsMatch(surnameTextBox.Text, @"[а-яА-Я]{2}"))
+            if (!Regex.IsMatch(surnameTextBox.Text, @"[а-яА-Яa-zA-Z]{2}"))
             {
                 MessageBox.Show("Неправильно введённая фамилия.");
                 return false;
+            }
+            if (genderComboBox.Text == "")
+            {
+                RegRecord.Resident.Gender = "-";
             }
             if (birthDateTimePicker.Value.AddYears(18) > DateTime.Today.Date)
             {
@@ -199,21 +190,20 @@ namespace AdminApp
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            // У випадку відміни редагування номера повернути початкові дані запису реєстрації
-            if (OriginalRegRecord != null)
+            // У випадку відміни редагування номера повернути початкові дані запису реєстрації.
+            if (originalRegRecord != null)
             {
                 RegRecord.Room.Occupied = false;
                 RegRecord.Room.ActualResidents = 0;
-                RegRecord.CopyData(RegRecord, OriginalRegRecord);
-                OriginalRoom.Occupied = true;
-                OriginalRoom.ActualResidents = OriginalRegRecord.Room.ActualResidents;
-                
-                
+                RegRecord.CopyData(RegRecord, originalRegRecord);
+                originalRoom.Occupied = true;
+                originalRoom.ActualResidents = originalRegRecord.Room.ActualResidents;
             }
-            //RegRecord.Room.Occupied = false;
-            //RegRecord.Room.ActualResidents = 0;
-            //OriginalRoom.Occupied = false;
-            //OriginalRoom.ActualResidents = 0;
+            originalRoom = hotel.FindRoom(
+                Convert.ToInt32(floorComboBox.Text),
+                Convert.ToInt32(numberComboBox.Text));
+            originalRoom.Occupied = false;
+            originalRoom.ActualResidents = 0;
         }
     }
 }

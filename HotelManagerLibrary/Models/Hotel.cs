@@ -18,6 +18,9 @@ namespace HotelManagerLibrary.Models
     [Serializable]
     public class Hotel
     {
+        // Якщо дані були змінені.
+        public bool IsDirty;
+
         public Hotel()
         {
             Admins = new List<Admin>();
@@ -29,12 +32,18 @@ namespace HotelManagerLibrary.Models
             ConnectAdmins();
         }
 
-        public List<Admin> Admins { private set; get; }
-        public List<Room> Rooms { private set; get; }
-        public List<Resident> Residents { private set; get; }
-        public List<RegRecord> RegRecords { private set; get; }
-        public List<Guest> Guests { private set; get; }
-        public List<Review> Reviews { private set; get; }
+        // Список адміністраторів.
+        public List<Admin> Admins { get; private set; }
+        // Список номерів.
+        public List<Room> Rooms { get; private set; }
+        // Список постояльців.
+        public List<Resident> Residents { get; private set; }
+        // Список записів реєстрацій.
+        public List<RegRecord> RegRecords { get; private set; }
+        // Список гостей.
+        public List<Guest> Guests { get; private set; }
+        // Список відгуків.
+        public List<Review> Reviews { get; private set; }
 
         // Метод для додавання нового гостя.
         public void AddGuest(Guest guest)
@@ -62,6 +71,17 @@ namespace HotelManagerLibrary.Models
             Rooms.Add(room);
         }
 
+        // Метод для перевірки наявності номерів для додавання.
+        public bool CheckFreeRooms()
+        {
+            // У готелі 6 поверхів з 20 номерами на кожному.
+            if (Rooms.Count != 120)
+            {
+                return true;
+            }
+            return false;
+        }
+
         // Метод для підключення існуючих пар ім'я (адміністратора) + пароль до системи готелю.
         public void ConnectAdmins()
         {
@@ -82,8 +102,9 @@ namespace HotelManagerLibrary.Models
                 Rooms.Add(new Room()
                 {
                     ActualResidents = 1,
-                    Floor = 3,
-                    Number = (i % 22) + 1,
+                    Occupied = true,
+                    Floor = (i % 6) + 1,
+                    Number = (i % 20) + 1,
                     Price = i + 600,
                     Image = noImage
                 }
@@ -105,14 +126,13 @@ namespace HotelManagerLibrary.Models
             }
             // Записи реєстрацій
             RegRecords.Clear();
-            const int m = 5;
-            for (int i = 0; i < n - m; i++)
+            for (int i = 0; i < n; i++)
             {
                 RegRecords.Add(new RegRecord(new Room()
                 {
                     ActualResidents = 1,
-                    Floor = 3,
-                    Number = (i % 22) + 1,
+                    Floor = (i % 6) + 1,
+                    Number = (i % 20) + 1,
                     Price = i + 600,
                     Image = noImage,
                     Occupied = true
@@ -133,7 +153,7 @@ namespace HotelManagerLibrary.Models
             {
                 Guests.Add(new Guest()
                 {
-                    Name = $"Name{i}",
+                    Login = $"Name{i}",
                     ArrivalDate = DateTime.Today - TimeSpan.FromDays(i + 1),
                     DepartureDate = DateTime.Today
                 });
@@ -146,7 +166,7 @@ namespace HotelManagerLibrary.Models
                 {
                     Guest = new Guest()
                     {
-                        Name = $"Name{i}",
+                        Login = $"Name{i}",
                         ArrivalDate = DateTime.Today - TimeSpan.FromDays(i + 1),
                         DepartureDate = DateTime.Today
                     },
@@ -176,7 +196,7 @@ namespace HotelManagerLibrary.Models
                     return RegRecords[i];
                 }
             }
-            return RegRecords[0];
+            return null;
         }
 
         // Метод для пошуку номера.
@@ -189,7 +209,7 @@ namespace HotelManagerLibrary.Models
                     return Rooms[i];
                 }
             }
-            return Rooms[0];
+            return null;
         }
 
         // Метод для перевірки наявності вільних номерів у готелі.

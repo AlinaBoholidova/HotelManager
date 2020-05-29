@@ -12,7 +12,10 @@ namespace HotelManagerLibrary.Models
     
     public class Admin
     {
-        public string Name { set; get; }
-        public string Password { set; get; }
+        // Ім'я.
+        public string Name { get; set; }
+
+        // Пароль.
+        public string Password { get; set; }
     }
 }

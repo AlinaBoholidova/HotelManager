@@ -17,7 +17,6 @@ namespace GuestApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GuestLogin());
-            //Application.Run(new GuestPanel());
         }
     }
 }

@@ -11,11 +11,16 @@ using System.Windows.Forms;
 
 namespace AdminApp
 {
+    // Форма для виселення[раніше|пізніше] постольця та оформлення квитанції-перерахунку.
+    //
     public partial class MoveOutForm : Form
     {
         Hotel hotel;
-        RegRecord RegRecord { set; get; }
+
+        // Змінна, яка зберігає дату від'їзду постояльця, передану на форму, у випадку
+        // відміни внесення змін.
         DateTime originalDD;
+
         public MoveOutForm(Hotel hotel)
         {
             this.hotel = hotel;
@@ -24,6 +29,8 @@ namespace AdminApp
 
         public MoveOutForm(Hotel hotel, RegRecord regRecord) : this(hotel)
         {
+            originalDD = regRecord.DepartureDate;
+
             RegRecord = regRecord;
             surnameLabel.Text = regRecord.Resident.Surname;
             nameLabel.Text = regRecord.Resident.Name;
@@ -36,8 +43,9 @@ namespace AdminApp
             typeLabel.Text = regRecord.Room.Type;
             arrivalDateLabel.Text = regRecord.ArrivalDate.ToShortDateString();
             departureDateTimePicker.Value = regRecord.DepartureDate;
-            originalDD = regRecord.DepartureDate;
         }
+
+        RegRecord RegRecord { set; get; }
 
         private void recalculationButton_Click(object sender, EventArgs e)
         {

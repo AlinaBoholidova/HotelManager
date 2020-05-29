@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -44,9 +45,9 @@ namespace HotelManagerLibrary.DAL
                 foreach (var r in hotel.Reviews)
                 {
                     wr.WriteLine();
-                    wr.WriteLine(r.Guest.Name);
-                    wr.WriteLine(r.Guest.ArrivalDate);
-                    wr.WriteLine(r.Guest.DepartureDate);
+                    wr.WriteLine(r.Guest.Login);
+                    wr.WriteLine(r.Guest.ArrivalDate.Date);
+                    wr.WriteLine(r.Guest.DepartureDate.Date);
                     wr.WriteLine(r.Text);
                 }
             }
@@ -85,16 +86,18 @@ namespace HotelManagerLibrary.DAL
                 for (int i = 0; i < n; i++)
                 {
                     rd.ReadLine();
+                    // Зчитування прізвища-імені, дат приїзду та від'їзду, відгуку.
                     var name = rd.ReadLine();
-                    rd.ReadLine();
-                    rd.ReadLine();
+                    var adate = Convert.ToDateTime(rd.ReadLine());
+                    var ddate = Convert.ToDateTime(rd.ReadLine());
                     var text = rd.ReadLine();
-                    hotel.Reviews.Add(new Review { Guest = GetGuestByName(name), Text = text });
+                    hotel.Reviews.Add(new Review { Guest = GetGuest(name, adate, ddate), Text = text });
                 }
             }
         }
 
-        public Guest GetGuestByName(string name) => hotel.Guests.Single(g => g.Name == name);
-
+        // Метод для знаходження гостя у даних готелю за прізвищем-ім'ям, датами приїзду та від'їзду.
+        private Guest GetGuest(string name, DateTime adate, DateTime ddate) => hotel.Guests.Single(g =>
+        g.Login == name && g.ArrivalDate == adate && g.DepartureDate == ddate);
     }
 }

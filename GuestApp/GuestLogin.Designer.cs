@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GuestLogin));
             this.loginButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,6 +42,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -52,7 +55,7 @@
             this.loginButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.loginButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginButton.Location = new System.Drawing.Point(190, 208);
+            this.loginButton.Location = new System.Drawing.Point(169, 195);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(80, 30);
             this.loginButton.TabIndex = 3;
@@ -66,7 +69,7 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Location = new System.Drawing.Point(183, 23);
+            this.label1.Location = new System.Drawing.Point(162, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 37);
             this.label1.TabIndex = 2;
@@ -77,17 +80,17 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(85, 35);
+            this.label2.Location = new System.Drawing.Point(74, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 20);
+            this.label2.Size = new System.Drawing.Size(117, 20);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Имя";
+            this.label2.Text = "Фамилия-Имя";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(85, 86);
+            this.label3.Location = new System.Drawing.Point(74, 85);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 20);
             this.label3.TabIndex = 4;
@@ -97,7 +100,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(85, 136);
+            this.label4.Location = new System.Drawing.Point(74, 135);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(118, 20);
             this.label4.TabIndex = 5;
@@ -106,7 +109,7 @@
             // arrivalDateTimePicker
             // 
             this.arrivalDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.arrivalDateTimePicker.Location = new System.Drawing.Point(209, 82);
+            this.arrivalDateTimePicker.Location = new System.Drawing.Point(198, 81);
             this.arrivalDateTimePicker.MinimumSize = new System.Drawing.Size(200, 26);
             this.arrivalDateTimePicker.Name = "arrivalDateTimePicker";
             this.arrivalDateTimePicker.Size = new System.Drawing.Size(200, 26);
@@ -116,8 +119,7 @@
             // departureDateTimePicker
             // 
             this.departureDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.departureDateTimePicker.Location = new System.Drawing.Point(209, 131);
-            this.departureDateTimePicker.MaxDate = new System.DateTime(2020, 5, 24, 0, 0, 0, 0);
+            this.departureDateTimePicker.Location = new System.Drawing.Point(198, 130);
             this.departureDateTimePicker.MinimumSize = new System.Drawing.Size(200, 26);
             this.departureDateTimePicker.Name = "departureDateTimePicker";
             this.departureDateTimePicker.Size = new System.Drawing.Size(200, 26);
@@ -128,7 +130,7 @@
             // 
             this.nameTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.nameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nameTextBox.Location = new System.Drawing.Point(209, 32);
+            this.nameTextBox.Location = new System.Drawing.Point(198, 31);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(200, 26);
             this.nameTextBox.TabIndex = 0;
@@ -145,6 +147,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.label2);
@@ -156,13 +159,13 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Location = new System.Drawing.Point(-2, 79);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(478, 296);
+            this.panel2.Size = new System.Drawing.Size(435, 281);
             this.panel2.TabIndex = 10;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::GuestApp.Properties.Resources.calendar;
-            this.pictureBox2.Location = new System.Drawing.Point(30, 100);
+            this.pictureBox2.Location = new System.Drawing.Point(19, 99);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(49, 41);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -172,18 +175,36 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::GuestApp.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(36, 30);
+            this.pictureBox1.Location = new System.Drawing.Point(25, 29);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(36, 39);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.IndianRed;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(403, 225);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(18, 20);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "?";
+            this.toolTip1.SetToolTip(this.label5, "Фамилия-Имя вводятся на русском или английском языке\r\n");
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 5000;
+            this.toolTip1.InitialDelay = 200;
+            this.toolTip1.ReshowDelay = 100;
+            // 
             // GuestLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(471, 358);
+            this.ClientSize = new System.Drawing.Size(421, 325);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -214,5 +235,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
