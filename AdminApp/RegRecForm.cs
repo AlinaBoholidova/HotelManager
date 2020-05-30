@@ -18,6 +18,10 @@ namespace AdminApp
     {
         Hotel hotel;
 
+        // Змінна, яка зберігає кількість постояльців, що проживають у номері,
+        // із запису реєстрації, переданого на форму.
+        int actualResidents;
+
         // Змінна, яка зберігає запис реєстрації, переданий на форму, у випадку
         // відміни його редагування.
         RegRecord originalRegRecord;
@@ -40,6 +44,7 @@ namespace AdminApp
             originalRegRecord = new RegRecord() { Resident = new Resident(), Room = new Room() };
             originalRegRecord.CopyData(originalRegRecord, regRecord);
             originalRoom = regRecord.Room;
+            actualResidents = regRecord.Room.ActualResidents;
 
             RegRecord = regRecord;
             arrivalDateTimePicker.Value = regRecord.ArrivalDate;
@@ -93,6 +98,10 @@ namespace AdminApp
                     RegRecord.Resident.Surname = surnameTextBox.Text;
                     RegRecord.Resident.Name = nameTextBox.Text;
                     RegRecord.Resident.Gender = genderComboBox.Text;
+                    if (genderComboBox.Text == "")
+                    {
+                        RegRecord.Resident.Gender = "-";
+                    }
                     RegRecord.Resident.BirthDate = birthDateTimePicker.Value;
                     RegRecord.Resident.Phone = phoneTextBox.Text;
                     RegRecord.Resident.Email = emailTextBox.Text;
@@ -119,7 +128,8 @@ namespace AdminApp
             List<int> floor = new List<int>();
             for (int i = 0; i < hotel.Rooms.Count; i++)
             {
-                if (hotel.Rooms[i].Type == typeComboBox.Text)
+                if (hotel.Rooms[i].Type == typeComboBox.Text &&
+                    hotel.Rooms[i].Occupied == false)
                 {
                     floor.Add(hotel.Rooms[i].Floor);
                 }
@@ -136,7 +146,8 @@ namespace AdminApp
             numberComboBox.Items.Clear();
             for (int i = 0; i < hotel.Rooms.Count; i++)
             {
-                if (hotel.Rooms[i].Floor == Convert.ToInt32(floorComboBox.Text) &&
+                if (hotel.Rooms[i].Type == typeComboBox.Text &&
+                    hotel.Rooms[i].Floor == Convert.ToInt32(floorComboBox.Text) &&
                     hotel.Rooms[i].Occupied == false &&
                     hotel.Rooms[i].ActualResidents != hotel.Rooms[i].InitialResidents)
                 {
@@ -148,7 +159,7 @@ namespace AdminApp
         private void numberComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var room = hotel.FindRoom(
-                Convert.ToInt32(floorComboBox.Text), 
+                Convert.ToInt32(floorComboBox.Text),
                 Convert.ToInt32(numberComboBox.Text));
             actualResidentsNumericUpDown.Maximum = room.InitialResidents;
         }
@@ -156,33 +167,38 @@ namespace AdminApp
         // Метод для перевірки правильності вводу даних.
         private bool ValidateData()
         {
-            if (!Regex.IsMatch(nameTextBox.Text, @"[а-яА-Яa-zA-Z]{2}"))
+            var room = hotel.FindRoom(
+                Convert.ToInt32(floorComboBox.Text),
+                Convert.ToInt32(numberComboBox.Text));
+            if (!Regex.IsMatch(surnameTextBox.Text, @"^[а-яА-Яёa-zA-Z]{2,}$"))
             {
-                MessageBox.Show("Неправильно введённое имя.");
+                MessageBox.Show("Неверные символы в фамилии или она слишком короткая (мин. 2 буквы).");
                 return false;
             }
-            if (!Regex.IsMatch(surnameTextBox.Text, @"[а-яА-Яa-zA-Z]{2}"))
+            if (!Regex.IsMatch(nameTextBox.Text, @"^[а-яА-Яёa-zA-Z]{2,}$"))
             {
-                MessageBox.Show("Неправильно введённая фамилия.");
+                MessageBox.Show("Неверные символы в имени или оно слишком короткое (мин. 2 буквы).");
                 return false;
-            }
-            if (genderComboBox.Text == "")
-            {
-                RegRecord.Resident.Gender = "-";
             }
             if (birthDateTimePicker.Value.AddYears(18) > DateTime.Today.Date)
             {
                 MessageBox.Show("Нельзя оформить номер на несовершеннолетнего.");
                 return false;
             }
-            if (!Regex.IsMatch(phoneTextBox.Text, @"[0-9]{7}"))
+            if (!Regex.IsMatch(phoneTextBox.Text, @"^[0-9]{7,}$"))
             {
-                MessageBox.Show("Телефон должен состоять только из цифр и не быть коротким.");
+                MessageBox.Show("Телефон должен состоять только из цифр (мин. 7 символов).");
                 return false;
             }
-            if (!Regex.IsMatch(emailTextBox.Text, @"[a-zA-Z0-9]{2}[@][a-zA-Z]{2}"))
+            if (!Regex.IsMatch(emailTextBox.Text, @"^[a-z0-9_.]{2,}[@][a-z.]{2,}$"))
             {
-                MessageBox.Show("Email не содержит символ @ или он слишком короткий.");
+                MessageBox.Show("Формат email: example@domain (мин. 5 символов). " +
+                    "Допускаются точки и нижнее подчеркивание.");
+                return false;
+            }
+            if (actualResidentsNumericUpDown.Value > room.InitialResidents)
+            {
+                MessageBox.Show("Количество гостей больше возможного для выбранного номера.");
                 return false;
             }
             return true;
@@ -197,13 +213,17 @@ namespace AdminApp
                 RegRecord.Room.ActualResidents = 0;
                 RegRecord.CopyData(RegRecord, originalRegRecord);
                 originalRoom.Occupied = true;
-                originalRoom.ActualResidents = originalRegRecord.Room.ActualResidents;
+                originalRoom.ActualResidents = actualResidents;
             }
-            originalRoom = hotel.FindRoom(
-                Convert.ToInt32(floorComboBox.Text),
-                Convert.ToInt32(numberComboBox.Text));
-            originalRoom.Occupied = false;
-            originalRoom.ActualResidents = 0;
+            // Або відмінити зміни у обраному номері.
+            else
+            {
+                originalRoom = hotel.FindRoom(
+                    Convert.ToInt32(floorComboBox.Text),
+                    Convert.ToInt32(numberComboBox.Text));
+                originalRoom.Occupied = false;
+                originalRoom.ActualResidents = 0;
+            }
         }
     }
 }

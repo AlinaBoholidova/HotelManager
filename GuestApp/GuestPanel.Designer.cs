@@ -57,7 +57,7 @@
             this.viewReviewsButton.TabIndex = 0;
             this.viewReviewsButton.Text = "Посмотреть отзывы";
             this.viewReviewsButton.UseVisualStyleBackColor = false;
-            this.viewReviewsButton.Click += new System.EventHandler(this.buttonViewReviews_Click);
+            this.viewReviewsButton.Click += new System.EventHandler(this.viewReviewsButton_Click);
             // 
             // reviewTextBox
             // 
@@ -83,7 +83,7 @@
             this.addReviewButton.TabIndex = 3;
             this.addReviewButton.Text = "Добавить";
             this.addReviewButton.UseVisualStyleBackColor = false;
-            this.addReviewButton.Click += new System.EventHandler(this.buttonAddReview_Click);
+            this.addReviewButton.Click += new System.EventHandler(this.addReviewButton_Click);
             // 
             // GuestPanel
             // 

@@ -15,23 +15,23 @@ namespace HotelManagerLibrary.Models
     public class Room
     {
         // Зображення номерів
-        Bitmap CityAbstraction = new Bitmap(Path.GetFullPath("CityAbstraction.jpg"));
-        Bitmap FootballFan = new Bitmap(Path.GetFullPath("FootballFan.jpg"));
-        Bitmap MorningFreshness = new Bitmap(Path.GetFullPath("MorningFreshness.jpg"));
-        Bitmap RelaxingPurple = new Bitmap(Path.GetFullPath("RelaxingPurple.jpg"));
+        Bitmap cityAbstraction = new Bitmap(Path.GetFullPath("CityAbstraction.jpg"));
+        Bitmap footballFan = new Bitmap(Path.GetFullPath("FootballFan.jpg"));
+        Bitmap morningFreshness = new Bitmap(Path.GetFullPath("MorningFreshness.jpg"));
+        Bitmap relaxingPurple = new Bitmap(Path.GetFullPath("RelaxingPurple.jpg"));
 
         // Тип.
         public string Type
         {
             get
             {
-                if (Image.Size == CityAbstraction.Size)
+                if (Image.Size == cityAbstraction.Size)
                     return "Городская абстракция";
-                else if (Image.Size == FootballFan.Size)
+                else if (Image.Size == footballFan.Size)
                     return "Фанат футбола";
-                else if (Image.Size == MorningFreshness.Size)
+                else if (Image.Size == morningFreshness.Size)
                     return "Свежесть утра";
-                else if (Image.Size == RelaxingPurple.Size)
+                else if (Image.Size == relaxingPurple.Size)
                     return "Расслабляющий фиолетовый";
                 else
                     return "Тип номера";
@@ -49,13 +49,13 @@ namespace HotelManagerLibrary.Models
         {
             get
             {
-                if (Image.Size == CityAbstraction.Size)
+                if (Image.Size == cityAbstraction.Size)
                     return 2;
-                else if (Image.Size == FootballFan.Size)
+                else if (Image.Size == footballFan.Size)
                     return 2;
-                else if (Image.Size == MorningFreshness.Size)
+                else if (Image.Size == morningFreshness.Size)
                     return 3;
-                else if (Image.Size == RelaxingPurple.Size)
+                else if (Image.Size == relaxingPurple.Size)
                     return 2;
                 else 
                     return 2;

@@ -40,9 +40,9 @@
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -61,7 +61,7 @@
             this.loginButton.TabIndex = 3;
             this.loginButton.Text = "Войти";
             this.loginButton.UseVisualStyleBackColor = true;
-            this.loginButton.Click += new System.EventHandler(this.buttonLogin_Click);
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // label1
             // 
@@ -114,7 +114,7 @@
             this.arrivalDateTimePicker.Name = "arrivalDateTimePicker";
             this.arrivalDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.arrivalDateTimePicker.TabIndex = 1;
-            this.arrivalDateTimePicker.Value = new System.DateTime(2020, 5, 16, 0, 0, 0, 0);
+            this.arrivalDateTimePicker.Value = new System.DateTime(2020, 5, 28, 0, 0, 0, 0);
             // 
             // departureDateTimePicker
             // 
@@ -124,7 +124,7 @@
             this.departureDateTimePicker.Name = "departureDateTimePicker";
             this.departureDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.departureDateTimePicker.TabIndex = 2;
-            this.departureDateTimePicker.Value = new System.DateTime(2020, 5, 24, 0, 0, 0, 0);
+            this.departureDateTimePicker.Value = new System.DateTime(2020, 5, 30, 0, 0, 0, 0);
             // 
             // nameTextBox
             // 
@@ -162,6 +162,18 @@
             this.panel2.Size = new System.Drawing.Size(435, 281);
             this.panel2.TabIndex = 10;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.IndianRed;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(403, 225);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(18, 20);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "?";
+            this.toolTip1.SetToolTip(this.label5, "Разница между датами минимум один день");
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::GuestApp.Properties.Resources.calendar;
@@ -181,18 +193,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.IndianRed;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(403, 225);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(18, 20);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "?";
-            this.toolTip1.SetToolTip(this.label5, "Фамилия-Имя вводятся на русском или английском языке\r\n");
             // 
             // toolTip1
             // 

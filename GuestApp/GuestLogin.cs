@@ -30,7 +30,7 @@ namespace GuestApp
             departureDateTimePicker.MaxDate = DateTime.Today;
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        private void loginButton_Click(object sender, EventArgs e)
         {
             if (ValidateName(nameTextBox) && ValidateDate(arrivalDateTimePicker, departureDateTimePicker))
             {
@@ -58,12 +58,11 @@ namespace GuestApp
         // Перевірка поля прізвища-імені на заповненість.
         private bool ValidateName(Control c)
         {
-            if (!Regex.IsMatch(c.Text, @"[а-яА-Яa-zA-Z]{5}"))
+            if (!Regex.IsMatch(c.Text, @"^[а-яА-Яa-zA-Z\s]{5,}$"))
             {
-                MessageBox.Show("Неверно введённые фамилия-имя или они были слишком короткими (<5 символов).");
+                MessageBox.Show("Неверные символы или фамилия-имя слишком короткие (мин. 5 символов в поле).");
                 return false;
             }
-
             return true;
         }
 
@@ -77,7 +76,6 @@ namespace GuestApp
                 MessageBox.Show("Неверно введённые даты.");
                 return false;
             }
-
             return true;
         }
     }

@@ -67,7 +67,6 @@ namespace HotelManagerLibrary.DAL
                 Copy(ht.Guests, hotel.Guests);
                 Copy(ht.Reviews, hotel.Reviews);
             }
-            LoadReviews();
 
             void Copy<T>(List<T> from, List<T> to)
             {
@@ -75,29 +74,5 @@ namespace HotelManagerLibrary.DAL
                 to.AddRange(from);
             }
         }
-
-        // Метод для завантаження відгуків з окремого файлу reviews.txt.
-        public void LoadReviews()
-        {
-            using (var rd = new StreamReader(path + "reviews.txt"))
-            {
-                int n = Convert.ToInt32(rd.ReadLine());
-                hotel.Reviews.Clear();
-                for (int i = 0; i < n; i++)
-                {
-                    rd.ReadLine();
-                    // Зчитування прізвища-імені, дат приїзду та від'їзду, відгуку.
-                    var name = rd.ReadLine();
-                    var adate = Convert.ToDateTime(rd.ReadLine());
-                    var ddate = Convert.ToDateTime(rd.ReadLine());
-                    var text = rd.ReadLine();
-                    hotel.Reviews.Add(new Review { Guest = GetGuest(name, adate, ddate), Text = text });
-                }
-            }
-        }
-
-        // Метод для знаходження гостя у даних готелю за прізвищем-ім'ям, датами приїзду та від'їзду.
-        private Guest GetGuest(string name, DateTime adate, DateTime ddate) => hotel.Guests.Single(g =>
-        g.Login == name && g.ArrivalDate == adate && g.DepartureDate == ddate);
     }
 }

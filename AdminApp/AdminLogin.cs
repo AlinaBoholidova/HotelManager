@@ -22,7 +22,7 @@ namespace AdminApp
         {
             InitializeComponent();
             hotel = new Hotel();
-            //hotel.Load();
+            hotel.ConnectAdmins();
         }
 
         private void logInButton_Click(object sender, EventArgs e)

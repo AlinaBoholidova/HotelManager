@@ -44,16 +44,16 @@ namespace GuestApp
 
         private void ReviewsPanel_Load(object sender, EventArgs e)
         {
-            string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, 
-                @"AdminApp\bin\Debug\reviews.txt");
-            string[] lines = File.ReadAllLines(path).Skip(2).ToArray();
-            foreach (var line in lines)
+            foreach (var r in hotel.Reviews)
             {
-                reviewsTextBox.Text += line + Environment.NewLine;
+                reviewsTextBox.Text += r.Guest.Login + Environment.NewLine;
+                reviewsTextBox.Text += r.Guest.ArrivalDate.ToShortDateString() + Environment.NewLine;
+                reviewsTextBox.Text += r.Guest.DepartureDate.ToShortDateString() + Environment.NewLine;
+                reviewsTextBox.Text += r.Text + Environment.NewLine + Environment.NewLine;
             }
         }
 
-        private void buttonReturn_Click(object sender, EventArgs e)
+        private void returnButton_Click(object sender, EventArgs e)
         {
             GuestPanel guestPanel = new GuestPanel(hotel);
             this.Hide();

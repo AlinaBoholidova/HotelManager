@@ -78,7 +78,7 @@
             this.returnButton.TabIndex = 0;
             this.returnButton.Text = "Вернуться";
             this.returnButton.UseVisualStyleBackColor = true;
-            this.returnButton.Click += new System.EventHandler(this.buttonReturn_Click);
+            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
             // 
             // pictureBox1
             // 

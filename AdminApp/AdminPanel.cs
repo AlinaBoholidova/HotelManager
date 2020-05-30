@@ -24,7 +24,8 @@ namespace AdminApp
         {
             InitializeComponent();
             hotel = new Hotel();
-            hotel.FillTestData(100);
+            hotel.FillTestData(120);
+            //hotel.FillData();
             roomBindingSource.DataSource = hotel.Rooms;
             residentBindingSource.DataSource = hotel.Residents;
         }
@@ -32,7 +33,7 @@ namespace AdminApp
         private void AdminPanel_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!hotel.IsDirty)
-                return;
+                Application.ExitThread();
             var res = MessageBox.Show("Сохранить данные перед выходом?", "", MessageBoxButtons.YesNoCancel);
             switch (res)
             {
@@ -51,6 +52,22 @@ namespace AdminApp
         private void AdminPanel_Load(object sender, EventArgs e)
         {
             FillRegRecs();
+            FillReviews();
+        }
+
+        private void loadButton_Click(object sender, EventArgs e)
+        {
+            hotel.Load();
+            roomBindingSource.ResetBindings(false);
+            regRecsGridView.Rows.Clear();
+            FillRegRecs();
+            reviewsTextBox.Clear();
+            FillReviews();
+            MessageBox.Show("Данные успешно загружены!");
+        }
+
+        private void FillReviews()
+        {
             foreach (var r in hotel.Reviews)
             {
                 reviewsTextBox.Text += r.Guest.Login + Environment.NewLine;
@@ -58,18 +75,6 @@ namespace AdminApp
                 reviewsTextBox.Text += r.Guest.DepartureDate.ToShortDateString() + Environment.NewLine;
                 reviewsTextBox.Text += r.Text + Environment.NewLine + Environment.NewLine;
             }
-        }
-
-        private void loadButton_Click(object sender, EventArgs e)
-        {
-            hotel.Load();
-            roomBindingSource.ResetBindings(false);
-            string[] lines = File.ReadAllLines("reviews.txt").Skip(2).ToArray();
-            foreach (var line in lines)
-            {
-                reviewsTextBox.Text += line + Environment.NewLine;
-            }
-            MessageBox.Show("Данные успешно загружены!");
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -109,12 +114,12 @@ namespace AdminApp
                     regRecsGridView.Rows[lastIdx].Selected = true;
                     regRecsGridView.FirstDisplayedScrollingRowIndex = lastIdx;
                 }
-                else
-                {
-                    roomBindingSource.ResetBindings(false);
-                    regRecsGridView.Rows.Clear();
-                    FillRegRecs();
-                }
+                //else
+                //{
+                //    roomBindingSource.ResetBindings(false);
+                //    regRecsGridView.Rows.Clear();
+                //    FillRegRecs();
+                //}
             }
         }
 
@@ -135,11 +140,11 @@ namespace AdminApp
                 regRecsGridView.Rows[ind].Selected = true;
                 regRecsGridView.FirstDisplayedScrollingRowIndex = ind;
             }
-            else
-            {
-                regRecsGridView.Rows.Clear();
-                FillRegRecs();
-            }
+            //else
+            //{
+            //    regRecsGridView.Rows.Clear();
+            //    FillRegRecs();
+            //}
         }
 
         private void moveOutButton_Click(object sender, EventArgs e)
@@ -158,11 +163,11 @@ namespace AdminApp
                 regRecsGridView.Rows[ind].Selected = true;
                 regRecsGridView.FirstDisplayedScrollingRowIndex = ind;
             }
-            else
-            {
-                regRecsGridView.Rows.Clear();
-                FillRegRecs();
-            }
+            //else
+            //{
+            //    regRecsGridView.Rows.Clear();
+            //    FillRegRecs();
+            //}
         }
 
         private void moveOutTodayButton_Click(object sender, EventArgs e)

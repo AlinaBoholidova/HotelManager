@@ -42,14 +42,14 @@ namespace GuestApp
             }
         }
 
-        private void buttonViewReviews_Click(object sender, EventArgs e)
+        private void viewReviewsButton_Click(object sender, EventArgs e)
         {
-            ReviewsPanel reviewsPanel = new ReviewsPanel();
+            ReviewsPanel reviewsPanel = new ReviewsPanel(hotel);
             this.Hide();
             reviewsPanel.Show();
         }
 
-        private void buttonAddReview_Click(object sender, EventArgs e)
+        private void addReviewButton_Click(object sender, EventArgs e)
         {
             if (ValidateText(reviewTextBox))
             {
