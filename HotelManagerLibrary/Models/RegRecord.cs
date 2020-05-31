@@ -46,30 +46,30 @@ namespace HotelManagerLibrary.Models
         }
 
         // Метод для копіювання даних з одного запису реєстрації в інший.
-        public void CopyData(RegRecord regRecord1, RegRecord regRecord2)
+        public void CopyData(RegRecord regRecord)
         {
-            regRecord1.ArrivalDate = regRecord2.ArrivalDate;
-            regRecord1.DepartureDate = regRecord2.DepartureDate;
-            regRecord1.Resident.BirthDate = regRecord2.Resident.BirthDate;
-            regRecord1.Resident.Email = regRecord2.Resident.Email;
-            regRecord1.Resident.Gender = regRecord2.Resident.Gender;
-            regRecord1.Resident.Name = regRecord2.Resident.Name;
-            regRecord1.Resident.Phone = regRecord2.Resident.Phone;
-            regRecord1.Resident.Surname = regRecord2.Resident.Surname;
-            regRecord1.Room = regRecord2.Room;
+            this.ArrivalDate = regRecord.ArrivalDate;
+            this.DepartureDate = regRecord.DepartureDate;
+            this.Resident.BirthDate = regRecord.Resident.BirthDate;
+            this.Resident.Email = regRecord.Resident.Email;
+            this.Resident.Gender = regRecord.Resident.Gender;
+            this.Resident.Name = regRecord.Resident.Name;
+            this.Resident.Phone = regRecord.Resident.Phone;
+            this.Resident.Surname = regRecord.Resident.Surname;
+            this.Room = regRecord.Room;
         }
 
         // Метод для створення назви квитанції.
-        public string GetReceiptName(RegRecord regRecord)
+        public string GetReceiptName()
         {
             foreach (Form form in Application.OpenForms)
             {
                 if (form.GetType().ToString() == "AdminApp.MoveOutForm")
                 {
-                    return $"recalculation_{regRecord.Resident.Surname}.txt";
+                    return $"recalculation_{this.Resident.Surname}.txt";
                 }
             }
-            return $"receipt_{regRecord.Resident.Surname}.txt";
+            return $"receipt_{this.Resident.Surname}.txt";
         }
     }
 }

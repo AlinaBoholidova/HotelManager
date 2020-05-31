@@ -312,7 +312,7 @@
             this.typeLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.regRecordBindingSource, "Room.Type", true));
             this.typeLabel.Location = new System.Drawing.Point(477, 14);
             this.typeLabel.Name = "typeLabel";
-            this.typeLabel.Size = new System.Drawing.Size(191, 23);
+            this.typeLabel.Size = new System.Drawing.Size(230, 23);
             this.typeLabel.TabIndex = 52;
             this.typeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 

@@ -55,7 +55,7 @@ namespace AdminApp
 
         private void SaveReceipt(TextBox receipt)
         {
-            File.WriteAllText(path + regRecord.GetReceiptName(regRecord), receipt.Text);
+            File.WriteAllText(path + regRecord.GetReceiptName(), receipt.Text);
         }
 
         private void backButton_Click(object sender, EventArgs e)

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -60,6 +61,7 @@ namespace HotelManagerLibrary.Models
         // Метод для додавання нового запису реєстрації.
         public void AddRegRec(RegRecord regRecord)
         {
+            Residents.Add(regRecord.Resident);
             regRecord.Room.Occupied = true;
             RegRecords.Add(regRecord);
         }
@@ -537,8 +539,7 @@ namespace HotelManagerLibrary.Models
                     Number = (i % 20) + 1,
                     Price = i + 600,
                     Image = noImage
-                }
-                );
+                });
             }
             // Постояльці
             Residents.Clear();
@@ -549,7 +550,7 @@ namespace HotelManagerLibrary.Models
                     Surname = $"ResidentSurname{i}",
                     Name = $"ResidentName{i}",
                     BirthDate = DateTime.Now - TimeSpan.FromDays(i),
-                    Gender = "M",
+                    Gender = "-",
                     Phone = "123456789",
                     Email = "example@gmail.com"
                 });
@@ -558,29 +559,12 @@ namespace HotelManagerLibrary.Models
             RegRecords.Clear();
             for (int i = 0; i < n; i++)
             {
-                RegRecords.Add(new RegRecord(Rooms[i], Residents[i], DateTime.Today, 
-                    DateTime.Today + TimeSpan.FromDays(i + 1))); // затестить с таким
-
-                //RegRecords.Add(new RegRecord(new Room()
-                //{
-                //    ActualResidents = 1,
-                //    Floor = (i % 6) + 1,
-                //    Number = (i % 20) + 1,
-                //    Price = i + 600,
-                //    Image = noImage,
-                //    Occupied = true
-                //}
-                //, new Resident()
-                //{
-                //    Surname = $"ResidentSurname{i}",
-                //    Name = $"ResidentName{i}",
-                //    BirthDate = DateTime.Today - TimeSpan.FromDays(i + 1),
-                //    Gender = "-",
-                //    Phone = "123456789",
-                //    Email = "example@gmail.com"
-                //},
-                //DateTime.Today,
-                //DateTime.Today + TimeSpan.FromDays(i + 1)));
+                RegRecords.Add(
+                    new RegRecord(
+                        Rooms[i],
+                        Residents[i],
+                        DateTime.Today, 
+                        DateTime.Today + TimeSpan.FromDays(i + 1)));
             }
             // Гості
             Guests.Clear();
@@ -599,7 +583,7 @@ namespace HotelManagerLibrary.Models
             {
                 Reviews.Add(new Review
                 {
-                    Guest = Guests[i], // затестить с таким вариантом
+                    Guest = Guests[i],
                     Text = $"Text{i}"
                 });
             }
@@ -619,12 +603,10 @@ namespace HotelManagerLibrary.Models
         // Метод для пошуку запису реєстрації.
         public RegRecord FindRegRec(string surname, string phone)
         {
-            for (int i = 0; i < RegRecords.Count; i++)
+            foreach (var r in RegRecords)
             {
-                if (RegRecords[i].Resident.Surname == surname && RegRecords[i].Resident.Phone == phone)
-                {
-                    return RegRecords[i];
-                }
+                if (r.Resident.Surname == surname && r.Resident.Phone == phone)
+                    return r;
             }
             return null;
         }
@@ -632,12 +614,10 @@ namespace HotelManagerLibrary.Models
         // Метод для пошуку номера.
         public Room FindRoom(int floor, int number)
         {
-            for (int i = 0; i < Rooms.Count; i++)
+            foreach (var r in Rooms)
             {
-                if (Rooms[i].Floor == floor && Rooms[i].Number == number)
-                {
-                    return Rooms[i];
-                }
+                if (r.Floor == floor && r.Number == number)
+                    return r;
             }
             return null;
         }
@@ -651,6 +631,7 @@ namespace HotelManagerLibrary.Models
         // Метод для видалення запису реєстрації.
         public void RemoveRegRec(RegRecord regRecord)
         {
+            Residents.Remove(regRecord.Resident);
             regRecord.Room.Occupied = false;
             regRecord.Room.ActualResidents = 0;
             RegRecords.Remove(regRecord);

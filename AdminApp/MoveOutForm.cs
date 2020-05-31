@@ -43,6 +43,8 @@ namespace AdminApp
             typeLabel.Text = regRecord.Room.Type;
             arrivalDateLabel.Text = regRecord.ArrivalDate.ToShortDateString();
             departureDateTimePicker.Value = regRecord.DepartureDate;
+
+            departureDateTimePicker.MinDate = regRecord.ArrivalDate + TimeSpan.FromDays(1);
         }
 
         RegRecord RegRecord { set; get; }

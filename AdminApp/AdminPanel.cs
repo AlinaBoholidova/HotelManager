@@ -42,6 +42,7 @@ namespace AdminApp
                     break;
                 case DialogResult.Yes:
                     hotel.Save();
+                    Application.ExitThread();
                     break;
                 case DialogResult.No:
                     Application.ExitThread();
@@ -96,6 +97,7 @@ namespace AdminApp
                 {
                     hotel.AddRegRec(rf.RegRecord);
                     roomBindingSource.ResetBindings(false);
+                    residentBindingSource.ResetBindings(false);
                     regRecsGridView.Rows.Add($"{rf.RegRecord.Resident.Surname}",
                                              $"{rf.RegRecord.Resident.Name}",
                                              $"{rf.RegRecord.Resident.Gender}",
@@ -114,12 +116,6 @@ namespace AdminApp
                     regRecsGridView.Rows[lastIdx].Selected = true;
                     regRecsGridView.FirstDisplayedScrollingRowIndex = lastIdx;
                 }
-                //else
-                //{
-                //    roomBindingSource.ResetBindings(false);
-                //    regRecsGridView.Rows.Clear();
-                //    FillRegRecs();
-                //}
             }
         }
 
@@ -140,11 +136,6 @@ namespace AdminApp
                 regRecsGridView.Rows[ind].Selected = true;
                 regRecsGridView.FirstDisplayedScrollingRowIndex = ind;
             }
-            //else
-            //{
-            //    regRecsGridView.Rows.Clear();
-            //    FillRegRecs();
-            //}
         }
 
         private void moveOutButton_Click(object sender, EventArgs e)
@@ -163,11 +154,6 @@ namespace AdminApp
                 regRecsGridView.Rows[ind].Selected = true;
                 regRecsGridView.FirstDisplayedScrollingRowIndex = ind;
             }
-            //else
-            //{
-            //    regRecsGridView.Rows.Clear();
-            //    FillRegRecs();
-            //}
         }
 
         private void moveOutTodayButton_Click(object sender, EventArgs e)
@@ -182,9 +168,23 @@ namespace AdminApp
             {
                 hotel.RemoveRegRec(toDel);
                 roomBindingSource.ResetBindings(false);
+                residentBindingSource.ResetBindings(false);
                 regRecsGridView.Rows.Clear();
                 FillRegRecs();
                 hotel.IsDirty = true;
+
+                // Обрати та перейти до попереднього рядка.
+                if (ind != 0)
+                {
+                    regRecsGridView.Rows[ind - 1].Selected = true;
+                    regRecsGridView.FirstDisplayedScrollingRowIndex = ind - 1;
+                }
+                // Або оновити перший.
+                else
+                {
+                    regRecsGridView.Rows[0].Selected = true;
+                    regRecsGridView.FirstDisplayedScrollingRowIndex = 0;
+                }
             }
         }
 

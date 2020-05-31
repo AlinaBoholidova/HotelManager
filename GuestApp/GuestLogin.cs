@@ -58,7 +58,7 @@ namespace GuestApp
         // Перевірка поля прізвища-імені на заповненість.
         private bool ValidateName(Control c)
         {
-            if (!Regex.IsMatch(c.Text, @"^[а-яА-Яa-zA-Z\s]{5,}$"))
+            if (!Regex.IsMatch(c.Text, @"^[а-яА-Яёa-zA-Z\s]{5,}$") || string.IsNullOrWhiteSpace(c.Text))
             {
                 MessageBox.Show("Неверные символы или фамилия-имя слишком короткие (мин. 5 символов в поле).");
                 return false;

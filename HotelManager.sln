@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuestApp", "GuestApp\GuestA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelManagerLibrary", "HotelManagerLibrary\HotelManagerLibrary.csproj", "{F56104AC-3E9F-48E4-B671-61A37176D6E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelManagerTest", "HotelManagerTest\HotelManagerTest.csproj", "{9BA2477D-452E-4476-9EE1-2080945C66A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F56104AC-3E9F-48E4-B671-61A37176D6E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F56104AC-3E9F-48E4-B671-61A37176D6E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F56104AC-3E9F-48E4-B671-61A37176D6E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BA2477D-452E-4476-9EE1-2080945C66A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA2477D-452E-4476-9EE1-2080945C66A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA2477D-452E-4476-9EE1-2080945C66A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA2477D-452E-4476-9EE1-2080945C66A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

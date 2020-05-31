@@ -42,7 +42,7 @@ namespace AdminApp
         public RegRecForm(Hotel hotel, RegRecord regRecord) : this(hotel)
         {
             originalRegRecord = new RegRecord() { Resident = new Resident(), Room = new Room() };
-            originalRegRecord.CopyData(originalRegRecord, regRecord);
+            originalRegRecord.CopyData(regRecord);
             originalRoom = regRecord.Room;
             actualResidents = regRecord.Room.ActualResidents;
 
@@ -211,11 +211,11 @@ namespace AdminApp
             {
                 RegRecord.Room.Occupied = false;
                 RegRecord.Room.ActualResidents = 0;
-                RegRecord.CopyData(RegRecord, originalRegRecord);
+                RegRecord.CopyData(originalRegRecord);
                 originalRoom.Occupied = true;
                 originalRoom.ActualResidents = actualResidents;
             }
-            // Або відмінити зміни у обраному номері.
+            // Або відмінити обрання номеру.
             else
             {
                 originalRoom = hotel.FindRoom(
