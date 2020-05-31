@@ -93,8 +93,6 @@ namespace HotelManagerLibrary.Models
             Admins.Add(new Admin { Name = "Сергей", Password = "031963" });
         }
 
-        
-
         // Метод для завантаження тестових даних.
         public void FillTestData(int n)
         {

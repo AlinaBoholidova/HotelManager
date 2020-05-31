@@ -25,7 +25,6 @@ namespace AdminApp
             InitializeComponent();
             hotel = new Hotel();
             hotel.FillTestData(120);
-            //hotel.FillData();
             roomBindingSource.DataSource = hotel.Rooms;
             residentBindingSource.DataSource = hotel.Residents;
         }

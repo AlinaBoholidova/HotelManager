@@ -1,0 +1,10 @@
+C:\Users\User\Source\Repos\HotelManager\HotelManagerLibrary\bin\Debug\HotelManagerLibrary.dll
+C:\Users\User\Source\Repos\HotelManager\HotelManagerLibrary\bin\Debug\HotelManagerLibrary.pdb
+C:\Users\User\Source\Repos\HotelManager\HotelManagerLibrary\obj\Debug\HotelManagerLibrary.csproj.CoreCompileInputs.cache
+C:\Users\User\Source\Repos\HotelManager\HotelManagerLibrary\obj\Debug\HotelManagerLibrary.dll
+C:\Users\User\Source\Repos\HotelManager\HotelManagerLibrary\obj\Debug\HotelManagerLibrary.pdb
+C:\Users\User\source\repos\HotelManager\HotelManagerLibrary\bin\Debug\CityAbstraction.jpg
+C:\Users\User\source\repos\HotelManager\HotelManagerLibrary\bin\Debug\FootballFan.jpg
+C:\Users\User\source\repos\HotelManager\HotelManagerLibrary\bin\Debug\MorningFreshness.jpg
+C:\Users\User\source\repos\HotelManager\HotelManagerLibrary\bin\Debug\RelaxingPurple.jpg
+C:\Users\User\source\repos\HotelManager\HotelManagerLibrary\bin\Debug\empty.png
